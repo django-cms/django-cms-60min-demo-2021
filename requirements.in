@@ -28,6 +28,7 @@ djangocms-redirect
 djangocms-helpers >= 2.0.1  # bug fixes and utils as send_email
 djangocms-page-meta
 django-hijack-admin
+djangocms-blog
 
 # django packages
 django-settings-export # settings export to templates

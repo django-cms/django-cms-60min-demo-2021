@@ -93,6 +93,10 @@ INSTALLED_APPS.extend([
     'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
         'meta',
+    'djangocms_blog',
+        'sortedm2m',
+        'taggit',
+        'taggit_autosuggest',
 
     'djangocms_modules',
     'aldryn_forms_bs4_templates',
@@ -231,13 +235,7 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'label': 'Articles',
-        'app': 'articles',
-        'models': [
-            'articles.Article',
-            'articles.Category',
-            'articles.ArticlesConfig',
-        ],
+        'app': 'djangocms_blog'
     },
     {
         'label': 'Files',
