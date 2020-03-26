@@ -1,0 +1,29 @@
+{% load menu_tags %}
+
+{% for child in children %}
+    <li class="
+        nav-item child
+        {% if child.selected %} selected{% endif %}
+        {% if child.ancestor %} ancestor{% endif %}
+        {% if child.sibling %} sibling{% endif %}
+        {% if child.children %} dropdown{% endif %}
+        {% if child.descendant %} descendant{% endif %}
+    ">
+        {% if child.sibling %}
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+               role="button" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false"
+            >
+                {{ child.get_menu_title }}
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% show_menu from_level to_level extra_inactive extra_active 'includes/menu-children.html' '' '' child %}
+            </div>
+        {% else %}
+            <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                {{ child.get_menu_title }}
+            </a>
+        {% endif %}
+    </li>
+{% endfor %}
