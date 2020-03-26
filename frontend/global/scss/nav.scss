@@ -1,0 +1,5 @@
+.navbar-collapse {
+    @include media-breakpoint-up(lg) {
+        justify-content: flex-end;
+    }
+}

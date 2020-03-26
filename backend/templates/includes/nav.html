@@ -1,23 +1,25 @@
 {% load static menu_tags %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light container">
-    <a class="navbar-brand d-flex" href="#">
-        <img src="{% static 'global/img/icon.png' %}" width="30"
-             height="30" alt=""
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand d-flex" href="/">
+            <img src="{% static 'global/img/icon.png' %}" width="30"
+                 height="30" alt=""
+            >
+            EA
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"
         >
-        EA
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation"
-    >
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse d-flex justify-content-end">
-        <ul class="navbar-nav ">
-            {% show_menu 0 100 100 100 'includes/menu.html' %}
-        </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {% show_menu 0 100 100 100 'includes/menu.html' %}
+            </ul>
+        </div>
     </div>
 </nav>
