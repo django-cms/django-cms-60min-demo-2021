@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "lib": [
+            "es2017",
+            "dom"
+        ],
+        "rootDir": ".",
+        "baseUrl": "."
+    }
+}

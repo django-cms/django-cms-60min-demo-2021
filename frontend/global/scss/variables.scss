@@ -1,0 +1,29 @@
+// DO NOT CHANGE the number of columns!
+$grid-columns: 24;
+
+$project-orange: #f8951d;
+$project-dark-blue: #252733;
+
+$primary-font-color: #333333;
+$button-font-color: white;
+
+$primary-color: black;
+$primary-color: $project-orange;
+$secondary-color: $project-orange;
+
+
+// DEMO: Below find some bs4 customisation examples:
+
+// $font-size-base: 1.1rem
+// $line-height-base: 1.6
+// $body-color: $primary-font-color
+
+// https://github.com/twbs/bootstrap/issues/23112
+// $theme-colors: ("primary": $primary-color)
+
+// $btn-primary-color: $button-font-color
+// $btn-primary-bg: $primary-color
+// $btn-primary-border: $primary-color
+
+// override the bootstrap4 $spacer variable with our own
+// $spacer: $spacer

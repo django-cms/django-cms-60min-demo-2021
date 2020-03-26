@@ -8,31 +8,37 @@
 FROM divio/base:4.15-py3.6-slim-stretch
 # </DOCKER_FROM>
 
-# <NPM>
-# </NPM>
+RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https fish nano
 
-# <BOWER>
-# </BOWER>
+# CUSTOM PYTHON
 
-# <PYTHON>
 ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \
     WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
 COPY requirements.* /app/
 COPY addons-dev /app/addons-dev/
+# TODO: remove pip-reqs compile && \ here after creating the requirements.txt
 RUN pip-reqs compile && \
     pip-reqs resolve && \
     pip install \
         --no-index --no-deps \
         --requirement requirements.urls
-# </PYTHON>
 
 # <SOURCE>
 COPY . /app
 # </SOURCE>
 
-# <GULP>
-# </GULP>
 
-# <STATIC>
+# FRONTEND
+# for yarn
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update --quiet && apt-get install --yes yarn nodejs
+RUN yarn install --pure-lockfile
+RUN yarn run build
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
-# </STATIC>
+
+# fish
+RUN usermod -s /usr/bin/fish root
+RUN curl -L https://get.oh-my.fish > fish-install
+RUN fish fish-install --noninteractive --yes
