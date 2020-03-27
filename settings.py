@@ -97,11 +97,13 @@ INSTALLED_APPS.extend([
         'sortedm2m',
         'taggit',
         'taggit_autosuggest',
+
+    'aldryn_forms_bs4_templates',
     'aldryn_forms',
         'absolute',
         'aldryn_forms.contrib.email_notifications',
         'emailit',
-        'aldryn_forms_bs4_templates',
+
     'djangocms_modules',
     'djangocms_redirect',
 
