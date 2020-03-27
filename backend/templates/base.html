@@ -62,21 +62,22 @@
         {% cms_toolbar %}
 
         {% block content_before %}{% endblock %}
+    
+        {% block messages %}
+            {% include 'includes/messages.html' with messages=messages %}
+        {% endblock messages %}
 
-        <div class="container">
-        
-            {% block messages %}
-                {% include 'includes/messages.html' with messages=messages %}
-            {% endblock messages %}
+        {% block content %}{% endblock %}
 
-            {% block content %}{% endblock %}
-
-        </div>
 
         {% block content_after %}{% endblock %}
-        
+
         <footer>
-            {% static_placeholder 'footer' %}
+            <div class="container">
+                <div class="footer-content">
+                    {% static_placeholder 'footer' %}
+                </div>
+            </div>
         </footer>
 
         {% render_block 'js' %}

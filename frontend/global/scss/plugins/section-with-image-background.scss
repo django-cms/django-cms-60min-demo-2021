@@ -1,0 +1,13 @@
+.section-with-image-background-plugin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 50% 50% !important;
+    
+    * {
+        color: white;
+    }
+}

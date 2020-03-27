@@ -130,6 +130,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.heading_element',
     'backend.plugins.default.section_element',
     'backend.plugins.default.horizontal_line',
+    'backend.plugins.default.section_with_image_background',
 ])
 
 MIDDLEWARE.extend([

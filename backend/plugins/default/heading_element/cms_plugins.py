@@ -12,6 +12,5 @@ class HeadingPluginBase(CMSPluginBase):
     module = MODULE_NAME
     name = _("Heading (h1, h2, ...)")
     render_template = 'heading_element/heading-plugin.html'
-    allow_children = True
-    # allows the plugin to be inserted inside a TextPlugin (ckeditor)
+    allow_children = False
     text_enabled = True

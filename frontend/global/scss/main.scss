@@ -1,8 +1,12 @@
 @import 'bootstrap';
 
 @import 'fixes/font-awesome';
+@import 'fixes/djangocms-bootstrap4';
+
+@import 'plugins/main';
 
 @import 'ckeditor';
 
 @import 'nav';
+@import 'footer';
 @import 'text';
