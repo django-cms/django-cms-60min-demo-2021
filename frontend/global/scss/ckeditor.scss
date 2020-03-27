@@ -1,4 +1,4 @@
-/**
-Reimport here everything you need to be visible in CKEditor WYSIWYG,
-because it will render only the global styles.
- */
+body.cke_editable {
+    font-size: $font-size-base;
+    color: $body-color;
+}

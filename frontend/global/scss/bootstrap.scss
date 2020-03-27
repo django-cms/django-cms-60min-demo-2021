@@ -1,15 +1,13 @@
+// bs4
 $grid-columns: 24;
-
-
 
 $theme-colors: (
     'primary': #0c869b,
 );
 $enable-rounded: false;
 
-
-// $font-size-base: 1.1rem
-// $line-height-base: 1.6
+// project
+$header-color: #5d5d5d;
 
 
 @import '~bootstrap/scss/bootstrap';

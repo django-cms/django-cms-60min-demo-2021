@@ -1,3 +1,15 @@
+.navbar {
+    padding: 1.4rem 1rem;
+    
+    .navbar-brand {
+        align-items: center;
+        font-size: 30px;
+        color: #4d4d4d;
+        svg {
+            margin-right: 20px;
+        }
+    }
+}
 .navbar-collapse {
     @include media-breakpoint-up(lg) {
         justify-content: flex-end;

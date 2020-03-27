@@ -1,8 +1,26 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+
 h1 {
     margin-top: 29px;
     margin-bottom: 14.5px;
     font-size: 30px;
-    color: #5d5d5d;
+    color: $header-color;
     padding-bottom: 5px;
     border-bottom: 2px solid #0c869b;
+}
+
+h2 {
+    font-size: 26px;
+    color: $header-color;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 29px;
+    margin-bottom: 14.5px;
 }
