@@ -5,8 +5,17 @@
         align-items: center;
         font-size: 30px;
         color: #4d4d4d;
+        transition: 0.2s;
+
         svg {
             margin-right: 20px;
+            fill: rgb(12, 134, 155);
+            transition: 0.2s;
+        }
+        &:hover {
+            svg {
+                fill: #0c7cc4;
+            }
         }
     }
     .navbar-collapse {
