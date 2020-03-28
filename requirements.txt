@@ -9,7 +9,7 @@ aldryn-apphooks-config==0.5.3
 aldryn-boilerplates==0.8.0
 aldryn-client==2.3.5
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.1.1/e5e04b5b-3c92-43c5-8075-ca5a9b0231b2/aldryn-django-cms-3.7.1.1.tar.gz#egg=aldryn-django-cms==3.7.1.1
-https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.11.1/c54a80f6-9ed0-4f94-9170-b3a52648d500/aldryn-django-2.2.11.1.tar.gz#egg=aldryn-django==2.2.11.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.11.2/f9763028-b602-45f4-b701-f8668dc79e74/aldryn-django-2.2.11.2.tar.gz#egg=aldryn-django==2.2.11.2
 https://github.com/divio/aldryn-forms/archive/5.0.1.zip#egg=aldryn-forms
 aldryn-sites==0.6.0
 aldryn-snake==1.0.1
