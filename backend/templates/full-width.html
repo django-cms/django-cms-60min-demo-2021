@@ -3,12 +3,15 @@
 
 {% load cms_tags sekizai_tags staticfiles %}
 
+{% block messages %}{# remove from here to move them below #}{% endblock messages %}
 
 {% block content %}
     
     <header>
         {% placeholder 'header' %}
     </header>
+    
+    {% include 'includes/messages.html' with messages=messages %}
 
     <main>
         {% placeholder 'content' %}
