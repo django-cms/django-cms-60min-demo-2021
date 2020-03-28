@@ -1,0 +1,10 @@
+.light-gallery-plugin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    a {
+        display: flex;
+        margin-bottom: 18px;
+    }
+}
