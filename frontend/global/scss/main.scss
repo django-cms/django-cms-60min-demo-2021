@@ -1,10 +1,7 @@
 @import 'bootstrap';
 
-@import 'fixes/main';
+@import 'layout/main';
 @import 'plugins/main';
+@import 'fixes/main';
 
-@import 'ckeditor';
-
-@import 'nav';
-@import 'footer';
 @import 'text';
