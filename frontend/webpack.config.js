@@ -13,8 +13,6 @@ const config = {
     entry: {
         global: './frontend/global/index.js',
         vendor: './frontend/vendor/index.js',
-
-        app_blog: './frontend/apps/blog/index.js',
     },
     output: {
         filename: '[name].js',

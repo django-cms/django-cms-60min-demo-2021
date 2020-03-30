@@ -9,15 +9,6 @@
 
 {% block content_blog %}
     
-    {% addtoblock 'head_frontend_files' %}
-        {% if settings.DIVIO_ENV.value == 'local' %}
-            <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/app_blog.css">
-        {% else %}
-            <link rel="stylesheet" href="{% static 'dist/app_blog.css' %}">
-        {% endif %}
-    {% endaddtoblock %}
-
-    
     <section class="blog-list container">
         {% block blog_title %}
             <header>

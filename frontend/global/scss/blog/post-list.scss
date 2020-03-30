@@ -1,0 +1,60 @@
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.app-blog {
+    background: rgba(253, 254, 254, 1);
+}
+
+
+.blog-list {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+    &.plugin-blog {
+        padding: 0;
+    }
+    
+    .blog-list-items {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        
+        .post-item {
+            display: flex;
+            flex-direction: column;
+            max-width: 350px;
+            background: white;
+            box-shadow: 0 1px 5px #0000001f;
+            border-bottom: 2px solid map-get($theme-colors, 'primary');
+            
+            .blog-visual {
+    
+            }
+            .post-item-body {
+                padding: 20px;
+                
+                .post-item-meta {
+                    display: flex;
+                    margin-bottom: 10px;
+                    color: gray;
+                    
+                    .post-item-author {
+                        
+                    }
+                    .separator {
+                        margin: 0 7px;
+                    }
+                    .post-item-date {
+                        
+                    }
+                }
+                .title {
+                    margin-top: 0;
+                    font-size: 1.4rem;
+                    color: $body-color;
+                }
+            }
+        }
+    }
+}
