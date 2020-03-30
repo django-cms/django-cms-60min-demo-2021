@@ -1,0 +1,20 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+
+// bs4
+$grid-columns: 24;
+
+$color-primary: #0c869b;
+
+$theme-colors: (
+    'primary': $color-primary,
+);
+$enable-rounded: false;
+
+// project
+$header-color: #5d5d5d;
+
+
+$link-color: $color-primary;

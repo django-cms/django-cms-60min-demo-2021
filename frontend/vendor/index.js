@@ -3,6 +3,7 @@ window.$ = window.jQuery = require("jquery");
 
 
 require('bootstrap');
+require('./scss/main.scss');
 
 
 // Icons

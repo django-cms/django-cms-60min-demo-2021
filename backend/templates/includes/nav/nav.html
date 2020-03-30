@@ -1,6 +1,6 @@
 {% load static menu_tags %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand d-flex" href="/">
             {% include 'includes/nav/icon.svg' %}
@@ -16,7 +16,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                {% show_menu 0 100 100 100 'includes/nav/menu.html' %}
+                {% show_menu 0 0 100 100 'includes/nav/menu.html' %}
             </ul>
         </div>
     </div>
