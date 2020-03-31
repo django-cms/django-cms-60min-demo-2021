@@ -94,7 +94,6 @@ INSTALLED_APPS.extend([
     'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
         'meta',
-    'light_gallery',
     'djangocms_blog',
         'sortedm2m',
         'taggit',
@@ -108,6 +107,7 @@ INSTALLED_APPS.extend([
 
     'djangocms_modules',
     'djangocms_redirect',
+    'light_gallery',
 
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
@@ -192,7 +192,7 @@ CONFIRM_EMAIL_ON_GET = True
 
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
 
-WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default='http://localhost:8090/assets/')
+WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
 STATICFILES_STORAGE = 'aldryn_django.storage.ManifestGZippedStaticFilesStorage'
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365
 
@@ -219,6 +219,7 @@ if IS_SENTRY_ENABLED:
             )
         ],
         environment=DIVIO_ENV.value,
+        send_default_pii=True,
     )
 
 

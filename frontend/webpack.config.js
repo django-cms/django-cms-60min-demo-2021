@@ -5,9 +5,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 
 
-const isDevelopmentMode = process.env.NODE_ENV !== 'production';
-
-
 const config = {
     mode: 'production',
     entry: {
@@ -118,7 +115,7 @@ const config = {
     devServer: {
         contentBase: path.resolve(__dirname, `frontend`),
         headers: {'Access-Control-Allow-Origin': '*'},
-        host: `localhost`,
+        host: '0.0.0.0',
         port: 8090,
         hot: true,
         inline: true,
@@ -136,7 +133,6 @@ const config = {
             maxAsyncRequests: 5,
             maxInitialRequests: 3,
             automaticNameDelimiter: '~',
-            name: true,
             cacheGroups: {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
@@ -153,11 +149,19 @@ const config = {
 };
 
 
+const isDevelopmentMode = process.env.NODE_ENV !== 'production';
 if (isDevelopmentMode) {
     config.mode = 'development';
     config.devtool = 'eval-source-map';
     config.output.filename = '[name].bundle.js';
     config.output.publicPath = 'http://localhost:8090/assets/';
+}
+
+const isDockerMode = process.env.NODE_ENV === 'docker';
+if (isDockerMode) {
+    config.devServer.watchOptions = {
+        poll: 100, // enable polling since fsevents are not supported in docker
+    }
 }
 
 
