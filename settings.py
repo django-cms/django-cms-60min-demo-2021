@@ -125,9 +125,6 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-    # TODO: the aldryn-sso bug needs to be fixed and this needs to be removed from the code base
-    'backend.aldryn_sso_custom_admin',
-
     # project
 
     'backend.plugins.default.bs4_hiding',
@@ -146,6 +143,7 @@ MIDDLEWARE.extend([
     'djangocms_redirect.middleware.RedirectMiddleware',
 ])
 
+# removes frustrating validations, eg `too similar to your email`
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
@@ -196,7 +194,10 @@ CONFIRM_EMAIL_ON_GET = True
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
 
 WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
+
+# the default doesn't support names hashing
 STATICFILES_STORAGE = 'aldryn_django.storage.ManifestGZippedStaticFilesStorage'
+# the default is 5m
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365
 
 SETTINGS_EXPORT = [
@@ -321,8 +322,8 @@ CKEDITOR_SETTINGS = {
         {'name': 'H1', 'element': 'h1'},
     ],
     'contentsCss': [
-        f'{WEBPACK_DEV_URL}vendor.css' if env.is_dev() else f'{STATIC_URL}/dist/vendor.css',
-        f'{WEBPACK_DEV_URL}global.css' if env.is_dev() else f'{STATIC_URL}/dist/global.css',
+        f'{WEBPACK_DEV_URL}vendor.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/vendor.css',
+        f'{WEBPACK_DEV_URL}global.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/global.css',
         f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css',  # default required styles
     ],
     'config': {
@@ -330,5 +331,6 @@ CKEDITOR_SETTINGS = {
     }
 }
 
+# required for djangocms-helpers send_email
 META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 META_USE_SITES = True
