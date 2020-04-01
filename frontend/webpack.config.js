@@ -92,14 +92,6 @@ const config = {
                 test: /\.(ttf|eot)(\?[\s\S]+)?$/,
                 loader: 'file-loader',
             },
-            {
-                test: /\.modernizrrc.js$/,
-                use: ['modernizr-loader'],
-            },
-            {
-                test: /\.modernizrrc(\.json)?$/,
-                use: ['modernizr-loader', 'json-loader'],
-            }
         ],
     },
     resolve: {
@@ -108,9 +100,6 @@ const config = {
             path.resolve('frontend'),
             'node_modules'
         ],
-        alias: {
-            modernizr$: path.resolve(__dirname, '/frontend/.modernizrrc'),
-        }
     },
     devServer: {
         contentBase: path.resolve(__dirname, `frontend`),
