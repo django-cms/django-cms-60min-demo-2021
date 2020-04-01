@@ -1,0 +1,7 @@
+@import 'frontend/global/scss/bootstrap-variables.scss';
+
+
+body.cke_editable {
+    font-size: $font-size-base;
+    color: $body-color;
+}
