@@ -314,7 +314,6 @@ CKEDITOR_SETTINGS = {
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
-    'fontSize_sizes': '0.5rem;0.6rem;0.7rem;0.8rem;0.9rem;1.1rem;1rem;1.2rem;1.3rem;1.4rem;1.5rem;1.6rem;2rem;2.3rem;2.5rem;3rem;4rem;5rem;6rem;7rem',
     'stylesSet': [
         # {'name': 'Float Left', 'element': 'span', 'attributes': {'class': 'float-left'}},
     ],
