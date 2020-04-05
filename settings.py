@@ -62,6 +62,7 @@ DIVIO_ENV_ENUM = DivioEnv
 DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 INSTALLED_APPS.insert(0, 'backend.auth')  # for USERNAME_FIELD = 'email', before `cms` since it has a User model
+INSTALLED_APPS.insert(0, 'backend.blog')
 
 INSTALLED_APPS.extend([
     # django packages
