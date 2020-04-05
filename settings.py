@@ -86,6 +86,8 @@ INSTALLED_APPS.extend([
     'aldryn_apphooks_config',
     'djangocms_blog',
         'taggit',
+        'taggit_autosuggest',
+        'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_link',
@@ -282,11 +284,6 @@ ADMIN_REORDER = [
 ]
 
 
-RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
-RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
-RECAPTCHA_SCORE_THRESHOLD = 0.85
-
-
 ################################################################################
 ## === django-cms core === ##
 ################################################################################
@@ -303,14 +300,16 @@ CMS_TEMPLATES = [
 ################################################################################
 
 
+BLOG_PERMALINK_URLS = {
+    'full_date': r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>\w[-\w]*)/$',
+    'short_date': r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>\w[-\w]*)/$',
+    'category': r'^(?P<category>\w[-\w]*)/(?P<slug>\w[-\w]*)/$',
+    'slug': r'^(?P<slug>\w[-\w]*)/$',
+}
+
+
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
-DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
-    ('col', 'Column'),
-    # for full width columns that have no left/right padding
-    ('col p-0', 'Full-width Column'),
-    ('w-100', 'Break'),
-    ('', 'Empty'),
-]
+
 
 DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
@@ -348,3 +347,8 @@ CKEDITOR_SETTINGS = {
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 META_USE_SITES = True
+
+
+RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
+RECAPTCHA_SCORE_THRESHOLD = 0.85
