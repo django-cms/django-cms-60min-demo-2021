@@ -1,6 +1,6 @@
 {% extends "djangocms_blog/base.html" %}
 
-{% load i18n easy_thumbnails_tags sekizai_tags static %}
+{% load i18n easy_thumbnails_tags sekizai_tags static cms_tags %}
 
 
 {% block canonical_url %}
@@ -9,6 +9,8 @@
 
 {% block content_blog %}
     
+    {% static_placeholder 'before blog list' %}
+
     <section class="blog-list container">
         {% block blog_title %}
             <header>
@@ -49,5 +51,7 @@
         {% endif %}
 
     </section>
+    
+    {% static_placeholder 'after blog list' %}
 
 {% endblock %}
