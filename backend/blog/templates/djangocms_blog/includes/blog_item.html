@@ -29,7 +29,9 @@
             </span>
         </div>
 
-        <a href="{{ post.get_absolute_url }}"><h3 class="title">{{ post.title }}</h3></a>
+        <a class="post-item-link" href="{{ post.get_absolute_url }}">
+            <h3 class="title">{{ post.title }}</h3>
+        </a>
 
         <div class="blog-lead">
         {% render_model post "abstract" "" "" "truncatechars_html:100" %}

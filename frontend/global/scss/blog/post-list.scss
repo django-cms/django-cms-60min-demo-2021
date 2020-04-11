@@ -30,8 +30,9 @@
             border-bottom: 2px solid map-get($theme-colors, 'primary');
             
             .blog-visual {
-    
+                
             }
+            
             .post-item-body {
                 padding: 20px;
                 
@@ -43,18 +44,28 @@
                     .post-item-author {
                         
                     }
+                    
                     .separator {
                         margin: 0 7px;
                     }
+                    
                     .post-item-date {
                         
                     }
                 }
-                .title {
-                    margin-top: 0;
-                    font-size: 1.4rem;
-                    color: $body-color;
+                
+                .post-item-link {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                    
+                    .title {
+                        margin-top: 0;
+                        font-size: 1.4rem;
+                        color: $body-color;
+                    }
                 }
+                
             }
         }
     }
