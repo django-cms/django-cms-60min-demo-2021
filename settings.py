@@ -249,7 +249,6 @@ ADMIN_REORDER = [
         'models': [
             'backend_auth.User',
             'auth.Group',
-            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'divio.com SSO users'},
         ],
     },
     {
@@ -257,7 +256,7 @@ ADMIN_REORDER = [
         'app': 'cms',
         'models': [
             'cms.Page',
-            'filer.Folder',
+            {'model': 'filer.Folder', 'label': 'Media'},
             'djangocms_redirect.Redirect',
             {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
         ],
