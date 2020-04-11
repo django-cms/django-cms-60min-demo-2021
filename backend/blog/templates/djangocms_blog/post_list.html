@@ -12,16 +12,31 @@
     {% static_placeholder 'before blog list' %}
 
     <section class="blog-list container">
+    
+    <h1>{% trans "Latest blog posts" %}</h1>
+
         {% block blog_title %}
-            <header>
-                <h2>
-                    {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
-                        {% elif archive_date %}{% trans "Archive" %} &ndash;
-                        {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
-                        {% elif tagged_entries %}{% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
-                        {% elif category %}{% trans "Category" %} &ndash; {{ category }}{% endif %}
-                </h2>
-            </header>
+            {% if author or archive_date or tagged_entries or category %}
+                <header>
+                    <h2>
+                        {% if author %}
+                            {% trans "Articles by" %} {{ author.get_full_name }}
+                        {% elif archive_date %}
+                            {% trans "Archive" %} &ndash;
+                            
+                            {% if month %}
+                                {{ archive_date|date:'F' }}
+                            {% endif %}
+    
+                            {{ year }}
+                        {% elif tagged_entries %}
+                            {% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
+                        {% elif category %}
+                            {% trans "Category" %} &ndash; {{ category }}
+                        {% endif %}
+                    </h2>
+                </header>
+            {% endif %}
         {% endblock %}
 
         <div class="row no-gutters blog-list-items">

@@ -2,14 +2,23 @@
 {% load i18n easy_thumbnails_tags cms_tags %}
 
 {% block canonical_url %}
-    <link rel="canonical" href="{{ meta.url }}"/>{% endblock canonical_url %}
-{% block title %}{{ post.get_title }}{% endblock %}
+    <link rel="canonical" href="{{ meta.url }}"/>
+{% endblock canonical_url %}
+
+{% block page_meta_title %}{{ post.get_title }}{% endblock %}
 
 {% block content_blog %}
 
+<section
+    class="section-with-image-background-plugin"
+    style="background: url('{% thumbnail post.main_image 2560x350 crop=True subject_location=post.main_image.subject_location %}'); height: 350px;"
+>
+</section>
+
 <article id="post-{{ post.slug }}" class="post-item post-detail container">
     <header>
-        <h2>{% render_model post "title" %}</h2>
+
+        <h2 class="post-title">{% render_model post "title" %}</h2>
         {% if post.subtitle %}
             <h3>{% render_model post "subtitle" %}</h3>
         {% endif %}
@@ -17,18 +26,6 @@
             {% include "djangocms_blog/includes/blog_meta.html" %}
         {% endblock %}
     </header>
-
-    {% if not post.main_image_id %}
-        <div class="blog-visual">{% render_placeholder post.media %}</div>
-    {% else %}
-        <div class="blog-visual">
-            {% thumbnail post.main_image post.full_image_options.size crop=post.full_image_options.crop upscale=post.full_image_options.upscale subject_location=post.main_image.subject_location as thumb %}
-            <img src="{{ thumb.url }}"
-                 alt="{{ post.main_image.default_alt_text }}"
-                 width="{{ thumb.width }}" height="{{ thumb.height }}"
-            />
-        </div>
-    {% endif %}
 
     {% if post.app_config.use_placeholder %}
         <div class="blog-content">{% render_placeholder post.content %}</div>
@@ -38,6 +35,7 @@
     {% if view.liveblog_enabled %}
         {% include "liveblog/includes/post_detail.html" %}
     {% endif %}
+
     {% if post.related.exists %}
         <section class="post-detail-list">
             {% for related in post.related.all %}
