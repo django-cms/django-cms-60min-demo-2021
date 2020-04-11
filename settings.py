@@ -9,7 +9,8 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
 from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv('.env-for-native'))
+
+load_dotenv(find_dotenv('.env-local'))
 
 
 ################################################################################
@@ -27,10 +28,6 @@ INSTALLED_ADDONS = [
     # </INSTALLED_ADDONS>
 ]
 
-# for native setup must be before `aldryn_addons.settings.load()`
-IS_NATIVE_SETUP = env.get_bool('IS_NATIVE_SETUP', default=False)
-if IS_NATIVE_SETUP:
-    DATABASE_URL = env.get('DATABASE_URL', 'postgres://postgres@localhost:5432/db')
 
 import aldryn_addons.settings
 
@@ -48,6 +45,7 @@ BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 HTTP_PROTOCOL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
+
 
 DATE_FORMAT = 'F j, Y'
 
@@ -171,6 +169,14 @@ if DIVIO_ENV == DivioEnv.LOCAL:
 else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
+
+
+if DIVIO_ENV == DivioEnv.LOCAL:
+    ssl_redirect_default = False
+else:
+    ssl_redirect_default = True
+
+SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
 
 
 ################################################################################

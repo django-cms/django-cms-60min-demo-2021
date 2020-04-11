@@ -1,6 +1,11 @@
+/*
+ * This file is imported in bootstrap during compilation - see frontend/vendor/scss/main
+ */
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
+
+@import 'project';
 
 
 // bs4
@@ -14,10 +19,3 @@ $theme-colors: (
     'primary': $color-primary,
 );
 $enable-rounded: false;
-
-// project
-$header-color: #5d5d5d;
-
-
-$link-color: $color-primary;
-$link-hover-color: #0c7cc4;

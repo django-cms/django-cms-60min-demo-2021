@@ -1,8 +1,7 @@
-@import 'bootstrap-variables';
-
-@import 'layout/main';
-@import 'plugins/main';
+@import 'variables/main';
 @import 'fixes/main';
+@import 'plugins/main';
+@import 'layout/main';
 @import 'blog/main';
 
 @import 'text';
