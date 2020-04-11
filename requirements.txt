@@ -107,7 +107,7 @@ djangocms-picture==2.4.0  # via -r requirements.in, djangocms-bootstrap4
 djangocms-redirect==0.5.0  # via -r requirements.in
 djangocms-snippet==2.3.0  # via -r requirements.in
 djangocms-text-ckeditor==3.9.0  # via -r requirements.in, aldryn-forms, djangocms-blog, djangocms-bootstrap4
-djangocms-video==2.3.0    # via -r requirements.in
+https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video  # via -r requirements.in
 djangorestframework==3.11.0  # via -r requirements.in
 djeese-fs==0.1.21         # via aldryn-django
 easy-thumbnails==2.6      # via aldryn-django, django-filer, djangocms-blog, djangocms-light-gallery, djangocms-picture
