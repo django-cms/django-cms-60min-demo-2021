@@ -8,7 +8,6 @@
 @import 'project';
 
 
-// bs4
 $grid-columns: 24;
 
 $color-primary: #0c869b;
@@ -19,3 +18,6 @@ $theme-colors: (
     'primary': $color-primary,
 );
 $enable-rounded: false;
+
+$link-color: $color-primary;
+$link-hover-color: #0c7cc4;
