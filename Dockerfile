@@ -2,7 +2,7 @@ FROM registry.gitlab.com/what-digital/djangocms-template:latest
 
 
 COPY . /app
-
+RUN echo 'reset cache'
 RUN pip install -r requirements.txt
 
 RUN yarn install --pure-lockfile
