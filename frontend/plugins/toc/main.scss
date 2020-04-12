@@ -3,8 +3,11 @@
 @import 'frontend/global/scss/variables/main';
 
 
-$top-offset: 71px;
 $cms-toolbar-height: 46px;
+
+// must correspond to fixedPosTopCssOffset in main.ts
+$fixed-pos-top-css-offset: 10px;
+$fixed-pos-top-css-offset-with-toolbar: 71px;
 
 .djangocms-toc {
     position: relative;
@@ -15,12 +18,12 @@ $cms-toolbar-height: 46px;
     
     &.is-position-fixed {
         position: fixed;
-        top: $top-offset - $cms-toolbar-height;
+        top: $fixed-pos-top-css-offset;
     }
     
     &.is-position-fixed-with-toolbar {
         position: fixed;
-        top: $top-offset;
+        top: $fixed-pos-top-css-offset-with-toolbar;
         padding-top: 0;
     }
     

@@ -20,15 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function calculateFixedPosOffset(contentSelector: string): number {
-    let fixedPasOffset = $(contentSelector).offset().top;
+    let fixedPosTopOffset = $(contentSelector).offset().top;
     const cmsToolbar = document.querySelector('.cms-toolbar');
     if (cmsToolbar) {
-        fixedPasOffset -= cmsToolbar.clientHeight;
+        fixedPosTopOffset -= cmsToolbar.clientHeight;
     } else {
-        const fixedPosTopPadding = 25;
-        fixedPasOffset -= fixedPosTopPadding; 
+        const fixedPosTopCssOffset = 10;
+        fixedPosTopOffset -= fixedPosTopCssOffset; 
     }
-    return fixedPasOffset
+    return fixedPosTopOffset
 }
 
 
