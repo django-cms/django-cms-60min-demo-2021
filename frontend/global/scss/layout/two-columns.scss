@@ -1,0 +1,10 @@
+@import 'frontend/global/scss/variables/main';
+
+
+.aside-right {
+    padding-left: 20px;
+    
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}

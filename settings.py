@@ -299,6 +299,7 @@ ADMIN_REORDER = [
 CMS_TEMPLATES = [
     ('full-width.html', 'full width'),
     ('one-column.html', 'one column'),
+    ('two-columns-main-left.html', 'two columns'),
 ]
 
 

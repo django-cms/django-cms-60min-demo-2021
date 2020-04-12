@@ -14,8 +14,8 @@ $fixed-pos-top-css-offset-with-toolbar: 71px;
     top: 0;
     padding: 24px;
     line-height: 2;
-    font-size: 16px;
-    
+    font-size: 14px;
+
     &.is-position-fixed {
         position: fixed;
         top: $fixed-pos-top-css-offset;
