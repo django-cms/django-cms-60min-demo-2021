@@ -3,7 +3,9 @@ FROM registry.gitlab.com/what-digital/djangocms-template:latest
 
 COPY . /app
 
-RUN pip install -r requirements.txt
+RUN pip-reqs resolve
+RUN pip install --no-index --no-deps --requirement requirements.urls
+
 
 RUN yarn install --pure-lockfile
 RUN yarn run build
