@@ -87,7 +87,7 @@ django-username-email==2.2.4
 django-widget-tweaks==1.4.8
 django==2.2.12            # via aldryn-boilerplates, aldryn-sites, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-helpers, djangocms-light-gallery, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==1.5.0  # via django-cms
-djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
+djangocms-aldryn-forms-bootstrap4-templates==1.0.0.2
 djangocms-apphook-setup==0.4.1  # via djangocms-blog
 djangocms-attributes-field==1.2.0  # via djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
 djangocms-blog==1.0.0
