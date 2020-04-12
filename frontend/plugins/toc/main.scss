@@ -57,3 +57,11 @@ $cms-toolbar-height: 46px;
     }
 
 }
+
+.cms-toolbar-expanded {
+    h2, h3, h4, h5 {
+        $padding-top: 15px;
+        padding-top: $cms-toolbar-height + $padding-top !important;
+        margin-top: -$cms-toolbar-height - $padding-top !important;
+    }
+}
