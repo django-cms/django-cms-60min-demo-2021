@@ -1,10 +1,10 @@
 {% load djangocms_blog i18n easy_thumbnails_tags cms_tags %}
 
 
-<article id="post-{{ post.slug }}" class="post-item col-8">
+<article id="post-{{ post.slug }}" class="post-item col-sm-24 col-md-12 col-lg-12 col-xl-8">
     <a href="{{ post.get_absolute_url }}">
         <div class="blog-visual">
-            {% thumbnail post.main_image 350x275 crop upscale as thumb %}
+            {% thumbnail post.main_image 510x401 crop upscale as thumb %}
             <img src="{{ thumb.url }}"
                  alt="{{ post.main_image.default_alt_text }}"
                  width="{{ thumb.width }}" height="{{ thumb.height }}"
@@ -17,7 +17,7 @@
             <span class="post-item-date">
                 {{ post.date_published|date:"DATE_FORMAT" }}
             </span>
-            <span class="separator">-</span>
+            <span class="separator">–</span>
             <span class="post-item-author">
                 <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">
                     {% if post.author.get_full_name %}
@@ -34,8 +34,8 @@
         </a>
 
         <div class="blog-lead">
-        {% render_model post "abstract" "" "" "truncatechars_html:100" %}
-    </div>
+            {% render_model post "abstract" "" "" "truncatechars_html:100" %}
+        </div>
     </div>
 
 

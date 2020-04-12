@@ -24,20 +24,38 @@
         .post-item {
             display: flex;
             flex-direction: column;
-            max-width: 350px;
+            margin-bottom: 30px;
             background: white;
             box-shadow: 0 1px 5px #0000001f;
             border-bottom: 2px solid map-get($theme-colors, 'primary');
             
+            @include media-breakpoint-up(lg) {
+                max-width: 350px;
+            }
+            @include media-breakpoint-down(lg) {
+                max-width: 290px;
+            }
+            @include media-breakpoint-down(md) {
+                max-width: 330px;
+            }
+            @include media-breakpoint-down(sm) {
+                max-width: 100%;
+            }
+
+
+            
             .blog-visual {
-                
+                img {
+                    width: auto !important;
+                    height: auto;
+                    max-width: 100%;
+                }
             }
             
             .post-item-body {
                 padding: 20px;
                 
                 .post-item-meta {
-                    display: flex;
                     margin-bottom: 10px;
                     color: gray;
                     
@@ -46,7 +64,6 @@
                     }
                     
                     .separator {
-                        margin: 0 7px;
                     }
                     
                     .post-item-date {
