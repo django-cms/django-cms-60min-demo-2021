@@ -129,6 +129,7 @@ INSTALLED_APPS.extend([
 
     # project
 
+    'backend.plugins.default.toc',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_spacer',
     'backend.plugins.default.heading_element',

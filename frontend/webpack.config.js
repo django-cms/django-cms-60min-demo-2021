@@ -10,6 +10,7 @@ const config = {
     entry: {
         global: './frontend/global/index.js',
         vendor: './frontend/vendor/index.js',
+        plugin_toc: './frontend/plugins/toc/index.js',
     },
     output: {
         filename: '[name].js',

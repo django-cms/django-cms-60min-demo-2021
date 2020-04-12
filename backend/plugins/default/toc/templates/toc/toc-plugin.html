@@ -1,0 +1,16 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles %}
+
+
+<nav class="djangocms-toc">
+
+</nav>
+
+{% addtoblock 'js' %}
+    {% if settings.DIVIO_ENV.value == 'local' %}
+        <script defer src="{{ settings.WEBPACK_DEV_URL }}/plugin_toc.bundle.js" data-is-reload-on-page-edit="true"></script>
+        <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/plugin_toc.css">
+    {% else %}
+        <script defer src="{% static 'dist/plugin_toc.js' %}" data-is-reload-on-page-edit="true"></script>
+        <link rel="stylesheet" href="{% static 'dist/plugin_toc.css' %}">
+    {% endif %}
+{% endaddtoblock %}

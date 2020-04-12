@@ -1,12 +1,14 @@
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
-from enumfields import Enum, EnumField
+from django.utils.text import slugify
+from enumfields import Enum
+from enumfields import EnumField
 
 
 class HeadingType(Enum):
-    XX_SMALL = 'xxsmall' # .c-title--xxsmall
-    X_SMALL = 'xsmall' # .c-title--xsmall
-    SMALL = 'small' # ...
+    XX_SMALL = 'xxsmall'  # .c-title--xxsmall
+    X_SMALL = 'xsmall'  # .c-title--xsmall
+    SMALL = 'small'  # ...
     MEDIUM = 'medium'
     STANDARD = 'standard'
     LARGE = 'large'
@@ -37,6 +39,7 @@ class HeadingType(Enum):
         BOLDER_25 = 'bolder (25px)'
         BOLDER_20 = 'bolder (20px)'
 
+
 class HeadingTag(Enum):
     H1 = 'h1'
     H2 = 'h2'
@@ -47,16 +50,18 @@ class HeadingTag(Enum):
     DIV = 'div'
     P = 'p'
 
+
 class HeadingColor(Enum):
     # dark doesnt have any styles, it's just the default title, but we give a value anyway
     DARK = 'dark'  # .c-title
-    WHITE = 'white' # .c-title--color-white
-    BLUE = 'blue' # .c-title--color-blue
+    WHITE = 'white'  # .c-title--color-white
+    BLUE = 'blue'  # .c-title--color-blue
+
 
 class HeadingAlignment(Enum):
-    LEFT = 'left' # .text-left
-    CENTER = 'center' # .text-center
-    RIGHT = 'right' # ...
+    LEFT = 'left'  # .text-left
+    CENTER = 'center'  # .text-center
+    RIGHT = 'right'  # ...
 
 class HeadingPlugin(CMSPlugin):
     text = models.TextField(null=True, blank=False, default="Heading Text")
@@ -66,9 +71,11 @@ class HeadingPlugin(CMSPlugin):
     heading_color = EnumField(HeadingColor, default=HeadingColor.DARK, max_length=32)
     heading_alignment = EnumField(HeadingAlignment, default=HeadingAlignment.LEFT, max_length=32)
 
-
+    def get_anchor(self) -> str:
+        return slugify(self.text)
 
     def __str__(self):
         if self.text:
             return self.text
         return ""
+

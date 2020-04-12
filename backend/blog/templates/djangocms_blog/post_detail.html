@@ -15,34 +15,43 @@
 >
 </section>
 
-<article id="post-{{ post.slug }}" class="post-item post-detail container">
-    <header>
+<section class="container">
+    <div class="row">
+    
+        <article id="post-{{ post.slug }}" class="post-item post-detail col-lg-17 col-md-24">
+            <header>
+        
+                <h1 class="post-title">{% render_model post "title" %}</h1>
+                {% if post.subtitle %}
+                    <h3>{% render_model post "subtitle" %}</h3>
+                {% endif %}
+                {% block blog_meta %}
+                    {% include "djangocms_blog/includes/blog_meta.html" %}
+                {% endblock %}
+            </header>
+        
+            {% if post.app_config.use_placeholder %}
+                <div class="blog-content">{% render_placeholder post.content %}</div>
+            {% else %}
+                <div class="blog-content">{% render_model post "post_text" "post_text" "" "safe" %}</div>
+            {% endif %}
+            {% if view.liveblog_enabled %}
+                {% include "liveblog/includes/post_detail.html" %}
+            {% endif %}
+        
+            {% if post.related.exists %}
+                <section class="post-detail-list">
+                    {% for related in post.related.all %}
+                        {% include "djangocms_blog/includes/blog_item.html" with post=related image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+                    {% endfor %}
+                </section>
+            {% endif %}
+        </article>
+            
+        <aside class="post-detail-aside col-7">
+            {% static_placeholder 'Blog post sidebar' %}
+        </aside>
 
-        <h2 class="post-title">{% render_model post "title" %}</h2>
-        {% if post.subtitle %}
-            <h3>{% render_model post "subtitle" %}</h3>
-        {% endif %}
-        {% block blog_meta %}
-            {% include "djangocms_blog/includes/blog_meta.html" %}
-        {% endblock %}
-    </header>
-
-    {% if post.app_config.use_placeholder %}
-        <div class="blog-content">{% render_placeholder post.content %}</div>
-    {% else %}
-        <div class="blog-content">{% render_model post "post_text" "post_text" "" "safe" %}</div>
-    {% endif %}
-    {% if view.liveblog_enabled %}
-        {% include "liveblog/includes/post_detail.html" %}
-    {% endif %}
-
-    {% if post.related.exists %}
-        <section class="post-detail-list">
-            {% for related in post.related.all %}
-                {% include "djangocms_blog/includes/blog_item.html" with post=related image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
-            {% endfor %}
-        </section>
-    {% endif %}
-</article>
-
+    </div>
+</section>
 {% endblock content_blog %}

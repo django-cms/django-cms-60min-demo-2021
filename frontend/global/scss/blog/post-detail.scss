@@ -6,5 +6,13 @@
     
     .post-title {
         margin-top: 20px;
+        border-bottom: none;
+    }
+}
+.post-detail-aside {
+    padding-left: 20px;
+    
+    @include media-breakpoint-down(md) {
+        display: none;
     }
 }
