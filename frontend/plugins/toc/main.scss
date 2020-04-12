@@ -7,13 +7,16 @@ $cms-toolbar-height: 46px;
 
 // must correspond to fixedPosTopCssOffset in main.ts
 $fixed-pos-top-css-offset: 10px;
-$fixed-pos-top-css-offset-with-toolbar: 71px;
+
+$padding-top: 36px;
+$fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $padding-top;
+
 
 .djangocms-toc {
     position: relative;
     top: 0;
-    padding: 24px;
-    line-height: 2;
+    padding-left: 36px;
+    padding-top: $padding-top;
     font-size: 14px;
 
     &.is-position-fixed {
@@ -39,9 +42,10 @@ $fixed-pos-top-css-offset-with-toolbar: 71px;
     
     li a {
         display: inline-block;
+        padding: 5px 0;
+        transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
         color: #aaa;
         text-decoration: none;
-        transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
     }
     
     .toc-link::before {

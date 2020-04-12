@@ -5,6 +5,8 @@
     padding-left: 20px;
     
     @include media-breakpoint-down(md) {
-        display: none;
+        .djangocms-toc {
+            display: none;
+        }
     }
 }
