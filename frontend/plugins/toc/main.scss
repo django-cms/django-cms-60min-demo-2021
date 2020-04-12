@@ -3,18 +3,25 @@
 @import 'frontend/global/scss/variables/main';
 
 
+$top-offset: 71px;
+$cms-toolbar-height: 46px;
+
 .djangocms-toc {
     position: relative;
     top: 0;
-    padding: 1.5em;
-    padding-top: 22px;
+    padding: 24px;
     line-height: 2;
     font-size: 16px;
-    transition: top 0.3s;
     
     &.is-position-fixed {
         position: fixed;
-        top: 1em;
+        top: $top-offset - $cms-toolbar-height;
+    }
+    
+    &.is-position-fixed-with-toolbar {
+        position: fixed;
+        top: $top-offset;
+        padding-top: 0;
     }
     
     ul {

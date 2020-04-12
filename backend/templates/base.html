@@ -27,6 +27,7 @@
         <script>
             window.DJANGO = {
                 env: `{{ settings.DIVIO_ENV.value }}`,
+                isDebugMode: {{ settings.DEBUG|lower }},
             };
         </script>
 
