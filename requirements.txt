@@ -4,8 +4,6 @@
 #
 #    pip-compile --index-url=https://wheels.aldryn.net/v1/aldryn-extras+pypi/aldryn-baseproject-v4-py36/+simple/ requirements.in
 #
---index-url https://wheels.aldryn.net/v1/aldryn-extras+pypi/aldryn-baseproject-v4-py36/+simple/
-
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4ef8-bfe0-1e61c8601b33/aldryn-addons-1.1.0.tar.gz#egg=aldryn-addons==1.1.0  # via -r requirements.in, aldryn-django, aldryn-django-cms, aldryn-sso
 aldryn-apphooks-config==0.5.3  # via -r requirements.in, djangocms-blog
 aldryn-boilerplates==0.8.0  # via aldryn-django-cms, aldryn-forms
