@@ -61,6 +61,7 @@ $fixed-pos-top-css-offset-with-toolbar: 71px;
 
 }
 
+// alas, this is how author of tocbot suggests to handle floating cms menu
 .cms-toolbar-expanded {
     h2, h3, h4, h5 {
         $padding-top: 15px;
