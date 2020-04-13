@@ -59,8 +59,18 @@ class DivioEnv(Enum):
 DIVIO_ENV_ENUM = DivioEnv
 DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
-INSTALLED_APPS.insert(0, 'backend.auth')  # for USERNAME_FIELD = 'email', before `cms` since it has a User model
-INSTALLED_APPS.insert(0, 'backend.blog')
+
+installed_apps_first = [
+    # for USERNAME_FIELD = 'email', before `cms` since it has a User model
+    'backend.auth',
+
+    # must be before `cms`
+    'djangocms_modules',
+
+    # tempaltes override
+    'backend.blog',
+]
+INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
     # django packages
@@ -107,7 +117,6 @@ INSTALLED_APPS.extend([
         'aldryn_forms.contrib.email_notifications',
         'emailit',
 
-    'djangocms_modules',
     'djangocms_redirect',
     'light_gallery',
 
