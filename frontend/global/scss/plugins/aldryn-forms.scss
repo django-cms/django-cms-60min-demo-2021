@@ -26,3 +26,10 @@
 .grecaptcha-badge {
     display: none;
 }
+
+.dropdown-item {
+
+    &:active {
+        color: white !important;
+    }
+}

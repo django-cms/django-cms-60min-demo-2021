@@ -59,15 +59,20 @@ $fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $padding-top;
         width: 2px;
     }
     
-    .is-active-link::before {
-        background-color: $primary;
+    .is-active-link{
+        color: $color-primary;
+        font-weight: normal;
+
+        &::before {
+            background-color: $color-primary;
+        }
     }
 
 }
 
 // alas, this is how author of tocbot suggests to handle floating cms menu
 .cms-toolbar-expanded {
-    h2, h3, h4, h5 {
+    h2, h3, h4, h5, h6 {
         $padding-top: 15px;
         padding-top: $cms-toolbar-height + $padding-top !important;
         margin-top: -$cms-toolbar-height - $padding-top !important;

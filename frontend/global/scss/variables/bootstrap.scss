@@ -1,23 +1,35 @@
 /*
  * This file is imported in bootstrap during compilation - see frontend/vendor/scss/main
  */
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
-
 @import 'project';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/hover';
+@import '~bootstrap/scss/functions';
 
 
 $grid-columns: 24;
 
 $color-primary: #0c869b;
 $primary: $color-primary;
-$component-active-bg: $color-primary;
-
 $theme-colors: (
     'primary': $color-primary,
 );
 $enable-rounded: false;
 
+$component-active-color: white;
+$component-active-bg: $color-primary;
+
+// on click hold
+$color-active: #1cafd0;
+$custom-control-indicator-active-bg: $color-active;
+$custom-control-indicator-active-border-color: $color-active;
+
+$input-focus-border-color: #1f859847;
+$input-btn-focus-color: rgba(7, 122, 142, 0.25);
+
 $link-color: $color-primary;
-$link-hover-color: #0c7cc4;
+$link-hover-color: $color-active;
+
+
+// override by placing it at the end
+@import '~bootstrap/scss/variables';
