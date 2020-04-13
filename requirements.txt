@@ -105,7 +105,7 @@ djangocms-picture==2.4.0
 djangocms-redirect==0.5.0
 djangocms-snippet==2.3.0
 djangocms-text-ckeditor==3.9.0
-https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
+https://github.com/divio/djangocms-video/archive/be9d6d26d851043ac53b137fdaec78eff7af77d6.zip#egg=djangocms-video
 djangorestframework==3.11.0
 djeese-fs==0.1.21
 easy-thumbnails==2.6      # via djangocms-blog, djangocms-light-gallery, djangocms-picture
