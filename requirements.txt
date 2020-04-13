@@ -18,7 +18,6 @@ https://control.divio.com/api/v1/apps/serve/aldryn-sso/1.7.0/3ef75ae5-729a-4c44-
 aldryn-translation-tools==0.3.0  # via -r requirements.in
 argparse==1.4.0           # via djeese-fs
 backcall==0.1.0           # via ipython
-boto==2.49.0              # via aldryn-django
 cachetools==4.1.0         # via premailer
 certifi==2020.4.5.1       # via djeese-fs, requests, sentry-sdk
 chardet==3.0.4            # via djeese-fs, requests
