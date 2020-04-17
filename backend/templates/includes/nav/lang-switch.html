@@ -1,0 +1,43 @@
+{% load menu_tags countries i18n %}
+
+{% if languages|length > 1 %}
+
+    <li class="nav-item child sibling dropdown lang-switcher">
+        <a class="nav-link dropdown-toggle" 
+           href="#"
+           id="navbarDropdown"
+           role="button"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false"
+        >
+            {% get_current_language as lang_current %}
+            {% if lang_current == 'en' %}
+                {% get_country 'GB' as country %}
+                <img src="{{ country.flag }}">
+            {% else %}
+                {% get_country lang_current as country %}
+                <img src="{{ country.flag }}">
+            {% endif %}
+            
+        </a>
+    
+        <div class="dropdown-menu lang-menu" aria-labelledby="navbarDropdown">
+            {% for lang_code, lang_name in languages %}
+                
+                {% if lang_code != lang_current %}
+                    <a class="dropdown-item lang-item" href="{% page_language_url lang_code %}">
+                        {% if lang_code == 'en' %}
+                            {% get_country 'gb' as country %}
+                        {% else %}
+                            {% get_country lang_code as country %}
+                        {% endif %}
+                        <img src="{{ country.flag }}">
+                    </a>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+    </li>
+
+{% endif %}

@@ -1,3 +1,6 @@
+@import 'frontend/global/scss/variables/main';
+
+
 .navbar {
     padding: 1.4rem 1rem;
     border-bottom: 1px solid #ececec;
@@ -20,11 +23,28 @@
         }
     }
     .navbar-collapse {
+        .dropdown-toggle::after {
+            vertical-align: middle;
+        }
+        
         @include media-breakpoint-up(lg) {
             justify-content: flex-end;
             
             .nav-link {
                 margin-left: 20px;
+            }
+        }
+    }
+    .lang-switcher {
+        width: fit-content;
+
+        .lang-menu {
+            min-width: 100%;
+        
+            .lang-item {
+                display: flex;
+                justify-content: center;
+                padding: 0.4rem 1.5rem;
             }
         }
     }

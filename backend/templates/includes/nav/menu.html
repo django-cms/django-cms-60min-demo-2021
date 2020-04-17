@@ -1,4 +1,4 @@
-{% load menu_tags %}
+{% load menu_tags i18n %}
 
 {% for child in children %}
     <li class="
@@ -10,8 +10,12 @@
         {% if child.descendant %} descendant{% endif %}
     ">
         {% if child.children %}
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-               role="button" data-toggle="dropdown" aria-haspopup="true"
+            <a class="nav-link dropdown-toggle"
+               href="#"
+               id="navbarDropdown"
+               role="button"
+               data-toggle="dropdown"
+               aria-haspopup="true"
                aria-expanded="false"
             >
                 {{ child.get_menu_title }}
@@ -27,3 +31,6 @@
         {% endif %}
     </li>
 {% endfor %}
+
+
+{% language_chooser 'includes/nav/lang-switch.html' %}
