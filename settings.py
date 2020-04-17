@@ -85,6 +85,7 @@ INSTALLED_APPS.extend([
     'adminsortable2',
     'admin_reorder',
     'django_extensions',
+    'widget_tweaks',
     'django_countries',
     'logentry_admin',
     'hijack_admin',
