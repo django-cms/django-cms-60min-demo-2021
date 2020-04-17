@@ -45,6 +45,7 @@ BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 HTTP_PROTOCOL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
+SITE_ID: int = locals()['SITE_ID']
 
 
 DATE_FORMAT = 'F j, Y'
@@ -188,6 +189,32 @@ else:
     ssl_redirect_default = True
 
 SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
+
+
+LANGUAGES = [
+    ('en', "English"),
+    ('de', "German"),
+    ('nl', "Netherlands"),
+]
+
+CMS_LANGUAGES = {
+    SITE_ID: [
+        {
+            'code': 'en',
+            'name': 'English',
+        },
+        {
+            'code': 'nl',
+            'name': 'Dutch',
+        },
+    ],
+    'default': {
+        'fallbacks': ['en', 'nl'],
+        'redirect_on_fallback': True,
+        'public': True,
+        'hide_untranslated': False,
+    }
+}
 
 
 ################################################################################
