@@ -9,6 +9,7 @@ node_modules/
 frontend/dist
 .sass-cache
 *.css.map
+static_collected/
 
 # dev files
 .idea/
