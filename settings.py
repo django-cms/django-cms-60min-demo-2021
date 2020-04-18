@@ -375,9 +375,7 @@ CKEDITOR_SETTINGS = {
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
-    'stylesSet': [
-        # {'name': 'Float Left', 'element': 'span', 'attributes': {'class': 'float-left'}},
-    ],
+    'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
         f'{WEBPACK_DEV_URL}vendor.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}global.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/global.css',
