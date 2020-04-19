@@ -22,9 +22,19 @@
             }
         }
     }
+    .nav-item.dropdown {
+        &:hover > .dropdown-menu {
+            display: block;
+        }
+    }
     .navbar-collapse {
-        .dropdown-toggle::after {
-            vertical-align: middle;
+        .dropdown-toggle {
+            &::after {
+                vertical-align: middle;
+            }
+            &:active {
+                pointer-events: none;
+            }
         }
         
         @include media-breakpoint-up(lg) {
