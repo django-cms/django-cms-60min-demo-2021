@@ -193,7 +193,6 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 
 LANGUAGES = [
     ('en', "English"),
-    ('de', "German"),
     ('nl', "Netherlands"),
 ]
 
@@ -216,6 +215,7 @@ CMS_LANGUAGES = {
     }
 }
 
+PARLER_LANGUAGES = CMS_LANGUAGES
 
 ################################################################################
 ## === django packages === ##
