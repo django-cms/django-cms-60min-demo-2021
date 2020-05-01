@@ -1,6 +1,28 @@
 @import 'variables/main';
 
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+$header-color: #5d5d5d;
+
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
 
 h1 {
-    color: red;
+    margin-top: 29px;
+    margin-bottom: 14.5px;
+    font-size: 30px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #0c869b;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+
+.h1, .h2, .h3, h1, h2, h3, h4, h5, h6 {
+    margin-top: 29px;
+    margin-bottom: 14.5px;
+    color: $header-color;
 }
