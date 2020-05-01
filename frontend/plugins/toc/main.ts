@@ -40,7 +40,7 @@ function fixWidthOnFixedPos(tocSelector: string, posFixedCssCls: string) {
 
 
 function calculateFixedPosOffset(contentSelector: string): number {
-    let fixedPosTopOffset = $(contentSelector).offset().top;
+    let fixedPosTopOffset = ($(contentSelector).offset() as any).top;
     const cmsToolbar = document.querySelector('.cms-toolbar');
     if (cmsToolbar) {
         fixedPosTopOffset -= cmsToolbar.clientHeight;
