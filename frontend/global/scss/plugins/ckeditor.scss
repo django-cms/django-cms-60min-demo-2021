@@ -4,11 +4,4 @@
 body.cke_editable {
     font-size: $font-size-base;
     color: $body-color;
-    
-    a {
-        color: $link-color;
-        &:hover {
-            color: $link-hover-color;
-        }
-    }
 }
