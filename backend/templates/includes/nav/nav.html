@@ -1,10 +1,12 @@
-{% load static menu_tags %}
+{% load static menu_tags solo_tags %}
+
+{% get_solo 'site_config.SiteConfig' as site_config %}
 
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand d-flex" href="/">
             {% include 'includes/nav/icon.svg' %}
-            {{ request.site.name }}
+            {{ site_config.site_name }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"

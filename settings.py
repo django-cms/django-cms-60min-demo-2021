@@ -141,6 +141,7 @@ INSTALLED_APPS.extend([
 
     # project
 
+    'backend.site_config',
     'backend.plugins.default.toc',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_spacer',
@@ -315,6 +316,7 @@ ADMIN_REORDER = [
         'label': 'System Administration',
         'app': 'cms',
         'models': [
+            {'model': 'site_config.SiteConfig', 'label': 'Site Config'},
             {'model': 'sites.Site', 'label': 'Websites'},
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},

@@ -1,7 +1,10 @@
-{% load cms_tags sekizai_tags staticfiles i18n menu_tags page_meta_tags gtm_tags %}
+{% load cms_tags sekizai_tags staticfiles i18n menu_tags page_meta_tags gtm_tags solo_tags %}
 
 
 {% page_meta request.current_page as page_meta %}
+
+
+{% get_solo 'site_config.SiteConfig' as site_config %}
 
 
 <!DOCTYPE html>
@@ -13,9 +16,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <title>
-            {% block page_meta_title %}
-                {% page_attribute 'page_title' %} - {{ request.site.name }}
-            {% endblock %}
+            {% block page_meta_title %}{% page_attribute 'page_title' %}{% endblock %} - {{ site_config.site_name }}
         </title>
     
         {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
