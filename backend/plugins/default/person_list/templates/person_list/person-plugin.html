@@ -1,0 +1,14 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles thumbnail %}
+
+
+<div class="person-plugin">
+    {% if instance.link %}<a href="{{ instance.link }}">{% endif %}
+        <img class="person-photo" src="{% thumbnail instance.photo 200x200 crop=True upscale=True %}" alt="photo">
+    {% if instance.link %}</a>{% endif %}
+    
+    {% if instance.link %}<a href="{{ instance.link }}">{% endif %}
+        <div class="person-name">{{ instance.name }}</div>
+    {% if instance.link %}</a>{% endif %}
+
+    <div class="person-desc">{{ instance.description }}</div>
+</div>

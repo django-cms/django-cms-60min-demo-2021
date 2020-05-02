@@ -1,0 +1,11 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles %}
+
+
+<section class="person-list-plugin">
+    <h2 class="person-list-title">{{ instance.title }}</h2>
+    <div class="person-children">
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
+    </div>
+</section>
