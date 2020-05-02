@@ -11,12 +11,18 @@
     .person-children {
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
         
         .person-plugin {
             text-align: center;
+            max-width: 200px;
+            margin: 0 12px;
+            margin-bottom: 30px;
+            
             .person-photo {
                 border-radius: 50% !important;
             }
+            
             .person-name {
                 font-size: 17px;
                 margin-bottom: 10px;

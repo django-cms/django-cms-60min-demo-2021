@@ -14,7 +14,7 @@ class PersonListPluginModel(CMSPlugin):
 
 class PersonPluginModel(CMSPlugin):
     name = models.CharField(max_length=1024)
-    description = models.CharField(max_length=1024)
+    description = models.CharField(max_length=1024, blank=True)
     photo = FilerImageField(on_delete=models.PROTECT)
     link = models.URLField(blank=True, null=True)
 
