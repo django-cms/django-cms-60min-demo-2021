@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tocSelector: tocSelector,
         headingSelector: 'h1, h2, h3, h4, h5',
         contentSelector: contentSelector,
-        collapseDepth: 4,
+        collapseDepth: 6,
         positionFixedSelector: tocSelector,
         fixedSidebarOffset: calculateFixedPosOffset(contentSelector),
         orderedList: false,
