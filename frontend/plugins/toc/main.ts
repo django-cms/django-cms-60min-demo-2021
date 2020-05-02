@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const posFixedCssCls = getFixedPosCssCls();
     tocbot.init({
         tocSelector: tocSelector,
-        headingSelector: 'h2, h3, h4, h5',
+        headingSelector: 'h1, h2, h3, h4, h5',
         contentSelector: contentSelector,
         collapseDepth: 4,
         positionFixedSelector: tocSelector,
