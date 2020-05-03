@@ -408,7 +408,10 @@ CKEDITOR_SETTINGS = {
     'config': {
         'allowedContent': True,
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
-    }
+    },
+    'pasteFromWordPromptCleanup': True,
+    'pasteFromWordRemoveFontStyles': True,
+    'forcePasteAsPlainText': True,
 }
 
 # for djangocms-helpers send_email
