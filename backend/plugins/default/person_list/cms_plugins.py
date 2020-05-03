@@ -23,5 +23,4 @@ class PersonPlugin(CMSPluginBase):
     name = _("Person")
     model = PersonPluginModel
     render_template = 'person_list/person-plugin.html'
-    require_parent = True
     parent_classes = ['PersonContainerPlugin']
