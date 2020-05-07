@@ -70,9 +70,6 @@ installed_apps_first = [
 
     # must be before `cms`
     'djangocms_modules',
-
-    # tempaltes override
-    'backend.blog',
 ]
 INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
 
@@ -98,10 +95,6 @@ INSTALLED_APPS.extend([
     # django cms
 
     'aldryn_apphooks_config',
-    'djangocms_blog',
-        'taggit',
-        'taggit_autosuggest',
-        'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_link',
@@ -317,9 +310,6 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'app': 'djangocms_blog'
-    },
-    {
         'label': 'System Administration',
         'app': 'cms',
         'models': [
@@ -368,14 +358,6 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 ################################################################################
 ## === django-cms optional === ##
 ################################################################################
-
-
-BLOG_PERMALINK_URLS = {
-    'full_date': r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>\w[-\w]*)/$',
-    'short_date': r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>\w[-\w]*)/$',
-    'category': r'^(?P<category>\w[-\w]*)/(?P<slug>\w[-\w]*)/$',
-    'slug': r'^(?P<slug>\w[-\w]*)/$',
-}
 
 
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
