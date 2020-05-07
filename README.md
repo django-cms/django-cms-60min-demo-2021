@@ -1,6 +1,6 @@
 This project is WIP for documentation hosting, by request of [1fortheworld.org](https://www.1fortheworld.org/).
 
-The final idea is to implement structure similar to https://angular.io/docs,
+The final idea is to implement structure similar to [angular.io/docs](https://angular.io/docs),
 only simpler and with using django-cms interface instead of markdown.
 
 - live server - https://chapter-leader-resource.us.aldryn.io/en/
