@@ -28,6 +28,7 @@ INSTALLED_ADDONS = [
     'aldryn-django',
     'aldryn-sso',
     'aldryn-django-cms',
+    'aldryn-haystack',
     'django-filer',
     # </INSTALLED_ADDONS>
 ]
