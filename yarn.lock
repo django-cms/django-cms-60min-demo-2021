@@ -3892,6 +3892,11 @@ methods@~1.1.2:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
+metismenujs@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/metismenujs/-/metismenujs-1.2.0.tgz#49241e8efabc0e94af1d7f608dd2f6498bae9255"
+  integrity sha512-dcP82O4FcT+d5f18Cq4kLmY0YmYOWTt+oDywXsA2MLxDtU9oDLBXZxBNHSfXy47g9Ygb4Lf3nrMn5c7LKe8Cbg==
+
 micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.10.tgz#70859bc95c9840952f359a068a3fc49f9ecfac23"

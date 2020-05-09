@@ -347,7 +347,7 @@ RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 CMS_TEMPLATES = [
     ('full-width.html', 'full width'),
-    ('one-column.html', 'content width'),
+    ('one-column.html', 'one column'),
     ('two-columns-main-left.html', 'content width - two columns'),
 ]
 

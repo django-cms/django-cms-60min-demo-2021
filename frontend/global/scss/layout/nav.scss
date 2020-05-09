@@ -59,3 +59,25 @@
         }
     }
 }
+
+#menu {
+    padding-left: 36px;
+    padding-top: 36px;
+
+    [aria-expanded="true"] {
+        color: blue;
+    }
+    [aria-expanded="false"] {
+        color: red;
+    }
+}
+
+.container-custom {
+    display: flex;
+    padding: 0;
+
+    .content-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
