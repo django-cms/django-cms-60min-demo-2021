@@ -10,6 +10,7 @@ services:
       dockerfile: Dockerfile
     links:
       - 'db:postgres'
+      - 'es:es'
     ports:
       - '8000:80'
     volumes:
@@ -40,6 +41,11 @@ services:
       POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - '.:/app:rw'
+
+  es:
+    image: elasticsearch:2.3
+    ports:
+      - '9200:9200'
 
 volumes:
   node_modules:

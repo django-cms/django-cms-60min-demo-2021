@@ -132,6 +132,9 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'aldryn_search',
+        'standard_form',
+        'spurl',
 
     # project
 
@@ -171,6 +174,9 @@ default_template_engine['DIRS'].extend([
 ])
 default_template_engine['OPTIONS']['context_processors'].extend([
     'django_settings_export.settings_export',
+])
+default_template_engine['OPTIONS']['loaders'].extend([
+    'django.template.loaders.app_directories.Loader',
 ])
 
 if DIVIO_ENV == DivioEnv.LOCAL:

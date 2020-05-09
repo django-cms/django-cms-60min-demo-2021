@@ -52,6 +52,9 @@ django-countries
 django-widget-tweaks
 django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
+aldryn-search
+    django-spurl <= 0.6.5 # divio doesn't work with 0.6.6
+    django-standard-form <= 1.1.1 # divio adds 1.1.3 somehow, which doesn't exist on pypi.org
 
 # python utils
 
