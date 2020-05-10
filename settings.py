@@ -28,7 +28,6 @@ INSTALLED_ADDONS = [
     'aldryn-django',
     'aldryn-sso',
     'aldryn-django-cms',
-    'aldryn-haystack',
     'django-filer',
     # </INSTALLED_ADDONS>
 ]
@@ -132,9 +131,8 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
-    'aldryn_search',
-        'standard_form',
-        'spurl',
+    'djangocms_algolia',
+    'algoliasearch_django',
 
     # project
 
@@ -265,6 +263,7 @@ SETTINGS_EXPORT = [
     'SENTRY_DSN',
     'GTM_CONTAINER_ID',
     'DEBUG',
+    'ALGOLIA',
 ]
 
 IS_SENTRY_ENABLED = env.get_bool('IS_SENTRY_ENABLED', False)
@@ -406,3 +405,16 @@ CKEDITOR_SETTINGS = {
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL
 META_USE_SITES = True
+
+
+HAYSTACK_ENABLE = False
+HAYSTACK_DISABLE = True
+ALGOLIA = {
+    'APPLICATION_ID': '3OHOG1P143',
+    'API_KEY': env.get('API_KEY'),
+}
+# not used but haystack demands it on its search index collection import
+HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}
+ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
+    'SectionWithImageBackgroundPlugin',
+]

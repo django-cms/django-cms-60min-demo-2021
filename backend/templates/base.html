@@ -29,6 +29,8 @@
             window.DJANGO = {
                 env: `{{ settings.DIVIO_ENV.value }}`,
                 isDebugMode: {{ settings.DEBUG|lower }},
+                algoliaApplicationId: `{{ settings.ALGOLIA.APPLICATION_ID }}`,
+                algoliaApiKey: `{{ settings.ALGOLIA.API_KEY }}`,
             };
         </script>
 

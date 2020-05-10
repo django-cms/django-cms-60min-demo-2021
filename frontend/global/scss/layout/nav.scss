@@ -62,6 +62,20 @@
 
 .search-form {
     margin-left: 20px;
+    
+    .search-results {
+        position: absolute;
+        background: white;
+        padding: 20px;
+        width: 500px;
+        box-shadow: #00000033 0 6px 6px 5px;
+        right: 0;
+
+        #search-results-count-block {
+            color: gray;
+        }
+    }
+
 }
 
 #menu {
@@ -79,9 +93,11 @@
 .container-custom {
     display: flex;
     padding: 0;
+    justify-content: center;
 
     .content-wrapper {
         display: flex;
+        flex-direction: column;
         justify-content: flex-end;
     }
 }

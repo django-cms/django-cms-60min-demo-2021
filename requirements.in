@@ -3,7 +3,6 @@ https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4e
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.12.1/c2d1c3a0-4978-4f91-84a3-749a7253f35d/aldryn-django-2.2.12.1.tar.gz#egg=aldryn-django==2.2.12.1
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/1.7.0/3ef75ae5-729a-4c44-ac3e-fa5950511e90/aldryn-sso-1.7.0.tar.gz#egg=aldryn-sso==1.7.0
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.2.1/52771de3-1ec7-43dc-922b-e1aec12e62cd/aldryn-django-cms-3.7.2.1.tar.gz#egg=aldryn-django-cms==3.7.2.1
-https://control.divio.com/api/v1/apps/serve/aldryn-haystack/0.5.1/bf04cc01-9855-4659-843e-05379cec9ac6/aldryn-haystack-0.5.1.tar.gz#egg=aldryn-haystack==0.5.1
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.0/633d9275-51a0-42bc-8355-143db1b20ca4/django-filer-1.7.0.tar.gz#egg=django-filer==1.7.0
 # </INSTALLED_ADDONS>
 
@@ -52,9 +51,6 @@ django-countries
 django-widget-tweaks
 django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
-aldryn-search
-    django-spurl <= 0.6.5 # divio doesn't work with 0.6.6
-    django-standard-form <= 1.1.1 # divio adds 1.1.3 somehow, which doesn't exist on pypi.org
 
 # python utils
 
