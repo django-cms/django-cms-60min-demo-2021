@@ -19,6 +19,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 {% show_menu 0 1 100 100 'includes/nav/menu.html' %}
+                <form class="search-form" action="{% url 'aldryn-search' %}">
+                    <input class="form-control" name="q" type="search" placeholder="Search">
+                </form>
             </ul>
         </div>
     </div>
