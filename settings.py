@@ -122,6 +122,7 @@ INSTALLED_APPS.extend([
         'aldryn_forms.contrib.email_notifications',
         'emailit',
     'djangocms_redirect',
+    'djangocms_socialshare',
     'light_gallery',
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',

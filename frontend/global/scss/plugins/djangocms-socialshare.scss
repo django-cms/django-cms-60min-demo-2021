@@ -1,0 +1,47 @@
+@import 'frontend/global/scss/variables/main';
+
+
+@mixin icon($background-color) {
+    background-color: $background-color;
+    
+    &:hover {
+        background-color: darken($background-color, 15%);
+        cursor: pointer;
+    }
+}
+
+.djangocms-socialshare-plugin {
+    display: flex;
+    
+    .icon {
+        display: block;
+        margin-right: 8px;
+        color: inherit;
+    
+        .fab, .fas {
+            padding: 7px;
+            font-size: 16px;
+            min-width: 33px;
+            color: white;
+            text-align: center;
+        }
+    
+        .fa-facebook-f {
+            @include icon(#4267B2);
+        }
+        .fa-linkedin-in {
+            @include icon(#0277b5);
+        }
+        .fa-envelope {
+            @include icon(#0277b5);
+        }
+    }
+
+}
+
+.fa-facebook-square {
+    background-color: #4267B2;
+    width: 25px;
+    height: 25px;
+    
+}
