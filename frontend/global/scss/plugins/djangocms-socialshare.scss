@@ -2,10 +2,10 @@
 
 
 @mixin icon($background-color) {
-    background-color: $background-color !important;
+    background-color: $background-color;
     
     &:hover {
-        background-color: darken($background-color, 15%) !important;
+        background-color: darken($background-color, 15%);
         cursor: pointer;
     }
 }
@@ -19,9 +19,13 @@
         color: inherit;
     
         .fab, .fas {
-            padding: 7px;
-            font-size: 16px;
-            min-width: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            $size: 35px;
+            width: $size;
+            height: $size;
+            font-size: 17px;
             color: white;
             text-align: center;
         }
@@ -35,12 +39,12 @@
         .fa-envelope {
             @include icon(#d44539);
         }
+        .fa-github {
+            @include icon(black);
+            font-size: 21px;
+            &:hover {
+                background-color: lighten(black, 25%);
+            }
+        }
     }
-
-}
-
-.fa-facebook-square {
-    background-color: #4267B2;
-    width: 25px;
-    height: 25px;
 }
