@@ -25,10 +25,10 @@
         display: flex;
         margin-bottom: 1rem;
         
-        .response-error {
+        &.response-error {
             color: $danger;
         }
-        .response-success {
+        &.response-success {
             color: $success;
         }
     }
