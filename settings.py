@@ -187,7 +187,7 @@ else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 
-DEFAULT_FROM_EMAIL = 'Project Name <info@example.com>'
+DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', 'Project Name <info@example.com>')
 
 
 if DIVIO_ENV == DivioEnv.LOCAL:
