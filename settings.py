@@ -143,6 +143,7 @@ INSTALLED_APPS.extend([
     # project
 
     'backend.site_config',
+    'backend.plugins.default.mailchimp',
     'backend.plugins.default.toc',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_spacer',

@@ -2,10 +2,10 @@
 
 
 @mixin icon($background-color) {
-    background-color: $background-color;
+    background-color: $background-color !important;
     
     &:hover {
-        background-color: darken($background-color, 15%);
+        background-color: darken($background-color, 15%) !important;
         cursor: pointer;
     }
 }
@@ -33,7 +33,7 @@
             @include icon(#0277b5);
         }
         .fa-envelope {
-            @include icon(#0277b5);
+            @include icon(#d44539);
         }
     }
 
@@ -43,5 +43,4 @@
     background-color: #4267B2;
     width: 25px;
     height: 25px;
-    
 }
