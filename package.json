@@ -37,7 +37,13 @@
         "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
         "@sentry/browser": "^5.15.4",
         "@fortawesome/fontawesome-free": "^5.12.1", "//": "for djangocms-icon",
-        "tocbot": "^4.11.1"
+        
+        "//": "project",
+        
+        "tocbot": "^4.11.1",
+        "metismenujs": "^1.2.0",
+        "algoliasearch": "^4.2.0",
+            "instantsearch.js": "^4.4.1"
     },
     "devDependencies": {
         "webpack-dev-server": "^3.8.2"

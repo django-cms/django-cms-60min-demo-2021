@@ -3,7 +3,7 @@
 {% get_solo 'site_config.SiteConfig' as site_config %}
 
 <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand d-flex" href="/">
             {% include 'includes/nav/icon.svg' %}
             {{ site_config.site_name }}
@@ -19,6 +19,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 {% show_menu 0 1 100 100 'includes/nav/menu.html' %}
+                <form id="search-form" class="search-form" action="" autocomplete="off">
+                    <input id="search-input" class="form-control" name="q" type="search" placeholder="Search">
+                    <div class="search-results">
+                        <div id="search-suggestions">
+                            
+                        </div>
+                        <div id="search-results-count-block">
+                            
+                        </div>
+                    </div>
+                </form>
             </ul>
         </div>
     </div>

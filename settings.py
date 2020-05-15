@@ -70,9 +70,6 @@ installed_apps_first = [
 
     # must be before `cms`
     'djangocms_modules',
-
-    # tempaltes override
-    'backend.blog',
 ]
 INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
 
@@ -98,10 +95,6 @@ INSTALLED_APPS.extend([
     # django cms
 
     'aldryn_apphooks_config',
-    'djangocms_blog',
-        'taggit',
-        'taggit_autosuggest',
-        'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_link',
@@ -139,6 +132,8 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'djangocms_algolia',
+    'algoliasearch_django',
 
     # project
 
@@ -179,6 +174,9 @@ default_template_engine['DIRS'].extend([
 ])
 default_template_engine['OPTIONS']['context_processors'].extend([
     'django_settings_export.settings_export',
+])
+default_template_engine['OPTIONS']['loaders'].extend([
+    'django.template.loaders.app_directories.Loader',
 ])
 
 if DIVIO_ENV == DivioEnv.LOCAL:
@@ -267,6 +265,7 @@ SETTINGS_EXPORT = [
     'SENTRY_DSN',
     'GTM_CONTAINER_ID',
     'DEBUG',
+    'ALGOLIA',
 ]
 
 IS_SENTRY_ENABLED = env.get_bool('IS_SENTRY_ENABLED', False)
@@ -319,9 +318,6 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'app': 'djangocms_blog'
-    },
-    {
         'label': 'System Administration',
         'app': 'cms',
         'models': [
@@ -359,7 +355,7 @@ RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 CMS_TEMPLATES = [
     ('full-width.html', 'full width'),
-    ('one-column.html', 'content width'),
+    ('one-column.html', 'one column'),
     ('two-columns-main-left.html', 'content width - two columns'),
 ]
 
@@ -370,14 +366,6 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 ################################################################################
 ## === django-cms optional === ##
 ################################################################################
-
-
-BLOG_PERMALINK_URLS = {
-    'full_date': r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/(?P<slug>\w[-\w]*)/$',
-    'short_date': r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<slug>\w[-\w]*)/$',
-    'category': r'^(?P<category>\w[-\w]*)/(?P<slug>\w[-\w]*)/$',
-    'slug': r'^(?P<slug>\w[-\w]*)/$',
-}
 
 
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
@@ -419,3 +407,16 @@ CKEDITOR_SETTINGS = {
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL
 META_USE_SITES = True
+
+
+HAYSTACK_ENABLE = False
+HAYSTACK_DISABLE = True
+ALGOLIA = {
+    'APPLICATION_ID': '3OHOG1P143',
+    'API_KEY': env.get('API_KEY'),
+}
+# not used but haystack demands it on its search index collection import
+HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}
+ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
+    'SectionWithImageBackgroundPlugin',
+]

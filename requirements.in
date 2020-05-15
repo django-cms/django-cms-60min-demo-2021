@@ -30,6 +30,8 @@ djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
 djangocms-page-meta
 djangocms-blog
 djangocms-socialshare
+djangocms-algolia >= 0.1.0.1
+    django-spurl == 0.6.5 # 0.6.6 doesn't work with divio pip-reqs
 
 # django
 
