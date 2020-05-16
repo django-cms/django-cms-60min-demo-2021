@@ -48,6 +48,11 @@ function render_results_count(count = 0) {
 }
 
 export function LoadAlgoliaSearch() {
+    const isSearchFormNotPresent = document.getElementById('search-form') === null;
+    if (isSearchFormNotPresent) {
+        return
+    }
+    
     const client = algoliasearch(window.DJANGO.algoliaApplicationId, window.DJANGO.algoliaApiKey);
     const index = client.initIndex('pages');
 

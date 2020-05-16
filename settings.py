@@ -154,6 +154,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.horizontal_line',
     'backend.plugins.default.section_with_image_background',
     'backend.plugins.default.person_list',
+    'backend.plugins.default.nav_bar',
 ])
 
 MIDDLEWARE.extend([
@@ -363,6 +364,7 @@ RECAPTCHA_SCORE_THRESHOLD = 0.85
 CMS_TEMPLATES = [
     ('full-width.html', 'full width'),
     ('one-column.html', 'one column'),
+    ('one-column-with-menu-and-sidebar.html', 'one column with menu and sidebar'),
     ('two-columns-main-left.html', 'content width - two columns'),
 ]
 
@@ -374,9 +376,17 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 ## === django-cms optional === ##
 ################################################################################
 
+CMS_PLACEHOLDER_CONF = {
+    'header': {
+        'default_plugins': [
+            {
+                'plugin_type': 'NavBarPlugin',
+            }
+        ]
+    }
+}
 
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
-
 
 DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 

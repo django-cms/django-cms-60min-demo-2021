@@ -1,0 +1,39 @@
+{% load static menu_tags solo_tags %}
+
+{% get_solo 'site_config.SiteConfig' as site_config %}
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container{% if instance.is_full_width %}-fluid{% endif %}">
+        <a class="navbar-brand d-flex" href="/">
+            {% include 'nav_bar/icon.svg' %}
+            {{ site_config.site_name }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {% show_menu 0 1 100 100 'nav_bar/menu/menu.html' %}
+
+                {% if instance.is_enable_search_bar %}
+                    <form id="search-form" class="search-form" action="" autocomplete="off">
+                        <input id="search-input" class="form-control" name="q" type="search" placeholder="Search">
+                        <div class="search-results">
+                            <div id="search-suggestions">
+                                
+                            </div>
+                            <div id="search-results-count-block">
+                                
+                            </div>
+                        </div>
+                    </form>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

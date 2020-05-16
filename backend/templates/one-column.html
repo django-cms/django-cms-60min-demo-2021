@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 
-{% load cms_tags sekizai_tags staticfiles menu_tags %}
+{% load cms_tags sekizai_tags staticfiles %}
 
 {% block messages %}{# remove from here to move them below #}{% endblock messages %}
 
@@ -13,20 +13,10 @@
     
     {% include 'includes/messages.html' with messages=messages %}
 
-    <main class="container-custom container-fluid">
-        <nav class="col-4">
-            <ul id="menu">
-                {% show_menu 0 10 100 100 %}
-            </ul>
-        </nav>
-    
-        <article class="content-wrapper col-lg-10 col-md-24">
+    <main>
+        <div class="container">
             {% placeholder 'content' %}
-        </article>
-    
-        <aside class="col-7 aside-right">
-            {% placeholder 'right column' %}
-        </aside>
+        </div>
     </main>
 
 {% endblock %}
