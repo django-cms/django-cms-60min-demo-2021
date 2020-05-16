@@ -19,7 +19,7 @@ https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#e
 djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-https://github.com/divio/aldryn-forms/archive/5.0.4.zip#egg=aldryn-forms
+https://github.com/divio/aldryn-forms/archive/upgrade-openpyxl-package.zip#egg=aldryn-forms
     djangocms-aldryn-forms-bootstrap4-templates >= 1.0.0.1
     aldryn-forms-recaptcha-plugin >= 1.0.0.2
 djangocms-light-gallery
@@ -31,6 +31,7 @@ djangocms-page-meta
 djangocms-blog
 djangocms-socialshare
 djangocms-algolia >= 0.1.0.1
+    django-standard-form == 1.1.1 # 1.1.4 doesn't work without divio pip-reqs
     django-spurl == 0.6.5 # 0.6.6 doesn't work with divio pip-reqs
 
 # django

@@ -70,6 +70,9 @@ installed_apps_first = [
 
     # must be before `cms`
     'djangocms_modules',
+
+    # tempaltes override
+    'backend.blog',
 ]
 INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
 
@@ -95,6 +98,10 @@ INSTALLED_APPS.extend([
     # django cms
 
     'aldryn_apphooks_config',
+    'djangocms_blog',
+        'taggit',
+        'taggit_autosuggest',
+        'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_link',
