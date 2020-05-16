@@ -3,22 +3,17 @@
 
 .mailchimp-plugin {
     display: flex;
-    font-size: 14px;
 
     .form-group {
         display: flex;
         width: 350px;
         
         .form-control {
-            font-size: 14px;
             border: none;
 
             &:-webkit-autofill {
                 -webkit-box-shadow: 0 0 0 1000px white inset !important;
             }
-        }
-        .btn {
-            font-size: 14px;
         }
     }
     .response {

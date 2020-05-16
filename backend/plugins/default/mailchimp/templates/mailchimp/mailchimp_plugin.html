@@ -1,7 +1,7 @@
 {% load cms_tags menu_tags sekizai_tags staticfiles %}
 
 
-<div class="mailchimp-plugin" id="mc_embed_signup" style="font-size: 14px;">
+<div class="mailchimp-plugin" id="mc_embed_signup" {{ instance.get_html_style_attr }}>
     <form action="https://localhost.{{ instance.server_location_code }}.list-manage.com/subscribe/post?u={{ instance.organization_id }}&amp;id={{ instance.list_id }}"
           method="post" id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form" class="validate" target="_blank"
@@ -12,6 +12,7 @@
                    class="form-control"
                    id="mce-EMAIL"
                    placeholder="Email"
+                   {{ instance.get_html_style_attr }}
             >
             <div style="position: absolute; left: -5000px;" aria-hidden="true">
                 <input type="text"
@@ -21,9 +22,10 @@
             <input type="submit" value="Subscribe"
                    name="subscribe"
                    id="mc-embedded-subscribe" class="mailchimp-btn btn btn-primary"
+                   {{ instance.get_html_style_attr }}
             >
         </div>
-        <div class="mailchimp-response" id="mce-responses">
+        <div class="mailchimp-response" id="mce-responses" {{ instance.get_html_style_attr }}>
             <div class="response response-error" id="mce-error-response"
                  style="display:none"
             ></div>
