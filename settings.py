@@ -309,7 +309,7 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'label': 'CMS',
+        'label': 'CMS Core',
         'app': 'cms',
         'models': [
             'cms.Page',
@@ -324,6 +324,10 @@ ADMIN_REORDER = [
             {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
             {'model': 'person_list.Person', 'label': 'Person items'},
         ],
+    },
+    {
+        'label': 'Blog',
+        'app': 'djangocms_blog',
     },
     {
         'label': 'System Administration',
