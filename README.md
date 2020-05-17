@@ -1,10 +1,6 @@
-This project is WIP for documentation hosting, by request of [1fortheworld.org](https://www.1fortheworld.org/).
-
-The final idea is to implement structure similar to [angular.io/docs](https://angular.io/docs),
-only simpler and with using django-cms interface instead of markdown.
-
-- live server - https://chapter-leader-resource.us.aldryn.io/en/
-- stage server - https://chapter-leader-resource-stage.us.aldryn.io/
+Currently this project has two WIP instances:
+- Effective Altruism Netherlands - https://effective-altruismnl.us.aldryn.io/en/
+- 1fortheworld.org chapter leader resource - https://chapter-leader-resource.us.aldryn.io/en/
 
 
 Development Setup
