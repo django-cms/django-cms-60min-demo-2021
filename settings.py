@@ -381,12 +381,35 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 ################################################################################
 
 CMS_PLACEHOLDER_CONF = {
+    None: {
+        'excluded_plugins': [
+            'FormPlugin',
+            'Fieldset',
+            'BooleanField',
+            'EmailField',
+            'FileField',
+            'HiddenField',
+            'PhoneField',
+            'NumberField',
+            'ImageField',
+            'MultipleSelectField',
+            'MultipleCheckboxSelectField',
+            'RadioSelectField',
+            'SelectField',
+            'TextAreaField',
+            'TextField',
+            'SubmitButton',
+            'CaptchaField',
+
+            'ReCaptchaFieldPlugin',
+        ]
+    },
     'header': {
         'default_plugins': [
             {
                 'plugin_type': 'NavBarPlugin',
             }
-        ]
+        ],
     }
 }
 
