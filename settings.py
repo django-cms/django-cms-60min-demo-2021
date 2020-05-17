@@ -408,6 +408,7 @@ CMS_PLACEHOLDER_CONF = {
         'default_plugins': [
             {
                 'plugin_type': 'NavBarPlugin',
+                'values': {},
             }
         ],
     }
