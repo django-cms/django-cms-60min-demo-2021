@@ -10,5 +10,5 @@ from backend.plugins.default.module_name import MODULE_NAME
 class MailchimpPlugin(CMSPluginBase):
     module = MODULE_NAME
     model = MailchimpPluginModel
-    name = _("Mailchimp Subscription Form")
+    name = _("Newsletter Subscription (Mailchimp)")
     render_template = 'mailchimp/mailchimp_plugin.html'

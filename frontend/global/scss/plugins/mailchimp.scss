@@ -3,13 +3,18 @@
 
 .mailchimp-plugin {
     display: flex;
+    
+    &[data-is-enable-border=false] {
+        .form-group .form-control {
+            border: none;
+        }
+    }
 
     .form-group {
         display: flex;
         width: 350px;
         
         .form-control {
-            border: none;
 
             &:-webkit-autofill {
                 -webkit-box-shadow: 0 0 0 1000px white inset !important;

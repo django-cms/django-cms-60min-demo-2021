@@ -1,7 +1,11 @@
 {% load cms_tags menu_tags sekizai_tags staticfiles %}
 
 
-<div class="mailchimp-plugin" id="mc_embed_signup" {{ instance.get_html_style_attr }}>
+<div class="mailchimp-plugin"
+     id="mc_embed_signup"
+     data-is-enable-border="{{ instance.is_enable_border|lower }}"
+     {{ instance.get_html_style_attr }}
+>
     <form action="https://localhost.{{ instance.server_location_code }}.list-manage.com/subscribe/post?u={{ instance.organization_id }}&amp;id={{ instance.list_id }}"
           method="post" id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form" class="validate" target="_blank"
