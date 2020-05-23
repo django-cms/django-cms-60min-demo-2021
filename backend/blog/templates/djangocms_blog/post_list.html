@@ -41,7 +41,7 @@
             {% endif %}
         {% endblock %}
 
-        <div class="row no-gutters blog-list-items">
+        <div class="row blog-list-items">
             {% for post in post_list %}
                 {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
             {% empty %}

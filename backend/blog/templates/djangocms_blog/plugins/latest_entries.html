@@ -2,7 +2,7 @@
 
 
 <div class="plugin plugin-blog blog-list container">
-    <div class="blog-latest-entries row no-gutters blog-list-items">
+    <div class="blog-latest-entries row blog-list-items">
         {% for post in posts_list %}
             {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
         {% empty %}
