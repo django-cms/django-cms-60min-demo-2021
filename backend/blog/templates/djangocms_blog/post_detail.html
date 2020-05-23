@@ -9,6 +9,8 @@
 
 {% block content_blog %}
 
+{% static_placeholder 'blog header' %}
+
 <section
     class="section-with-image-background-plugin"
     style="background: url('{% thumbnail post.main_image 2560x350 crop=True subject_location=post.main_image.subject_location %}'); height: 350px;"
