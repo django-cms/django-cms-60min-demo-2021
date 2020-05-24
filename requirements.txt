@@ -100,7 +100,6 @@ djangocms-apphook-setup==0.4.1  # via djangocms-blog
 djangocms-attributes-field==1.2.0  # via djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
 https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
 djangocms-blog==1.1.1
-djangocms-bootstrap4==1.6.0
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
 djangocms-helpers==2.1.1.2
