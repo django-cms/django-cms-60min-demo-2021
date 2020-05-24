@@ -448,7 +448,7 @@ CKEDITOR_SETTINGS = {
     },
     'pasteFromWordPromptCleanup': True,
     'pasteFromWordRemoveFontStyles': True,
-    'forcePasteAsPlainText': True,
+    'forcePasteAsPlainText': False,
 }
 
 # for djangocms-helpers send_email
