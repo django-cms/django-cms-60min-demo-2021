@@ -157,6 +157,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.section_with_image_background',
     'backend.plugins.default.person_list',
     'backend.plugins.default.nav_bar',
+    'backend.tests',
 ])
 
 MIDDLEWARE.extend([

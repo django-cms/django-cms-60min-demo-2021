@@ -15,7 +15,7 @@ class PagesTestCase(TestCase):
     def setUpClass(cls):
         super().setUpClass()
 
-        user = User.objects.create_superuser(email='test@what.digital', password='test')
+        user = User.objects.create_superuser(email='test+test@what.digital', password='test')
         cls.client = Client()
         cls.client.force_login(user)
 
@@ -51,4 +51,4 @@ class PagesTestCase(TestCase):
 
     def _check_url_for_errors(self, url):
         response = self.client.get(url)
-        self.assertTrue(response.status_code < 500)
+        self.assertTrue(response.status_code < 500, url)
