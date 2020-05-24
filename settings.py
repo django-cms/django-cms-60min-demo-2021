@@ -53,6 +53,9 @@ SITE_ID: int = locals()['SITE_ID']
 
 DATE_FORMAT = 'F j, Y'
 
+USE_TZ = True
+TIME_ZONE = 'Europe/Zurich'
+
 
 class DivioEnv(Enum):
     LOCAL = 'local'
