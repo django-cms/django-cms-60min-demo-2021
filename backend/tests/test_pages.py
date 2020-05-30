@@ -1,3 +1,5 @@
+from typing import List
+
 from cms.models import Page
 from django.core.management import call_command
 from django.test import Client
@@ -27,7 +29,8 @@ class PagesTestCase(TestCase):
 
         call_command('migrate')
 
-    def test_admin_and_public_pages(self):
+    def test_admin_pages(self):
+        error_list: List[str] = []
         for model_config_dict in admin.site.get_app_list(self.request):
             app_label: str = model_config_dict['app_label']
             for model_dict in model_config_dict['models']:
@@ -38,17 +41,30 @@ class PagesTestCase(TestCase):
                         f'admin:{app_label}_{model_name.lower()}_change',
                         args=[model_first_instance.pk],
                     )
-                    self._check_url_for_errors(change_url)
+                    self._check_and_collect_errors(change_url, error_list)
                     
                 list_url = reverse(f'admin:{app_label}_{model_name.lower()}_changelist')
-                self._check_url_for_errors(list_url)
+                self._check_and_collect_errors(list_url, error_list)
 
                 add_url = reverse(f'admin:{app_label}_{model_name.lower()}_add')
-                self._check_url_for_errors(add_url)
+                self._check_and_collect_errors(add_url, error_list)
+        for error in error_list:
+            print(error)
+        if error_list:
+            self.fail(f"{len(error_list)} urls failed.")
 
+    def test_published_pages(self):
+        error_list: List[str] = []
         for page_published in Page.objects.filter(publisher_is_draft=False):
-            self._check_url_for_errors(page_published.get_absolute_url())
+            url = page_published.get_absolute_url()
+            self._check_and_collect_errors(url, error_list)
+        for error in error_list:
+            print(error)
+        if error_list:
+            self.fail(f"{len(error_list)} urls failed.")
 
-    def _check_url_for_errors(self, url):
+    def _check_and_collect_errors(self, url: str, error_list: List[str]):
         response = self.client.get(url)
-        self.assertTrue(response.status_code < 500, url)
+        is_error = response.status_code >= 500
+        if is_error:
+            error_list.append(f'{response.status_code} - {url}')
