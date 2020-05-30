@@ -1,5 +1,5 @@
 {% extends "djangocms_blog/base.html" %}
-{% load i18n easy_thumbnails_tags cms_tags %}
+{% load i18n easy_thumbnails_tags cms_tags menu_tags staticfiles page_meta_tags meta_extra socialshare %}
 
 {% block canonical_url %}
     <link rel="canonical" href="{{ meta.url }}"/>
@@ -40,7 +40,21 @@
             {% if view.liveblog_enabled %}
                 {% include "liveblog/includes/post_detail.html" %}
             {% endif %}
-        
+    
+            {% page_meta request.current_page as meta %}
+            
+            <div class="djangocms-socialshare-plugin">
+                <a class="icon" href="https://www.facebook.com/sharer/sharer.php?u={{ meta.url }}" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="icon" href="https://www.linkedin.com/sharing/share-offsite/?url={{ meta.url }}" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="icon" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ meta.url }}." target="_blank">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
             {% if post.related.exists %}
                 <section class="post-detail-list">
                     {% for related in post.related.all %}
