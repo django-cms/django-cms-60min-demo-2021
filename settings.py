@@ -414,7 +414,7 @@ CMS_PLACEHOLDER_CONF = {
                 'values': {},
             }
         ],
-    }
+    },
 }
 
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
