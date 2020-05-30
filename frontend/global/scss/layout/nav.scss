@@ -4,11 +4,11 @@
 .navbar {
     border-bottom: 1px solid #ececec;
     
-    @include media-breakpoint-up(lg) {
-        padding: 1.4rem 1rem;
-    }
-    
+
     .container {
+        @include media-breakpoint-up(lg) {
+            padding: 1.4rem 1rem;
+        }
         @include media-breakpoint-down(lg) {
             padding: 0.5rem 1rem;
         }
@@ -24,6 +24,7 @@
         transition: color 0.2s;
 
         svg {
+            height: 45px;
             margin-right: 20px;
             fill: $color-primary;
             transition: color 0.2s;
@@ -71,6 +72,33 @@
             }
         }
     }
+
+    &.fixed-top {
+        background: white;
+        $padding: 0.3rem;
+        padding: $padding;
+        
+        .container-fluid {
+            padding: 0;
+    
+            .navbar-brand {
+                font-size: 1rem;
+                padding: 0;
+        
+                svg {
+                    height: 25px;
+                    margin-right: 0.5rem;
+                    fill: $color-primary;
+                    transition: color 0.2s;
+                }
+                &:hover {
+                    svg {
+                        fill: #0c7cc4;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .search-form {
@@ -91,15 +119,24 @@
 
 }
 
-#menu {
-    padding-left: 36px;
-    padding-top: 36px;
+.menu-column {
+    padding-left: 0;
 
-    [aria-expanded="true"] {
-        color: blue;
-    }
-    [aria-expanded="false"] {
-        color: red;
+    .menu-container {
+        background: #f8f9fa;
+        
+        #menu {
+            
+            padding-left: 36px;
+            padding-top: 36px;
+            
+            [aria-expanded="true"] {
+                color: blue;
+            }
+            [aria-expanded="false"] {
+                color: red;
+            }
+        }
     }
 }
 

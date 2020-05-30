@@ -22,7 +22,7 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% show_menu from_level to_level extra_inactive extra_active 'nav_bar/menu/menu-children.html' '' '' child %}
+                {% show_menu from_level to_level extra_inactive extra_active 'nav_bar/includes/menu/menu-children.html' '' '' child %}
             </div>
         {% else %}
             <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
@@ -31,3 +31,5 @@
         {% endif %}
     </li>
 {% endfor %}
+
+{% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
