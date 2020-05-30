@@ -157,7 +157,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.section_with_image_background',
     'backend.plugins.default.person_list',
     'backend.plugins.default.nav_bar',
-    'backend.plugins.default.heading_element',
     'backend.plugins.default.section_element',
     'backend.tests',
 ])
