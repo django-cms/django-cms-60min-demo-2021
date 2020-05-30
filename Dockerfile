@@ -13,3 +13,4 @@ RUN DJANGO_MODE=build python manage.py collectstatic --noinput
 
 
 RUN echo $STAGE
+RUN exit 1
