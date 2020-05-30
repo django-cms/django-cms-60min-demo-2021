@@ -100,6 +100,9 @@
         }
     }
 }
+.navbar-fixed {
+    margin-top: $navbar-height-fixed;
+}
 
 .search-form {
     margin-left: 20px;
@@ -107,9 +110,7 @@
     .search-results {
         position: absolute;
         background: white;
-        padding: 20px;
         width: 500px;
-        box-shadow: #00000033 0 6px 6px 5px;
         right: 0;
 
         #search-results-count-block {
@@ -120,21 +121,80 @@
 }
 
 .menu-column {
-    padding-left: 0;
+    padding: 0;
 
     .menu-container {
-        background: #f8f9fa;
+        $a-padding: 5px;
+        $gutter: $grid-gutter-width / 2 - $a-padding;
+        padding: 0;
+        height: 100%;
+        background: #fafafa;
+        border-right: 1px solid #dfdfdf;
         
         #menu {
+            padding-top: $layout-docs-padding-top - $gutter;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
             
-            padding-left: 36px;
-            padding-top: 36px;
-            
-            [aria-expanded="true"] {
-                color: blue;
+            ul {
+                padding-left: $grid-gutter-width;
             }
-            [aria-expanded="false"] {
-                color: red;
+            
+            li {
+                $arrow-size: 7px;
+
+                .arrow {
+                    content: '';
+                    border: solid #707070;
+                    border-width: 0 1px 1px 0;
+                    display: inline-block;
+                    transform: rotate(45deg) translateY(-$arrow-size) translateX(0);
+                    
+                    width: $arrow-size;
+                    height: $arrow-size;
+                }
+
+                a {
+                    $text-padding: 7px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: $text-padding $grid-gutter-width;
+                    color: inherit;
+                    font-size: 0.95rem;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                    &[aria-expanded='true'] {
+                        background: #eaeaea8c;
+                        color: $color-primary;
+                        margin-bottom: $text-padding;
+
+                        &::before {
+                            content: '';
+                            display: block;
+                            border-left: 4px solid #0c869b;
+                            height: 36px;
+                            width: 4px;
+                            position: absolute;
+                            left: 0;
+                        }
+                        &::after {
+                            @extend .arrow;
+                            transform: rotate(-135deg) translateY($arrow-size/2) translateX(-$arrow-size/2);
+                        }
+                    }
+                    &[aria-expanded='false'] {
+                        &::after {
+                            @extend .arrow;
+                        }
+                    }
+                }
             }
         }
     }
