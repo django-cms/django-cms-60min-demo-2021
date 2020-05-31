@@ -9,7 +9,7 @@
 
 $grid-columns: 24;
 
-$color-primary: #0c869b;
+$color-primary: rgb(12, 134, 155);
 $danger: #d44539;
 $primary: $color-primary;
 $theme-colors: (
@@ -21,12 +21,16 @@ $component-active-color: white;
 $component-active-bg: $color-primary;
 
 // on click hold
-$color-active: #1cafd0;
+$color-active: lighten($color-primary, 10%);
 $custom-control-indicator-active-bg: $color-active;
 $custom-control-indicator-active-border-color: $color-active;
 
-$input-focus-border-color: #1f859847;
-$input-btn-focus-color: rgba(7, 122, 142, 0.25);
+
+$color-accent-old: #0c7cc4;
+$color-accent: lighten(adjust-hue($color-primary, 18deg), 11%);
+
+$input-focus-border-color: rgba($color-primary, .28);
+$input-btn-focus-color: rgba(desaturate($color-primary, 20%), .25);
 
 $link-color: $color-primary;
 $link-hover-color: $color-active;

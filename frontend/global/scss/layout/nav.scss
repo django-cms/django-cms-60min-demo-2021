@@ -1,6 +1,26 @@
 @import 'frontend/global/scss/variables/main';
 
 
+$size: 200px;
+//.color1 {
+//    width: $size * 5;
+//    height: $size;
+//    background: $color-primary;
+//}
+//.color2 {
+//    width: $size * 5;
+//    height: $size;
+//    background: $color-accent;
+//}
+//.color3 {
+//    width: $size * 5;
+//    height: $size;
+//    background: $color-accent;
+//    background: $color-accent-rel;
+//}
+
+
+
 .navbar {
     border-bottom: 1px solid #ececec;
     
@@ -31,7 +51,7 @@
         }
         &:hover {
             svg {
-                fill: #0c7cc4;
+                fill: $color-accent;
             }
         }
     }
@@ -93,7 +113,7 @@
                 }
                 &:hover {
                     svg {
-                        fill: #0c7cc4;
+                        fill: $color-accent;
                     }
                 }
             }
@@ -125,7 +145,7 @@
 
     .menu-container {
         $a-padding: 5px;
-        $gutter: $grid-gutter-width / 2 - $a-padding;
+        $gutter: ($grid-gutter-width / 2) - $a-padding;
         padding: 0;
         height: 100%;
         background: #fafafa;
@@ -137,10 +157,6 @@
         ul {
             list-style: none;
             padding-left: 0;
-            
-            ul {
-                padding-left: $grid-gutter-width;
-            }
             
             li {
                 $arrow-size: 7px;
@@ -155,7 +171,6 @@
                     width: $arrow-size;
                     height: $arrow-size;
                 }
-
                 a {
                     $text-padding: 7px;
                     display: flex;
@@ -163,6 +178,7 @@
                     justify-content: space-between;
                     align-items: center;
                     padding: $text-padding $grid-gutter-width;
+                    padding-left: $grid-gutter-width;
                     color: inherit;
                     font-size: 0.95rem;
 
@@ -170,27 +186,45 @@
                         text-decoration: none;
                     }
                     &[aria-expanded='true'] {
-                        background: #eaeaea8c;
                         color: $color-primary;
                         margin-bottom: $text-padding;
+                        background: #eaeaea8c;
 
                         &::before {
                             content: '';
                             display: block;
-                            border-left: 4px solid #0c869b;
-                            height: 36px;
-                            width: 4px;
                             position: absolute;
+                            height: $layout-docs-padding-top;
+                            width: 100%;
                             left: 0;
+                            border-left: 4px solid $color-primary;
                         }
                         &::after {
                             @extend .arrow;
                             transform: rotate(-135deg) translateY($arrow-size/2) translateX(-$arrow-size/2);
                         }
+                        .dropdown-item-text {
+                            
+                        }
                     }
                     &[aria-expanded='false'] {
                         &::after {
                             @extend .arrow;
+                        }
+                    }
+                }
+                ul {
+                    a {
+                        padding-left: $grid-gutter-width * 2;
+                    }
+                    ul {
+                        a {
+                            padding-left: $grid-gutter-width * 3;
+                        }
+                        ul {
+                            a {
+                                padding-left: $grid-gutter-width * 4;
+                            }
                         }
                     }
                 }
