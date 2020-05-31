@@ -14,7 +14,7 @@
     {% include 'includes/messages.html' with messages=messages %}
 
     <main class="container-custom container-fluid">
-        <nav class="col-7 menu-column">
+        <nav class="col-6 menu-column">
             <div class="menu-container">
                 <ul id="menu">
                     {% show_menu 0 10 100 100 %}
@@ -22,11 +22,11 @@
             </div>
         </nav>
     
-        <article class="content-wrapper col-lg-10 col-md-24">
+        <article class="content-wrapper col-lg-12 col-md-24">
             {% placeholder 'content' %}
         </article>
     
-        <aside class="col-7 aside-right">
+        <aside class="col-6 aside-right">
             {% placeholder 'right column' %}
         </aside>
     </main>

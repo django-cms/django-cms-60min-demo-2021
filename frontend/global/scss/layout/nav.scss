@@ -75,11 +75,13 @@
 
     &.fixed-top {
         background: white;
-        $padding: 0.3rem;
-        padding: $padding;
+        $padding: $grid-gutter-width / 2;
+        padding: $padding/2 $padding;
         
         .container-fluid {
             padding: 0;
+            $font-size: 0.9rem;
+            font-size: $font-size;
     
             .navbar-brand {
                 font-size: 1rem;
@@ -95,6 +97,12 @@
                     svg {
                         fill: $color-accent;
                     }
+                }
+            }
+            .search-form {
+                width: 250px;
+                input {
+                    font-size: $font-size;
                 }
             }
         }
@@ -124,8 +132,7 @@
     padding: 0;
 
     .menu-container {
-        $a-padding: 5px;
-        $menu-gutter: ($grid-gutter-width / 2) - $a-padding;
+        $menu-gutter: ($grid-gutter-width / 2);
         padding: 0;
         height: 100%;
         background: #fafafa;

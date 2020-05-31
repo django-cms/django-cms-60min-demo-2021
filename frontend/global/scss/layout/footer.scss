@@ -1,9 +1,15 @@
 footer {
     display: flex;
     position: relative;
-    background-color: #eee;
+    background-color: rgb(250, 250, 250);
 
     .footer-content {
         margin: 2rem 0;
+    }
+}
+
+.navbar-fixed {
+    footer {
+        border-top: 1px solid rgb(238, 238, 238);
     }
 }
