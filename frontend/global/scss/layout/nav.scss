@@ -1,26 +1,6 @@
 @import 'frontend/global/scss/variables/main';
 
 
-$size: 200px;
-//.color1 {
-//    width: $size * 5;
-//    height: $size;
-//    background: $color-primary;
-//}
-//.color2 {
-//    width: $size * 5;
-//    height: $size;
-//    background: $color-accent;
-//}
-//.color3 {
-//    width: $size * 5;
-//    height: $size;
-//    background: $color-accent;
-//    background: $color-accent-rel;
-//}
-
-
-
 .navbar {
     border-bottom: 1px solid #ececec;
     
@@ -145,13 +125,13 @@ $size: 200px;
 
     .menu-container {
         $a-padding: 5px;
-        $gutter: ($grid-gutter-width / 2) - $a-padding;
+        $menu-gutter: ($grid-gutter-width / 2) - $a-padding;
         padding: 0;
         height: 100%;
         background: #fafafa;
         
         #menu {
-            padding-top: $layout-docs-padding-top - $gutter;
+            padding-top: $layout-docs-padding-top - $menu-gutter;
         }
 
         ul {
@@ -159,38 +139,41 @@ $size: 200px;
             padding-left: 0;
             
             li {
-                $arrow-size: 7px;
+                $arrow-size: 10px;
+                $arrow-x-offset: $arrow-size + $menu-gutter;
 
                 .arrow {
                     content: '';
-                    border: solid #707070;
-                    border-width: 0 1px 1px 0;
-                    display: inline-block;
-                    transform: rotate(45deg) translateY(-$arrow-size) translateX(0);
-                    
+                    background: no-repeat url(~global/scss/layout/arrow.svg);
+                    display: inline-block;                    
                     width: $arrow-size;
                     height: $arrow-size;
+                    position: absolute;
+                    transform: translateX(-$arrow-x-offset);
                 }
                 a {
                     $text-padding: 7px;
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-between;
+                    justify-content: flex-start;
                     align-items: center;
+                    width: 300px;
                     padding: $text-padding $grid-gutter-width;
-                    padding-left: $grid-gutter-width;
+                    padding-left: $grid-gutter-width + $arrow-size;
                     color: inherit;
                     font-size: 0.95rem;
+                    
 
                     &:hover {
                         text-decoration: none;
                     }
                     &[aria-expanded='true'] {
+                        width: 100%;
                         color: $color-primary;
                         margin-bottom: $text-padding;
                         background: #eaeaea8c;
 
-                        &::before {
+                        &::after {
                             content: '';
                             display: block;
                             position: absolute;
@@ -199,16 +182,13 @@ $size: 200px;
                             left: 0;
                             border-left: 4px solid $color-primary;
                         }
-                        &::after {
+                        &::before {
                             @extend .arrow;
-                            transform: rotate(-135deg) translateY($arrow-size/2) translateX(-$arrow-size/2);
-                        }
-                        .dropdown-item-text {
-                            
+                            transform: rotate(180deg) translateX($arrow-x-offset);
                         }
                     }
                     &[aria-expanded='false'] {
-                        &::after {
+                        &::before {
                             @extend .arrow;
                         }
                     }
