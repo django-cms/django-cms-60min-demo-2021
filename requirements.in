@@ -13,14 +13,15 @@ https://github.com/divio/djangocms-text-ckeditor/archive/1e96daac4dc1b1394be6d45
 djangocms-link < 2.6
 djangocms-picture
 djangocms-file
+djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
 https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-https://github.com/divio/aldryn-forms/archive/fbcbd07c3c6f32ae751b176203a3ebfc636edead.zip#egg=aldryn-forms
-    djangocms-aldryn-forms-bootstrap4-templates >= 1.0.0.1
+https://github.com/divio/aldryn-forms/archive/5.0.5.zip#egg=aldryn-forms
+    djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin >= 1.0.0.2
 djangocms-light-gallery
 aldryn-translation-tools
@@ -28,7 +29,6 @@ aldryn-apphooks-config
 djangocms-redirect
 djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
 djangocms-page-meta
-djangocms-blog
 djangocms-socialshare
 djangocms-algolia >= 0.1.0.1
     django-standard-form == 1.1.1 # 1.1.4 doesn't work without divio pip-reqs

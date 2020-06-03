@@ -128,7 +128,11 @@ INSTALLED_APPS.extend([
     'djangocms_video',
     'djangocms_history',
     'djangocms_picture',
+    'djangocms_file',
     'djangocms_snippet',
+    'djangocms_socialshare',
+    'djangocms_algolia',
+        'algoliasearch_django',
     'djangocms_helpers',
     'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
@@ -141,10 +145,7 @@ INSTALLED_APPS.extend([
         'aldryn_forms.contrib.email_notifications',
         'emailit',
     'djangocms_redirect',
-    'djangocms_socialshare',
     'light_gallery',
-    'djangocms_algolia',
-    'algoliasearch_django',
 
     # project
 
