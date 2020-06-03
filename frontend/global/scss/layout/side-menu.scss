@@ -1,0 +1,111 @@
+@import 'frontend/global/scss/variables/main';
+
+
+.container-custom {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+}
+
+
+.menu-column {
+    padding: 0;
+    $text-padding: 7px;
+    $menu-gutter: ($grid-gutter-width / 2);
+
+    .menu-container {
+        padding: 0;
+        height: 100%;
+        background: #fafafa;
+        
+        .metismenu {
+            padding-top: $layout-docs-padding-top - $menu-gutter;
+
+            .mm-active {
+                ul {
+                    margin: $text-padding 0;
+                }
+            }
+        }
+        ul {
+            padding-left: 0;
+            list-style: none;
+
+            li {
+                $arrow-size: 10px;
+                $arrow-x-offset: $arrow-size + $menu-gutter;
+            
+                .arrow {
+                    content: '';
+                    background: no-repeat url(~global/scss/layout/arrow.svg);
+                    display: inline-block;
+                    width: $arrow-size;
+                    height: $arrow-size;
+                    position: absolute;
+                    transform: translateX(-$arrow-x-offset);
+                }
+                a {
+                
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    padding: $text-padding $grid-gutter-width;
+                    padding-left: $grid-gutter-width + $arrow-size;
+                    color: inherit;
+                    font-size: 0.95rem;
+                
+                
+                    &:hover {
+                        text-decoration: none;
+                    }
+                    &[aria-expanded='true'] {
+                        width: 100%;
+                        color: $color-primary;
+                        background: #eaeaea8c;
+                    
+                        &::after {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            height: $layout-docs-padding-top;
+                            width: 100%;
+                            left: 0;
+                            border-left: 4px solid $color-primary;
+                        }
+                        &::before {
+                            @extend .arrow;
+                            transform: rotate(180deg) translateX($arrow-x-offset);
+                        }
+                    }
+                    &[aria-expanded='false'] {
+                        &::before {
+                            @extend .arrow;
+                        }
+                    }
+                }
+                ul {
+                    a {
+                        padding-left: $grid-gutter-width * 2;
+                    }
+                    ul {
+                        a {
+                            padding-left: $grid-gutter-width * 3;
+                        }
+                        ul {
+                            a {
+                                padding-left: $grid-gutter-width * 4;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

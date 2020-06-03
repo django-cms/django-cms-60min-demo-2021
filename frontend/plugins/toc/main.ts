@@ -42,13 +42,21 @@ function fixWidthOnFixedPos(tocSelector: string, posFixedCssCls: string) {
 function calculateFixedPosOffset(contentSelector: string): number {
     let fixedPosTopOffset = ($(contentSelector).offset() as any).top;
     const cmsToolbar = document.querySelector('.cms-toolbar');
+    const navbarFixed = document.querySelector('.navbar.fixed-top');
+    
     if (cmsToolbar) {
         fixedPosTopOffset -= cmsToolbar.clientHeight;
+        if (navbarFixed) {
+            fixedPosTopOffset -= navbarFixed.clientHeight; 
+        }
     } else {
-        const fixedPosTopCssOffset = 10;
+        let fixedPosTopCssOffset = 10;
+        if (navbarFixed) {
+            fixedPosTopOffset -= navbarFixed.clientHeight; 
+        }
         fixedPosTopOffset -= fixedPosTopCssOffset; 
     }
-    return fixedPosTopOffset
+    return fixedPosTopOffset;
 }
 
 

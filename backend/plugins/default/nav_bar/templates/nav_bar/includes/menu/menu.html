@@ -1,14 +1,16 @@
 {% load menu_tags i18n %}
 
 {% for child in children %}
-    <li class="
-        nav-item child
-        {% if child.selected %} selected{% endif %}
-        {% if child.ancestor %} ancestor{% endif %}
-        {% if child.sibling %} sibling{% endif %}
-        {% if child.children %} dropdown{% endif %}
-        {% if child.descendant %} descendant{% endif %}
-    ">
+    <li
+        class="
+            nav-item child
+            {% if child.selected %} selected{% endif %}
+            {% if child.ancestor %} ancestor{% endif %}
+            {% if child.sibling %} sibling{% endif %}
+            {% if child.children %} dropdown{% endif %}
+            {% if child.descendant %} descendant{% endif %}
+        "
+    >
         {% if child.children %}
             <a class="nav-link dropdown-toggle"
                href="#"
