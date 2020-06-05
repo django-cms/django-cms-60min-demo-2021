@@ -1,0 +1,16 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles thumbnail %}
+
+
+<section class="card-plugin">
+    <div class="card-image">
+        <img src="{% thumbnail instance.image 1110x581 crop=True upscale=True subject_location=instance.image.subject_location %}" alt="image">
+    </div>
+    <div class="card-content">
+        <h2 class="card-title">{{ instance.title }}</h2>
+        <div class="card-children">
+            {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
