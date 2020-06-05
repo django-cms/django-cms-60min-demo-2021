@@ -10,8 +10,8 @@ aldryn-boilerplates==0.8.0  # via aldryn-common
 aldryn-client==2.3.5
 aldryn-common==1.0.5      # via aldryn-search
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.3.1/b8a3ddbe-5a74-4b29-b101-51e05b04d14c/aldryn-django-cms-3.7.3.1.tar.gz#egg=aldryn-django-cms==3.7.3.1
-https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.12.1/c2d1c3a0-4978-4f91-84a3-749a7253f35d/aldryn-django-2.2.12.1.tar.gz#egg=aldryn-django==2.2.12.1
-https://github.com/divio/aldryn-forms/archive/fbcbd07c3c6f32ae751b176203a3ebfc636edead.zip#egg=aldryn-forms
+https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.13.1/d85d3f6c-6ab7-494a-a2c3-39405825a26f/aldryn-django-2.2.13.1.tar.gz#egg=aldryn-django==2.2.13.1
+https://github.com/divio/aldryn-forms/archive/5.0.5.zip#egg=aldryn-forms
 aldryn-forms-recaptcha-plugin==1.0.0.2
 aldryn-search==1.1.0      # via djangocms-algolia
 aldryn-sites==0.6.0
@@ -34,7 +34,7 @@ decorator==4.4.2          # via ipython, traitlets
 defusedxml==0.6.0         # via odfpy, python3-openid
 diff-match-patch==20181111  # via django-import-export
 dj-database-url==0.5.0
-dj-email-url==1.0.0
+dj-email-url==1.0.1
 dj-redis-url==0.1.4
 django-absolute==0.3
 django-admin-sortable2==0.7.6
@@ -54,14 +54,14 @@ django-env-settings==1.0.0
 django-extensions==2.2.9
 django-fieldsignals==0.5.0  # via djangocms-helpers
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.1/51d763aa-2153-4038-8658-020e2b301005/django-filer-1.7.1.tar.gz#egg=django-filer==1.7.1
-django-filter==2.2.0
+django-filter==2.3.0
 django-formtools==2.2     # via django-cms
 django-getenv==1.3.2
 django-google-tag-manager==0.0.5
 django-haystack==2.8.1    # via aldryn-search
 django-hijack-admin==2.1.10
 django-hijack==2.1.10     # via django-hijack-admin
-django-import-export==2.1.0
+django-import-export==2.2.0
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.6
 django-meta==1.6.1        # via djangocms-blog, djangocms-helpers, djangocms-page-meta
@@ -92,7 +92,7 @@ django-templatetag-sugar==1.0  # via django-taggit-templatetags
 django-treebeard==4.3.1   # via django-cms
 django-username-email==2.3.0
 django-widget-tweaks==1.4.8
-django==2.2.12            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
+django==2.2.13            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==1.5.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
 djangocms-algolia==0.1.0.1
@@ -163,7 +163,7 @@ unidecode==1.1.1          # via aldryn-translation-tools
 urllib3==1.25.9           # via requests, sentry-sdk
 urlobject==2.4.3          # via django-spurl
 uwsgi==2.0.18
-wcwidth==0.1.9            # via prompt-toolkit
+wcwidth==0.2.3            # via prompt-toolkit
 webencodings==0.5.1       # via html5lib
 webservices[django]==0.7  # via django-simple-sso
 xlrd==1.2.0               # via tablib
