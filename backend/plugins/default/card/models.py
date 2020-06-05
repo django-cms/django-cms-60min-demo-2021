@@ -1,3 +1,4 @@
+from cms.models.fields import PageField
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from enumfields import Enum
@@ -37,7 +38,20 @@ class CardListPluginModel(CMSPlugin):
 class CardPluginModel(CMSPlugin):
     image = FilerImageField(on_delete=models.PROTECT)
     title = models.CharField(max_length=1024, blank=True)
+    internal_link = PageField(on_delete=models.PROTECT, blank=True, null=True)
+    external_link = models.URLField(blank=True)
     type = EnumField(CardType, default=CardType.VERTICAL, max_length=32)
+
+    def is_link_set(self) -> bool:
+        return self.internal_link or self.external_link
+
+    def get_link(self) -> str:
+        if self.internal_link:
+            return self.internal_link.get_absolute_url()
+        elif self.external_link:
+            return self.external_link
+        else:
+            return ''
 
     def __str__(self):
         return self.title
