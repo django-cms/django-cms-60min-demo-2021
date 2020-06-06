@@ -4,6 +4,16 @@ This file is a replacement for default ckeditor contents.css
 
 @import 'frontend/global/scss/variables/main';
 
+body.background-black {
+    background: black !important;
+}
+body.background-gray {
+    background: gray !important;
+}
+body.background-white {
+    background: white !important;
+}
+
 
 body.cke_editable {
     background-color: #fff;
