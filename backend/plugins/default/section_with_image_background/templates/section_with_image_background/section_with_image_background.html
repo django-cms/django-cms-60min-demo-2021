@@ -3,7 +3,7 @@
 
 <section
     class="section-with-image-background-plugin"
-    style="background: url('{% thumbnail instance.background_image instance.get_size crop=True %}'); height: {{ instance.height }}px;"
+    style="background: url('{% thumbnail instance.background_image instance.get_size crop=True subject_location=instance.background_image.subject_location %}'); height: {{ instance.height }}px;"
 >
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}

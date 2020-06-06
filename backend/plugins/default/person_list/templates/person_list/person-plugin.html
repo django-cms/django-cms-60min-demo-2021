@@ -3,7 +3,7 @@
 
 <div class="person-plugin">
     {% if instance.person.link %}<a href="{{ instance.person.link }}">{% endif %}
-        <img class="person-photo" src="{% thumbnail instance.person.photo 200x200 crop=True upscale=True %}" alt="photo">
+        <img class="person-photo" src="{% thumbnail instance.person.photo 200x200 crop=True upscale=True subject_location=instance.person.photo.subject_location %}" alt="photo">
     {% if instance.person.link %}</a>{% endif %}
     
     {% if instance.person.link %}<a href="{{ instance.person.link }}">{% endif %}
