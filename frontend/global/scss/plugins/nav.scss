@@ -3,7 +3,7 @@
 
 .navbar {
     border-bottom: 1px solid #ececec;
-    
+    padding: 0;
 
     .container {
         @include media-breakpoint-up(lg) {
@@ -12,11 +12,8 @@
         @include media-breakpoint-down(lg) {
             padding: 0.5rem 1rem;
         }
-        @include media-breakpoint-down(md) {
-            padding: 0;
-        }
     }
-    
+
     .navbar-brand {
         align-items: center;
         font-size: 30px;
@@ -24,10 +21,21 @@
         transition: color 0.2s;
 
         svg {
-            height: 45px;
-            margin-right: 20px;
+            height: 50px;
+            margin-right: $grid-gutter-width/2;
             fill: $color-primary;
             transition: color 0.2s;
+        }
+        .site-title {
+            display: flex;
+            flex-direction: column;
+            
+            .site-name {
+                font-size: 1.6rem;
+            }
+            .site-subname {
+                font-size: 1rem;
+            }
         }
         &:hover {
             svg {

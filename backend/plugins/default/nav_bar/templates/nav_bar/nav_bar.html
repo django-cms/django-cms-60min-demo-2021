@@ -6,7 +6,10 @@
     <div class="container{% if instance.is_full_width %}-fluid {% endif %}">
         <a class="navbar-brand d-flex" href="/">
             {% include 'nav_bar/includes/icon.svg' %}
-            {{ site_config.site_name }}
+            <div class="site-title">
+                <span class="site-name">{{ site_config.site_name }}</span>
+                <span class="site-subname">{{ site_config.site_subname }}</span>
+            </div>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
@@ -41,7 +44,3 @@
 {% if instance.is_full_width %}
     {% addtoblock 'body_classes' %}navbar-fixed{% endaddtoblock %}
 {% endif %}
-
-<div class="color1"></div>
-<div class="color2"></div>
-<div class="color3"></div>
