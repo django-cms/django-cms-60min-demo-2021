@@ -26,6 +26,11 @@
             fill: $color-primary;
             transition: color 0.2s;
         }
+        &:hover {
+            svg {
+                fill: $color-accent;
+            }
+        }
         .site-title {
             display: flex;
             flex-direction: column;
@@ -37,11 +42,7 @@
                 font-size: 1rem;
             }
         }
-        &:hover {
-            svg {
-                fill: $color-accent;
-            }
-        }
+
     }
     .nav-item.dropdown {
         &:hover > .dropdown-menu {
@@ -94,16 +95,14 @@
             .navbar-brand {
                 font-size: 1rem;
                 padding: 0;
-        
+    
                 svg {
                     height: 25px;
                     margin-right: 0.5rem;
-                    fill: $color-primary;
-                    transition: color 0.2s;
                 }
-                &:hover {
-                    svg {
-                        fill: $color-accent;
+                .site-title {
+                    .site-name {
+                        font-size: initial;
                     }
                 }
             }
