@@ -43,12 +43,12 @@ $fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $layout-docs-paddi
         display: inline-block;
         padding: 5px 0;
         transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
-        color: #aaa;
+        color: $color-gray-600;
         text-decoration: none;
     }
     
     .toc-link::before {
-        background-color: #EEE;
+        background-color: $color-gray-300;
         content: ' ';
         display: inline-block;
         height: inherit;
