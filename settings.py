@@ -148,16 +148,15 @@ INSTALLED_APPS.extend([
     # project
 
     'backend.site_config',
-    'backend.plugins.default.mailchimp',
-    'backend.plugins.default.toc',
-    'backend.plugins.default.bs4_hiding',
-    'backend.plugins.default.bs4_spacer',
-    'backend.plugins.default.horizontal_line',
-    'backend.plugins.default.section_with_image_background',
-    'backend.plugins.default.person_list',
-    'backend.plugins.default.nav_bar',
-    'backend.plugins.default.card',
-    'backend.tests',
+    'backend.plugins.mailchimp',
+    'backend.plugins.toc',
+    'backend.plugins.bs4_hiding',
+    'backend.plugins.bs4_spacer',
+    'backend.plugins.horizontal_line',
+    'backend.plugins.section_with_image_background',
+    'backend.plugins.person_list',
+    'backend.plugins.nav_bar',
+    'backend.plugins.card',
 ])
 
 MIDDLEWARE.extend([

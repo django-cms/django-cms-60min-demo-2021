@@ -2,9 +2,9 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 
-from backend.plugins.default.card.models import CardListPluginModel
-from backend.plugins.default.card.models import CardPluginModel
-from backend.plugins.default.module_name import MODULE_NAME
+from backend.plugins.card.models import CardListPluginModel
+from backend.plugins.card.models import CardPluginModel
+from backend.plugins.module_name import MODULE_NAME
 
 
 @plugin_pool.register_plugin

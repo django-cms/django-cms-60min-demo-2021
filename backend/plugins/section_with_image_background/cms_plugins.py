@@ -4,8 +4,8 @@ from cms.plugin_pool import plugin_pool
 from cms.utils.plugins import get_plugin_model
 from django.utils.translation import ugettext_lazy as _
 
-from backend.plugins.default.module_name import MODULE_NAME
-from backend.plugins.default.section_with_image_background.models import SectionWithImageBackgroundPluginModel
+from backend.plugins.module_name import MODULE_NAME
+from backend.plugins.section_with_image_background.models import SectionWithImageBackgroundPluginModel
 
 
 @plugin_pool.register_plugin
