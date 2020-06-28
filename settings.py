@@ -1,24 +1,22 @@
-import os
 import logging
-import sys
-import traceback
-from typing import List
+import os
 from enum import Enum
-from typing import Optional
+from typing import List
 
 import sentry_sdk
 from djangocms_helpers.sentry_500_error_handler.ignore_io_error import ignore_io_error
+from dotenv import find_dotenv
+from dotenv import load_dotenv
+from env_settings import env
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
-from env_settings import env
-from dotenv import load_dotenv, find_dotenv
 
 
 load_dotenv(find_dotenv('.env-local'))
 
 
 ################################################################################
-## === divio === ##
+# divio
 ################################################################################
 
 
@@ -39,7 +37,7 @@ aldryn_addons.settings.load(locals())
 
 
 ################################################################################
-## === django === ##
+# django
 ################################################################################
 
 
@@ -48,7 +46,6 @@ MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
-SITE_ID: int = locals()['SITE_ID']
 
 
 DATE_FORMAT = 'F j, Y'
@@ -67,17 +64,17 @@ DIVIO_ENV_ENUM = DivioEnv
 DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 
-installed_apps_first = [
+installed_apps_overrides = [
     # for USERNAME_FIELD = 'email', before `cms` since it has a User model
     'backend.auth',
 
+    # templates override
+    'backend.blog',
+
     # must be before `cms`
     'djangocms_modules',
-
-    # tempaltes override
-    'backend.blog',
 ]
-INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
+INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
     # django
@@ -146,6 +143,7 @@ INSTALLED_APPS.extend([
         'emailit',
     'djangocms_redirect',
     'light_gallery',
+    'linkit',
 
     # project
 
@@ -239,7 +237,7 @@ CMS_LANGUAGES = {
 PARLER_LANGUAGES = CMS_LANGUAGES
 
 ################################################################################
-## === django === ##
+# django
 ################################################################################
 
 
@@ -366,7 +364,7 @@ RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 
 ################################################################################
-## === django-cms core === ##
+# django-cms core
 ################################################################################
 
 
@@ -382,7 +380,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ################################################################################
-## === django-cms optional === ##
+# django-cms optional
 ################################################################################
 
 CMS_PLACEHOLDER_CONF = {
