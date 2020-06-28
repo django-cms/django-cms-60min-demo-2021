@@ -32,6 +32,7 @@ djangocms-socialshare
 djangocms-algolia >= 0.1.0.1
     django-standard-form == 1.1.1 # 1.1.4 doesn't work without divio pip-reqs
     django-spurl == 0.6.5 # 0.6.6 doesn't work with divio pip-reqs
+https://github.com/what-digital/linkit/archive/master.zip#egg=linkit
 
 # django
 
