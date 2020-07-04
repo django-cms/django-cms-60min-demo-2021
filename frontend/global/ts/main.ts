@@ -7,4 +7,4 @@ document.addEventListener('DOMContentLoaded', () => {
     main();
     LoadAlgoliaSearch();
     initMainMenu();
-})
+}, {once: true})
