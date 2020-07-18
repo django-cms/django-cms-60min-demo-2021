@@ -12,3 +12,4 @@ class NavBarPlugin(CMSPluginBase):
     name = _("Navigation Bar")
     model = NavBarPluginModel
     render_template = 'nav_bar/nav_bar.html'
+    allow_children = True
