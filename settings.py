@@ -44,6 +44,7 @@ aldryn_addons.settings.load(locals())
 INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
 MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
+SITE_ID: int = locals()['SITE_ID']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
