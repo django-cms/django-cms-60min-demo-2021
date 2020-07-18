@@ -46,6 +46,8 @@ MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
+DEBUG: bool = locals()['DEBUG']
+MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
 
 
 DATE_FORMAT = 'F j, Y'
@@ -68,10 +70,8 @@ installed_apps_overrides = [
     # for USERNAME_FIELD = 'email', before `cms` since it has a User model
     'backend.auth',
 
-    # templates override
     'backend.blog',
 
-    # must be before `cms`
     'djangocms_modules',
 ]
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
@@ -94,6 +94,9 @@ INSTALLED_APPS.extend([
     'django_countries',
     'logentry_admin',
     'hijack_admin',
+    'djangocms_helpers',
+    'djangocms_helpers.sentry_500_error_handler',
+        'meta',
 
     # django cms
 
@@ -109,7 +112,7 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_link',
     'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
     'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',  # must be before djangocms_picture
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',  # place djangocms_picture
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
@@ -133,7 +136,6 @@ INSTALLED_APPS.extend([
     'djangocms_helpers',
     'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
-        'meta',
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
         'aldryn_forms_recaptcha_plugin',
@@ -157,6 +159,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.person_list',
     'backend.plugins.nav_bar',
     'backend.plugins.card',
+    'backend.plugins.link',
 ])
 
 MIDDLEWARE.extend([
@@ -184,9 +187,6 @@ default_template_engine['DIRS'].extend([
 ])
 default_template_engine['OPTIONS']['context_processors'].extend([
     'django_settings_export.settings_export',
-])
-default_template_engine['OPTIONS']['loaders'].extend([
-    'django.template.loaders.app_directories.Loader',
 ])
 
 if DIVIO_ENV == DivioEnv.LOCAL:
@@ -235,6 +235,7 @@ CMS_LANGUAGES = {
 
 PARLER_LANGUAGES = CMS_LANGUAGES
 
+
 ################################################################################
 # django
 ################################################################################
@@ -271,30 +272,14 @@ SETTINGS_EXPORT = [
     'WEBPACK_DEV_URL',
     'DIVIO_ENV',
     'DIVIO_ENV_ENUM',
-    'IS_SENTRY_ENABLED',
     'SENTRY_DSN',
     'GTM_CONTAINER_ID',
     'DEBUG',
     'ALGOLIA',
 ]
 
-IS_SENTRY_ENABLED = env.get_bool('IS_SENTRY_ENABLED', False)
-SENTRY_DSN = env.get('SENTRY_DSN')
-if IS_SENTRY_ENABLED:
-    # noinspection PyTypeChecker
-    sentry_sdk.init(
-        before_send=ignore_io_error,
-        dsn=SENTRY_DSN,
-        integrations=[
-            DjangoIntegration(),
-            LoggingIntegration(
-                level=logging.INFO,  # Capture info and above as breadcrumbs
-                event_level=None,  # Send no events from log messages
-            )
-        ],
-        environment=DIVIO_ENV.value,
-        send_default_pii=True,
-    )
+
+SENTRY_DSN = env.get('SENTRY_DSN', None)
 
 
 HIJACK_REGISTER_ADMIN = False
@@ -378,9 +363,22 @@ CMS_TEMPLATES = [
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
+if DEBUG:
+    # there's a bug with caching - https://github.com/what-digital/divio/issues/9
+    CMS_PAGE_CACHE = False
+    CMS_PLACEHOLDER_CACHE = False
+    CMS_PLUGIN_CACHE = False
+    MENU_CACHE_DURATION = 0
+    CMS_CONTENT_CACHE_DURATION = 0
+
+
 ################################################################################
 # django-cms optional
 ################################################################################
+
+
+MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
+
 
 CMS_PLACEHOLDER_CONF = {
     None: {
@@ -422,34 +420,23 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
-    'toolbar': 'CUSTOM',
-    'toolbar_CUSTOM': [
-        ['Undo', 'Redo'],
-        ['cmsplugins', '-', 'ShowBlocks'],
-        ['Format', 'Styles', 'FontSize'],
-        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat'],
-        ['Maximize', ''],
-        '/',
-        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
-        ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
-        # remove 'Link' since we have bootstrap4 link/button plugin
-        ['Unlink'],
-        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
-        ['Source']
-    ],
     'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
         f'{WEBPACK_DEV_URL}/vendor.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}/global.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
     ],
     'config': {
-        'allowedContent': True,
+        'allowedContent': True, # allows html tags
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
     },
     'pasteFromWordPromptCleanup': True,
     'pasteFromWordRemoveFontStyles': True,
     'forcePasteAsPlainText': False,
 }
+# djangocms-text-ckeditor uses html5lib to sanitize HTML and deletes iframes
+TEXT_ADDITIONAL_TAGS = [
+    'iframe',
+]
 
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL

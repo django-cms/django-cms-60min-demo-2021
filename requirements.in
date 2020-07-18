@@ -1,6 +1,6 @@
 # <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4ef8-bfe0-1e61c8601b33/aldryn-addons-1.1.0.tar.gz#egg=aldryn-addons==1.1.0
-https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.13.1/d85d3f6c-6ab7-494a-a2c3-39405825a26f/aldryn-django-2.2.13.1.tar.gz#egg=aldryn-django==2.2.13.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.14.1/d9db6707-c6e3-432f-aaa9-3d5c8c12f44f/aldryn-django-2.2.14.1.tar.gz#egg=aldryn-django==2.2.14.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.3.1/b8a3ddbe-5a74-4b29-b101-51e05b04d14c/aldryn-django-cms-3.7.3.1.tar.gz#egg=aldryn-django-cms==3.7.3.1
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.1/51d763aa-2153-4038-8658-020e2b301005/django-filer-1.7.1.tar.gz#egg=django-filer==1.7.1
 # </INSTALLED_ADDONS>
@@ -16,30 +16,31 @@ djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
-https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
+https://github.com/divio/djangocms-bootstrap4/archive/be03e751472fcbc9273a5745298c359e3e21618b.zip#egg=djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-https://github.com/divio/aldryn-forms/archive/5.0.5.zip#egg=aldryn-forms
+https://github.com/divio/aldryn-forms/archive/00152e456b6962eb0bd60a980777216feb98cbe3.zip#egg=aldryn-forms==6.0.0-alpha
     djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin >= 1.0.0.2
 djangocms-light-gallery
 aldryn-translation-tools
 aldryn-apphooks-config
-djangocms-redirect
-djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
-djangocms-page-meta
 djangocms-socialshare
 djangocms-algolia >= 0.1.0.1
     django-standard-form == 1.1.1 # 1.1.4 doesn't work without divio pip-reqs
     django-spurl == 0.6.5 # 0.6.6 doesn't work with divio pip-reqs
-https://github.com/what-digital/linkit/archive/master.zip#egg=linkit
+djangocms-redirect
+https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-helpers-master.zip#egg=djangocms-helpers==2.1.1.4 # because pip reqs doesn't work, see what-digital/divio#1
+djangocms-page-meta
+https://github.com/what-digital/linkit/archive/86a9b203c63a72929e3a2f6e707df429eb0cf679.zip#egg=linkit==0.1.7
 
 # django
 
-https://github.com/divio/aldryn-sso/archive/66-fix-email-duplicate-error.zip#egg=aldryn-sso==1.7.0
+https://github.com/divio/aldryn-sso/archive/cfcca9f1bdf547bae201c6c6568a74554040c0a2.zip#egg=aldryn-sso
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
+django-sortedm2m
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
 django-env-settings >= 0.13.0 # settings utils, see gitlab.com/what-digital/django-env-settings

@@ -3,13 +3,15 @@
 
 {% page_meta request.current_page as page_meta %}
 
+{% get_current_language as lang_code %}
+
 
 {% get_solo 'site_config.SiteConfig' as site_config %}
 
 
 <!DOCTYPE html>
 
-<html lang="{% get_current_language as LANGUAGE_CODE %}">
+<html lang="{{ lang_code }}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,7 +62,8 @@
         {% block head %}{% endblock %}
     </head>
 
-    <body id="page-top" class="lang-{{ LANGUAGE_CODE }} {% render_block 'body_classes' %}">
+    <body id="page-top" class="lang-{{ lang_code }} {% render_block 'body_classes' %}">
+
         {% cms_toolbar %}
 
         {% block content_before %}{% endblock %}
