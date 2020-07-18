@@ -2,6 +2,8 @@ const algoliasearch = require('algoliasearch');
 
 
 function renderAlgoliaData(render_block: HTMLElement, value: string, index, hits_per_page = 1000) {
+    let search_results_block = document.querySelector('.search-results') as any;
+    search_results_block.dataset.isVisible = String(true);
     if (value != '') {
         index.search(value, {hitsPerPage: hits_per_page, highlightPreTag: "<b>", highlightPostTag: "</b>"})
             .then((obj) => {
@@ -10,15 +12,18 @@ function renderAlgoliaData(render_block: HTMLElement, value: string, index, hits
                     render_results_count(obj.hits.length);
 
                     for (const hit of obj.hits) {
-
+                        let description = ''
+                        if (hit._snippetResult) {
+                            description = hit._snippetResult['page_content'].value;
+                        }
                         render_block.innerHTML += `
                             <a href="${hit.url}">
                                 <div class="item">
-                                    <span>
+                                    <span class="search-res-title">
                                         ${hit._highlightResult.title.value}
                                     </span>
-                                    <p class="description">
-                                        ${hit.description || ''}
+                                    <p class="search-res-description">
+                                        ${description || ''}
                                     </p>
                                 </div>
                             </a>
@@ -55,6 +60,12 @@ export function LoadAlgoliaSearch() {
     
     const client = algoliasearch(window.DJANGO.algoliaApplicationId, window.DJANGO.algoliaApiKey);
     const index = client.initIndex('pages');
+    index.setSettings({
+        attributesToSnippet: [
+            'page_content:50',
+            'description'
+        ]
+    });
 
     // Update suggestions on click or input
     let input = document.getElementById('search-input') as HTMLInputElement;
@@ -66,17 +77,19 @@ export function LoadAlgoliaSearch() {
             renderAlgoliaData(suggestions_block, value, index, 8);
         })
     );
+    
+    let search_results_block = document.querySelector('.search-results') as any;
 
     // Hide suggestions block on click out of suggestions area
     let search_element = document.getElementById('search-form') as any;
     document.addEventListener('click', event => {
         if (!search_element.contains(event.target as Node)) {
             suggestions_block.innerHTML = '';
+            search_results_block.dataset.isVisible = String(false);
         }
     });
 
     // Show search results on form submit
-    let search_results_block = document.getElementById('search-results-block') as any;
     let form = document.getElementById('search-form') as any;
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -85,5 +98,6 @@ export function LoadAlgoliaSearch() {
         let value = input.value;
         renderAlgoliaData(search_results_block, value, index, 1000);
         suggestions_block.innerHTML = '';
+        search_results_block.dataset.isVisible = String(false);
     });
 }

@@ -46,7 +46,8 @@
         "tocbot": "^4.11.1",
         "metismenujs": "^1.2.0",
         "algoliasearch": "^4.2.0",
-            "instantsearch.js": "^4.4.1"
+            "instantsearch.js": "^4.4.1",
+            "@types/algoliasearch": "^3.34.10"
     },
     "scripts": {
         "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",

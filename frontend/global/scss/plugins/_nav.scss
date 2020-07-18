@@ -123,10 +123,24 @@
     margin-left: 20px;
     
     .search-results {
+        &[data-is-visible=false] {
+            display: none;
+        }
+        
         position: absolute;
         background: white;
         width: 500px;
         right: 0;
+        padding: 20px 25px;
+        border: 1px solid #cfcfcf;
+        border-right: none;
+
+        .search-res-title {
+            font-size: 1.1rem;
+        }
+        .search-res-description {
+            color: initial;
+        }
 
         #search-results-count-block {
             color: gray;
