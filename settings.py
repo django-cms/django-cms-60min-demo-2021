@@ -46,7 +46,6 @@ STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
 MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
-SITE_ID: int = locals()['SITE_ID']
 
 
 DATE_FORMAT = 'F j, Y'
