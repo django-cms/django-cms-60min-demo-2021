@@ -469,8 +469,8 @@ META_USE_SITES = True
 HAYSTACK_ENABLE = False
 HAYSTACK_DISABLE = True
 ALGOLIA = {
-    'APPLICATION_ID': '3OHOG1P143',
-    'API_KEY': env.get('API_KEY'),
+    'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID'),
+    'API_KEY': env.get('ALGOLIA_API_KEY'),
 }
 # not used but haystack demands it on its search index collection import
 HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}
