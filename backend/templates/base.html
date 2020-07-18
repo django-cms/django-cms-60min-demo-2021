@@ -67,7 +67,8 @@
         {% block content_before %}{% endblock %}
         
         <header>
-            {% static_placeholder 'header' %}
+            {% static_placeholder 'top bar' %}
+            {% placeholder 'header' %}
         </header>
 
         {% block messages %}
