@@ -1,8 +1,9 @@
 {% load cms_tags menu_tags %}
 <div class="vertical-spacer-plugin vertical-spacer-plugin-{{ instance.pk }}">
     <style>
+        /* vertical_spacer_plugin */
+        /* the comment above allows to match and remove this code from search index */
         {% if instance.smart_space %}
-            /* calculate your smart space here */
             .vertical-spacer-plugin-{{ instance.pk }} {
                 height: calc({{ instance.smart_space }}px * 0.5);
             }
@@ -71,5 +72,7 @@
                 }
             }
         {% endif %}
+        /* the comment below allows to match and remove this code from search index */
+        /* vertical_spacer_plugin_end */
     </style>
 </div>
