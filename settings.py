@@ -205,33 +205,6 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
-LANGUAGES = [
-    ('en', "English"),
-    ('nl', "Netherlands"),
-]
-
-CMS_LANGUAGES = {
-    SITE_ID: [
-        {
-            'code': 'en',
-            'name': 'English',
-        },
-        {
-            'code': 'nl',
-            'name': 'Dutch',
-        },
-    ],
-    'default': {
-        'fallbacks': ['en', 'nl'],
-        'redirect_on_fallback': True,
-        'public': True,
-        'hide_untranslated': False,
-    }
-}
-
-PARLER_LANGUAGES = CMS_LANGUAGES
-
-
 ################################################################################
 # django optional
 ################################################################################
@@ -375,7 +348,7 @@ if DEBUG:
 
 LANGUAGES = [
     ('en', "English"),
-    ('de', "German"),
+    ('nl', "Netherlands"),
 ]
 
 CMS_LANGUAGES = {
@@ -385,12 +358,12 @@ CMS_LANGUAGES = {
             'name': 'English',
         },
         {
-            'code': 'de',
-            'name': 'German',
+            'code': 'nl',
+            'name': 'Dutch',
         },
     ],
     'default': {
-        'fallbacks': ['en', 'de'],
+        'fallbacks': ['en', 'nl'],
         'redirect_on_fallback': True,
         'public': True,
         'hide_untranslated': False,
