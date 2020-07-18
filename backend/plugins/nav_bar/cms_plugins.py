@@ -3,6 +3,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 
 from backend.plugins.module_name import MODULE_NAME
+from backend.plugins.nav_bar.models import MenuItemModel
 from backend.plugins.nav_bar.models import NavBarPluginModel
 
 
@@ -13,3 +14,17 @@ class NavBarPlugin(CMSPluginBase):
     model = NavBarPluginModel
     render_template = 'nav_bar/nav_bar.html'
     allow_children = True
+    child_classes = [
+        'MenuItemPlugin',
+    ]
+
+
+@plugin_pool.register_plugin
+class MenuItemPlugin(CMSPluginBase):
+    module = MODULE_NAME
+    name = "Menu Item"
+    model = MenuItemModel
+    render_template = 'nav_bar/menu_item.html'
+    parent_classes = [
+        'NavBarPlugin',
+    ]

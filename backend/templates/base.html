@@ -2,10 +2,7 @@
 
 
 {% page_meta request.current_page as page_meta %}
-
 {% get_current_language as lang_code %}
-
-
 {% get_solo 'site_config.SiteConfig' as site_config %}
 
 
@@ -68,7 +65,11 @@
         {% cms_toolbar %}
 
         {% block content_before %}{% endblock %}
-    
+        
+        <header>
+            {% static_placeholder 'header' %}
+        </header>
+
         {% block messages %}
             {% include 'includes/messages.html' with messages=messages %}
         {% endblock messages %}

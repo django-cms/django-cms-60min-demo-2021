@@ -1,4 +1,4 @@
-{% load static menu_tags solo_tags sekizai_tags %}
+{% load static menu_tags solo_tags sekizai_tags cms_tags %}
 
 {% get_solo 'site_config.SiteConfig' as site_config %}
 
@@ -21,7 +21,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                {% show_menu 0 1 100 100 'nav_bar/includes/menu/menu.html' %}
+                {% if instance.is_use_default_menu %}
+                    {% show_menu 0 1 100 100 'nav_bar/includes/menu/menu.html' %}
+                {% else %}
+                    {% for plugin in instance.child_plugin_instances %}
+                        {% render_plugin plugin %}
+                    {% endfor %}
+                {% endif %}
+            
+                {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
 
                 {% if instance.is_enable_search_bar %}
                     <form id="search-form" class="search-form" action="" autocomplete="off">
