@@ -2,12 +2,13 @@
 -------------------------------------------------------------------------------
 
 - added a new link plugin that allows to select the link type - eg blog article, cms page, external url, etc
-- added ability to add html links and iframe to CKEditor
+- added ability to use html links and iframe to the CMS text editor
+- added better styles compatibility with outdated browsers as safari, ie11, etc
 - cms dynamic forms:
     - fixed the email variables representation and validation
     - fixed django success message that was shown on an unrelated page, seemingly on random
-    - fixed the form submission success message that could have been invisible for the user, now the page scrolls to it after a POST request
-- fixed spellchecker in CKEditor
+    - fixed the form submission success message that could have been invisible for the user, now the page scrolls to it after the form submission request
+- fixed spellchecker in the CMS text editor
 
 ### Technical
 
@@ -18,10 +19,12 @@
 - updated docker base image to from 4.16 to 4.17
 - fixed django translations
 - fixed `<html>`'s tag `lang` attribute, it was empty before
-- fixed aldryn-sso email duplication issue on divio database exporta
+- fixed aldryn-sso email duplication issue on divio database export
+- fixed webpack autoprefixer config, before it wasn't working
 - disabled the ability of search engines to index the aldryn-sso login page
 - dropped sentry config in settings and use the version from aldryn-django
 - dropped custom ckeditor toolbar to avoid issues as missing spellchecker
+- upgraded package.json packages
 
 #### Breaking Changes
 
@@ -30,6 +33,7 @@
 ### Documentation
 
 - updated backend.md
+- updated frontend.md
 
 2020.06
 -------------------------------------------------------------------------------

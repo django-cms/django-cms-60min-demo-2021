@@ -5,6 +5,9 @@ const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 
 
+const isDevelopmentMode = process.env.NODE_ENV !== 'production';
+
+
 const config = {
     mode: 'production',
     entry: {
@@ -36,16 +39,11 @@ const config = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             sourceMap: true,
-                            plugins: () => {
-                                return [
-                                    require('precss'),
-                                    require('autoprefixer'),
-                                ];
-                            },
-                            hmr: true,
+                            hmr: isDevelopmentMode,
                         }
                     },
                     {loader: 'css-loader', options: {sourceMap: true}},
+
                     {loader: 'sass-loader', options: {sourceMap: true}},
                 ]
             },
@@ -139,7 +137,6 @@ const config = {
 };
 
 
-const isDevelopmentMode = process.env.NODE_ENV !== 'production';
 if (isDevelopmentMode) {
     config.mode = 'development';
     config.devtool = 'eval-source-map';
