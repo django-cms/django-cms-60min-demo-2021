@@ -4,7 +4,7 @@ import {initOnPageEditReloadScript} from 'global/ts/on-page-edit-reload';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    main();
+    initOnPageEditReloadScript();
     LoadAlgoliaSearch();
     initMainMenu();
 }, {once: true})
