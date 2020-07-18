@@ -48,9 +48,6 @@
         "algoliasearch": "^4.2.0",
             "instantsearch.js": "^4.4.1"
     },
-    "devDependencies": {
-        "webpack-dev-server": "^3.8.2"
-    },
     "scripts": {
         "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
         "webpack-dev-server": "yarn start",
