@@ -121,20 +121,22 @@
 
 .search-form {
     margin-left: 20px;
-    
+    position: relative;
+
     .search-results {
-        &[data-is-visible=false] {
-            display: none;
-        }
-        
         position: absolute;
         background: white;
         width: 500px;
+        height: 80vh;
         right: 0;
         padding: 20px 25px;
         border: 1px solid #cfcfcf;
         border-right: none;
+        overflow-y: scroll;
 
+        &[data-is-visible=false] {
+            display: none;
+        }
         .search-res-title {
             font-size: 1.1rem;
         }

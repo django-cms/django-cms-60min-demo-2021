@@ -62,7 +62,7 @@ export function LoadAlgoliaSearch() {
     const index = client.initIndex('pages');
     index.setSettings({
         attributesToSnippet: [
-            'page_content:50',
+            'page_content:30',
             'description'
         ]
     });
