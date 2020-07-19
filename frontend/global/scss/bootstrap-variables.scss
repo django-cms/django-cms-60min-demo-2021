@@ -1,10 +1,14 @@
 /*
  * This file is imported in bootstrap during compilation - see frontend/vendor/scss/main
  */
-@import 'project';
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~bootstrap/scss/mixins/hover';
 @import '~bootstrap/scss/functions';
+
+
+$header-color: #5d5d5d;
+$layout-docs-padding-top: 36px;
+$navbar-height-fixed: 53px;
 
 
 $grid-columns: 24;

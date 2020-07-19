@@ -1,10 +1,7 @@
 @import 'bootstrap-variables';
 
-@import 'fixes/main';
 @import 'plugins/main';
-@import 'layout/main';
-@import 'blog/main';
 @import 'templates/main';
 
-@import '_content';
-@import '_reset';
+@import 'content';
+@import 'reset';

@@ -1,2 +1,2 @@
-require('./main.scss');
-require('./main.ts');
+require('./toc.scss');
+require('./tox.js');
