@@ -131,8 +131,8 @@
         right: 0;
         padding: 20px 25px;
         border: 1px solid #cfcfcf;
-        border-right: none;
         overflow-y: scroll;
+        overflow-wrap: break-word;
 
         &[data-is-visible=false] {
             display: none;
