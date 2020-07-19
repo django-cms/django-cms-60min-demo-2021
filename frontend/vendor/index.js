@@ -5,7 +5,7 @@ window.$ = window.jQuery = require('jquery');
 
 
 require('bootstrap');
-require('./scss/main.scss');
+require('./main.scss');
 
 
 // djangocms-bootstrap4 icons
