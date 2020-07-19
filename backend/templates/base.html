@@ -68,7 +68,9 @@
         
         <header>
             {% static_placeholder 'top bar' %}
-            {% placeholder 'header' %}
+            {% block header %}
+                {% placeholder 'header' %}
+            {% endblock %}
         </header>
 
         {% block messages %}

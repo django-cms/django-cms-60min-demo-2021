@@ -1,0 +1,17 @@
+{% extends CMS_TEMPLATE %}
+
+{% block meta %}
+    {%  if meta %}
+        {% include "meta/meta.html" %}
+    {% endif %}
+{% endblock meta %}
+
+{% block header %}
+    {# remove default header placeholder from base.html since it won't work for static pages #}
+{% endblock %}
+
+{% block content %}
+<div class="app app-blog">
+    {% block content_blog %}{% endblock %}
+</div>
+{% endblock content %}
