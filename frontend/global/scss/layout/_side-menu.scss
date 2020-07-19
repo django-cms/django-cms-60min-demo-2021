@@ -12,11 +12,40 @@
     }
 }
 
+$menu-gutter: ($grid-gutter-width / 2);
+$arrow-size: 10px;
+$arrow-x-offset: $arrow-size + $menu-gutter;
+
+@mixin active-menu-element($is-with-arrow: true) {
+    width: 100%;
+    color: $color-primary;
+    background: #eaeaea8c;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: $layout-docs-padding-top;
+        width: 100%;
+        left: 0;
+        border-left: 4px solid $color-primary;
+    }
+    &::before {
+        @if ($is-with-arrow) {
+            @extend .arrow;
+        }
+        transform: rotate(180deg) translateX($arrow-x-offset);
+    }
+}
+
 
 .menu-column {
     padding: 0;
     $text-padding: 7px;
-    $menu-gutter: ($grid-gutter-width / 2);
+    
+    .selected a {
+        @include active-menu-element($is-with-arrow: false);
+    }
 
     .menu-container {
         padding: 0;
@@ -37,8 +66,6 @@
             list-style: none;
 
             li {
-                $arrow-size: 10px;
-                $arrow-x-offset: $arrow-size + $menu-gutter;
             
                 .arrow {
                     content: '';
@@ -65,23 +92,7 @@
                         text-decoration: none;
                     }
                     &[aria-expanded='true'] {
-                        width: 100%;
-                        color: $color-primary;
-                        background: #eaeaea8c;
-                    
-                        &::after {
-                            content: '';
-                            display: block;
-                            position: absolute;
-                            height: $layout-docs-padding-top;
-                            width: 100%;
-                            left: 0;
-                            border-left: 4px solid $color-primary;
-                        }
-                        &::before {
-                            @extend .arrow;
-                            transform: rotate(180deg) translateX($arrow-x-offset);
-                        }
+                        @include active-menu-element;
                     }
                     &[aria-expanded='false'] {
                         &::before {
