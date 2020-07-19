@@ -449,4 +449,10 @@ ALGOLIA = {
 HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}
 ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'SectionWithImageBackgroundPlugin',
+    'TocPlugin',
+    'NavBarPlugin',
+    'VerticalSpacerPlugin',
+    'Bootstrap4HidePlugin',
+    'MailchimpPlugin',
 ]
+ALDRYN_SEARCH_INDEX_TEXT_LIMIT = 10_000
