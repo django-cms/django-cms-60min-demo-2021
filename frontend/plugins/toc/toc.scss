@@ -73,3 +73,6 @@ $fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $layout-docs-paddi
         top: $fixed-pos-top-css-offset-with-toolbar + $navbar-height-fixed;
     }
 }
+.djangocms-toc {
+    top: $navbar-height-fixed !important;
+}
