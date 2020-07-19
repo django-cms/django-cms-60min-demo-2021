@@ -1,2 +1,2 @@
 require('./toc.scss');
-require('./tox.js');
+require('./toc.ts');
