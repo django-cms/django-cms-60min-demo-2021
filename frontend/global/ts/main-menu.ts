@@ -28,7 +28,7 @@ function activateCurrentMenuNode(selector: string) {
             // activate expand mode
             const selectedParentParent = selectElemParent.parentElement as HTMLElement;
             const selectedContainerAElem = selectedParentParent.querySelector('a') as HTMLElement;
-            selectedContainerAElem.setAttribute('aria-expanded', String(true));
+            // selectedContainerAElem.setAttribute('aria-expanded', String(true));
             selectedContainerAElem.classList.remove('mm-collapsed');
         }
     }
