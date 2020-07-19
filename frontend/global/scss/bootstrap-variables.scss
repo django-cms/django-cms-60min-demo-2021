@@ -6,20 +6,23 @@
 @import '~bootstrap/scss/functions';
 
 
-$header-color: #5d5d5d;
 $layout-docs-padding-top: 36px;
 $navbar-height-fixed: 53px;
+
+$body-color: rgb(2, 8, 20);
+$header-color: $body-color;
 
 
 $grid-columns: 24;
 
-$color-primary: rgb(12, 134, 155);
+$color-primary: rgb(14, 163, 189);
 $danger: #d44539;
 $primary: $color-primary;
 $theme-colors: (
     'primary': $color-primary,
 );
 
+$color-gray-100: rgb(178, 190, 205);
 $color-gray-300: #e4e4e4;
 $color-gray-600: #616161;
 $gray-300: $color-gray-300;

@@ -2,8 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-$header-color: #5d5d5d;
-
 body {
   font-family: 'Roboto', sans-serif !important;
 }
@@ -44,5 +42,7 @@ h5, h6 {
     }
     .content-wrapper {
         padding-left: $grid-gutter-width;
+        padding-bottom: $grid-gutter-width;
+        padding-right: $grid-gutter-width/2;
     }
 }

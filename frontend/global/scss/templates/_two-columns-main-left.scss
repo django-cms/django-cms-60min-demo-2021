@@ -2,11 +2,11 @@
 
 
 .main-column {
-    margin-bottom: 25px;
+    margin-bottom: $grid-gutter-width/2;
 }
 
 .aside-right {
-    padding-left: 20px;
+    padding-left: $grid-gutter-width/2;
     
     @include media-breakpoint-down(md) {
         .djangocms-toc {

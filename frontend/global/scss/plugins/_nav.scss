@@ -17,7 +17,6 @@
     .navbar-brand {
         align-items: center;
         font-size: 30px;
-        color: #4d4d4d;
         transition: color 0.2s;
 
         svg {
@@ -86,6 +85,7 @@
         background: white;
         $padding: $grid-gutter-width / 2;
         padding: $padding/2 $padding;
+        box-shadow: rgba(2, 8, 20, 0.06) 0 1px 3px, rgba(2, 8, 20, 0.04) 0 1px 2px;
         
         .container-fluid {
             padding: 0;
@@ -122,6 +122,12 @@
 .search-form {
     margin-left: 20px;
     position: relative;
+    
+    input {
+        &::placeholder {
+            color: $color-gray-100;
+        }
+    }
 
     .search-results {
         position: absolute;

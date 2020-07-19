@@ -50,7 +50,7 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
     .menu-container {
         padding: 0;
         height: 100%;
-        background: #fafafa;
+        overflow-y: scroll;
         
         .metismenu {
             padding-top: $layout-docs-padding-top - $menu-gutter;
