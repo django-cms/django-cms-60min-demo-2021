@@ -1,10 +1,14 @@
 2020.07
 -------------------------------------------------------------------------------
 
-- added a new link plugin that allows to select the link type - eg blog article, cms page, external url, etc
+- navbar
+    - it's global, ie changes to navabr on one page are applied to all pages
+    - it's possible to compose a custom menu in the navbar
+- added a new link plugin that allows to select create a link of any type - eg blog article, cms page, external url, etc
 - added ability to use html links and iframe to the CMS text editor
+- added deployment safeguards - all pages must be usable in order for the deployment to proceed, otherwise the deployment rolls back back automatically
 - added better styles compatibility with outdated browsers as safari, ie11, etc
-- cms dynamic forms:
+- cms dynamic forms
     - fixed the email variables representation and validation
     - fixed django success message that was shown on an unrelated page, seemingly on random
     - fixed the form submission success message that could have been invisible for the user, now the page scrolls to it after the form submission request
