@@ -32,17 +32,18 @@
                 {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
 
                 {% if instance.is_enable_search_bar %}
-                    <form id="search-form" class="search-form" action="" autocomplete="off">
-                        <input id="search-input" class="form-control" name="q" type="search" placeholder="Search">
-                        <div class="search-results" data-is-visible="false">
-                            <div id="search-suggestions">
-                                
-                            </div>
-                            <div id="search-results-count-block">
-                                
-                            </div>
-                        </div>
-                    </form>
+                    <div class="vue-search-component-container"
+                         algolia-api-key='{{ settings.ALGOLIA.API_KEY }}'
+                         algolia-application-id='{{ settings.ALGOLIA.APPLICATION_ID }}'
+                         algolia-index='cms_pages'
+                    >
+                        <div class="vue-search-component"></div>
+                    </div>
+                    {% if settings.DIVIO_ENV.value == 'local' %}
+                        <script data-is-reload-on-page-edit defer src="{{ settings.WEBPACK_DEV_URL }}/component_search.bundle.js"></script>
+                    {% else %}
+                        <script data-is-reload-on-page-edit defer src="{% static 'dist/component_search.js' %}"></script>
+                    {% endif %}
                 {% endif %}
             </ul>
         </div>

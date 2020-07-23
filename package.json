@@ -28,6 +28,11 @@
         "ts-loader": "^8.0.0",
         "typescript": "^3.0.0",
 
+        "vue": "^2.6.11",
+            "vue-loader": "^15.9.2",
+            "vue-template-compiler": "^2.6.11",
+            "vue-class-component": "^7.2.3",
+            "vue-property-decorator": "^9.0.0",
 
         "//": "optional packages",
 
@@ -45,9 +50,10 @@
         
         "tocbot": "^4.11.1",
         "metismenujs": "^1.2.0",
-        "algoliasearch": "^4.2.0",
-            "instantsearch.js": "^4.4.1",
-            "@types/algoliasearch": "^3.34.10"
+        "algoliasearch": "^4.3.1",
+            "instantsearch.js": "^4.7.0",
+            "vue-instantsearch": "^3.1.0",
+            "vue-server-renderer": "^2.6.11"
     },
     "scripts": {
         "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",

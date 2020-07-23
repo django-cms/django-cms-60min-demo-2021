@@ -115,44 +115,88 @@
         }
     }
 }
-.navbar-fixed {
-    margin-top: $navbar-height-fixed;
+.cms-toolbar-expanded .fixed-top {
+    margin-top: $cms-toolbar-height;
 }
 
-.search-form {
-    margin-left: 20px;
-    position: relative;
-    
-    input {
-        &::placeholder {
-            color: $color-gray-100;
-        }
+.search-component {
+    $z-index: 100;
+    $padding: 20px;
+
+    .ais-InstantSearch {
+        z-index: $z-index;
+        position: relative;
     }
+    .ais-SearchBox {
 
-    .search-results {
-        position: absolute;
-        background: white;
-        width: 500px;
-        height: 80vh;
-        right: 0;
-        padding: 20px 25px;
-        border: 1px solid #cfcfcf;
-        overflow-y: scroll;
-        overflow-wrap: break-word;
+        .ais-SearchBox-input {
+            display: flex;
+            width: 250px;
+            font-size: 0.9rem;
+            height: $input-height;
+            padding: $input-padding-y $input-padding-x;
+            border: $input-border-width solid $input-border-color;
+            background-color: $input-bg;
+            color: $input-color;
+            @include border-radius($input-border-radius, 0);
+            @include form-control-focus($ignore-warning: true);
+            @include box-shadow($input-box-shadow);
+            @include transition($input-transition);
 
-        &[data-is-visible=false] {
+            &::placeholder {
+                color: $input-placeholder-color;
+                // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+                opacity: 1;
+            }
+        }
+        .ais-SearchBox-submit, .ais-SearchBox-reset {
             display: none;
         }
-        .search-res-title {
-            font-size: 1.1rem;
-        }
-        .search-res-description {
-            color: initial;
-        }
+    }
+    .search-popup {
+        position: absolute;
+        right: 0;
+        top: 45px;
+        width: 500px;
+        max-height: 80vh;
+        overflow-y: scroll;
+        overflow-wrap: break-word;
+        padding: $padding 25px;
+        z-index: $z-index;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 
-        #search-results-count-block {
-            color: gray;
+        .ais-Hits-list {
+            padding-left: 0;
+            list-style: none;
+            .ais-Hits-item {
+                &:not(:first-of-type) {
+                    margin-top: 13px;
+                }
+                .search-hit-link {
+                    display: block;
+                    font-size: 1rem;
+                }
+            }
+        }
+        .asi-Pagination-container {
+            display: flex;
+            flex-direction: row;
+            margin-top: $padding;
+            .ais-Pagination-item, .asi-Pagination-item-edge {
+                display: flex;
+                padding: 0 8px;
+            }
         }
     }
-
+    .search-popup-background {
+        z-index: $z-index - 10;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+    }
 }

@@ -3,6 +3,7 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
 const isDevelopmentMode = process.env.NODE_ENV !== 'production';
@@ -13,7 +14,8 @@ const config = {
     entry: {
         global: './frontend/global/index.js',
         vendor: './frontend/vendor/index.js',
-        plugin_toc: './frontend/plugins/toc/index.js',
+        component_toc: './frontend/components/toc/index.js',
+        component_search: './frontend/components/search/index.js',
     },
     output: {
         filename: '[name].js',
@@ -98,6 +100,10 @@ const config = {
                 test: /\.(ttf|eot)(\?[\s\S]+)?$/,
                 loader: 'file-loader',
             },
+            {
+                test: /\.vue$/,
+                use: [{loader: 'vue-loader'}]
+            },
         ],
     },
     resolve: {
@@ -106,6 +112,9 @@ const config = {
             path.resolve('frontend'),
             'node_modules'
         ],
+        alias: {
+            vue: process.env.NODE_ENV === 'production' ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js',
+        }
     },
     devServer: {
         contentBase: path.resolve(__dirname, `frontend`),
@@ -116,6 +125,7 @@ const config = {
         inline: true,
     },
     plugins: [
+        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
     optimization: {

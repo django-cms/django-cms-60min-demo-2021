@@ -7,10 +7,10 @@
 
 {% addtoblock 'js' %}
     {% if settings.DIVIO_ENV.value == 'local' %}
-        <script defer src="{{ settings.WEBPACK_DEV_URL }}/plugin_toc.bundle.js" data-is-reload-on-page-edit="true"></script>
-        <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/plugin_toc.css">
+        <script defer src="{{ settings.WEBPACK_DEV_URL }}/component_toc.bundle.js" data-is-reload-on-page-edit="true"></script>
+        <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/component_toc.css">
     {% else %}
-        <script defer src="{% static 'dist/plugin_toc.js' %}" data-is-reload-on-page-edit="true"></script>
-        <link rel="stylesheet" href="{% static 'dist/plugin_toc.css' %}">
+        <script defer src="{% static 'dist/component_toc.js' %}" data-is-reload-on-page-edit="true"></script>
+        <link rel="stylesheet" href="{% static 'dist/component_toc.css' %}">
     {% endif %}
 {% endaddtoblock %}

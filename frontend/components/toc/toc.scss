@@ -1,9 +1,7 @@
-@import '~tocbot/src/scss/tocbot-core';
-@import '~tocbot/src/scss/tocbot-default-theme';
+@import 'node_modules/tocbot/src/scss/tocbot-core';
+@import 'node_modules/tocbot/src/scss/tocbot-default-theme';
 @import 'frontend/global/scss/bootstrap-variables';
 
-
-$cms-toolbar-height: 46px;
 
 // must correspond to fixedPosTopCssOffset in main.ts
 $fixed-pos-top-css-offset: 10px;

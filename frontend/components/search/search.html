@@ -1,0 +1,38 @@
+<div class="search-component">
+    <ais-instant-search
+        :search-client="searchClient"
+        :index-name="algoliaIndex"
+    >
+        <ais-configure :hits-per-page.camel="20"/>
+
+        <ais-search-box v-model="searchQuery" v-on:input="isSearchPopupVisible = true"/>
+
+        <div class="search-popup" v-if="isSearchPopupVisible">
+            <ais-state-results v-bind:hitsPerPage="10">
+                <template slot-scope="{ state: { query }, results: { hits } }">
+                    <div v-if="query.length > 0" class="search-hits">
+                        <ais-hits v-if="hits.length > 0">
+                            <template slot="item" slot-scope="{ item }">
+                                <a v-bind:href="item.url" class="search-hit-link">
+                                    <ais-highlight :hit="item" attribute="title"/>
+                                </a>
+                                <ais-snippet attribute="search_index_description" :hit="item" />
+                            </template>
+                        </ais-hits>
+                        <div v-else class="ais-Hits-list ais-Hits-list-empty">
+                            No results have been found for {{ searchQuery }}.
+                        </div>
+                    </div>
+                    <div v-else></div>
+                </template>
+            </ais-state-results>
+
+            <ea-ais-pagination v-bind:searchQuery="searchQuery"/>
+        </div>
+    </ais-instant-search>
+    
+    <div class="search-popup-background"
+         v-on:click="isSearchPopupVisible = false"
+         v-if="isSearchPopupVisible"
+    ></div>
+</div>
