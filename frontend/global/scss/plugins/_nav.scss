@@ -1,6 +1,8 @@
 @import 'frontend/global/scss/bootstrap-variables';
 
-
+body.navbar-fixed {
+    margin-top: $navbar-height-fixed;
+}
 .navbar {
     border-bottom: 1px solid #ececec;
     padding: 0;
@@ -114,9 +116,6 @@
             }
         }
     }
-}
-.cms-toolbar-expanded .fixed-top {
-    margin-top: $cms-toolbar-height;
 }
 
 .search-component {
