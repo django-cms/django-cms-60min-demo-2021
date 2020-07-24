@@ -400,14 +400,6 @@ CMS_PLACEHOLDER_CONF = {
             'ReCaptchaFieldPlugin',
         ]
     },
-    'header': {
-        'default_plugins': [
-            {
-                'plugin_type': 'NavBarPlugin',
-                'values': {},
-            }
-        ],
-    },
 }
 
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
