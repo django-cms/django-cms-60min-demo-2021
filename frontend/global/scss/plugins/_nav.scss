@@ -52,15 +52,17 @@ body.navbar-fixed {
         }
     }
     .navbar-collapse {
-        .dropdown-toggle {
-            &::after {
-                vertical-align: middle;
-            }
-            &:active {
-                pointer-events: none;
+        .navbar-nav {
+            margin-top: 0;
+            .dropdown-toggle {
+                &::after {
+                    vertical-align: middle;
+                }
+                &:active {
+                    pointer-events: none;
+                }
             }
         }
-        
         @include media-breakpoint-up(lg) {
             justify-content: flex-end;
             
@@ -88,7 +90,7 @@ body.navbar-fixed {
         $padding: $grid-gutter-width / 2;
         padding: $padding/2 $padding;
         box-shadow: rgba(2, 8, 20, 0.06) 0 1px 3px, rgba(2, 8, 20, 0.04) 0 1px 2px;
-        
+
         .container-fluid {
             padding: 0;
             $font-size: 0.9rem;

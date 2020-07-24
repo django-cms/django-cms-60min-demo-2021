@@ -12,11 +12,11 @@
 
 
 $layout-docs-padding-top: 36px;
-$navbar-height-fixed: 53px;
+$navbar-height-fixed: 55px;
 $cms-toolbar-height: 46px;
 
-$body-color: rgb(2, 8, 20);
-$header-color: $body-color;
+$body-color: #2c3e50;
+$header-color: #2c3e50;
 
 
 $grid-columns: 24;
@@ -54,6 +54,11 @@ $input-btn-focus-color: rgba(desaturate($color-primary, 20%), .25);
 
 $link-color: $color-primary;
 $link-hover-color: $color-active;
+
+
+@function rem($size) {
+    @return $size / 16px * 1rem;
+}
 
 
 // override by placing it at the end
