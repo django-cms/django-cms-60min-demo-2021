@@ -9,7 +9,7 @@ aldryn-apphooks-config==0.6.0
 aldryn-boilerplates==0.8.0  # via aldryn-common
 aldryn-client==2.3.5
 aldryn-common==1.0.5      # via aldryn-search
-https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.3.1/b8a3ddbe-5a74-4b29-b101-51e05b04d14c/aldryn-django-cms-3.7.3.1.tar.gz#egg=aldryn-django-cms==3.7.3.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.4.1/290eec9d-c49f-435e-8003-a476f81b7acf/aldryn-django-cms-3.7.4.1.tar.gz#egg=aldryn-django-cms==3.7.4.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.14.1/d9db6707-c6e3-432f-aaa9-3d5c8c12f44f/aldryn-django-2.2.14.1.tar.gz#egg=aldryn-django==2.2.14.1
 aldryn-forms-recaptcha-plugin==1.0.0.2
 https://github.com/divio/aldryn-forms/archive/00152e456b6962eb0bd60a980777216feb98cbe3.zip#egg=aldryn-forms==6.0.0-alpha
@@ -45,7 +45,7 @@ django-appconf==1.0.4     # via aldryn-boilerplates, aldryn-search, aldryn-sites
 django-appdata==0.3.0     # via aldryn-apphooks-config
 django-cache-url==3.1.2
 django-classy-tags==1.0.0  # via django-cms, django-sekizai, django-standard-form
-django-cms==3.7.3         # via aldryn-apphooks-config, aldryn-search, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-socialshare
+django-cms==3.7.4         # via aldryn-apphooks-config, aldryn-search, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-socialshare
 django-compat==1.0.15     # via django-hijack, django-hijack-admin
 django-compressor==2.4
 django-countries==6.1.2
@@ -135,7 +135,7 @@ oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.1              # via tablib
 openpyxl==3.0.4           # via tablib
 orderedmultidict==1.0.1   # via furl
-parso==0.7.0              # via jedi
+parso==0.7.1              # via jedi
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 pillow==7.2.0             # via django-simple-captcha, easy-thumbnails
