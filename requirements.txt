@@ -129,6 +129,7 @@ ipython==7.16.1
 itsdangerous==1.1.0       # via django-simple-sso, webservices
 jdcal==1.4.1              # via openpyxl
 jedi==0.17.2              # via ipython
+https://github.com/what-digital/linkit/archive/86a9b203c63a72929e3a2f6e707df429eb0cf679.zip#egg=linkit==0.1.7
 lxml==4.5.2               # via aldryn-search, djangocms-blog, premailer
 markuppy==1.14            # via tablib
 oauthlib==3.1.0           # via requests-oauthlib
