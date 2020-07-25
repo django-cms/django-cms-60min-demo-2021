@@ -7,6 +7,7 @@ import sentry_sdk
 from dotenv import find_dotenv
 from dotenv import load_dotenv
 from env_settings import env
+from link_all.dataclasses import LinkAllModel
 
 
 load_dotenv(find_dotenv('.env-local'))
@@ -41,11 +42,11 @@ aldryn_addons.settings.load(locals())
 INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
 MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
-SITE_ID: int = locals()['SITE_ID']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
 MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
+SITE_ID: int = locals()['SITE_ID']
 
 
 DATE_FORMAT = 'F j, Y'
@@ -141,7 +142,7 @@ INSTALLED_APPS.extend([
         'emailit',
     'djangocms_redirect',
     'light_gallery',
-    'linkit',
+    'link_all',
 
     # project
 
@@ -155,7 +156,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.person_list',
     'backend.plugins.nav_bar',
     'backend.plugins.card',
-    'backend.plugins.link',
 ])
 
 MIDDLEWARE.extend([
@@ -398,7 +398,7 @@ CMS_PLACEHOLDER_CONF = {
             'CaptchaField',
 
             'ReCaptchaFieldPlugin',
-        ]
+        ],
     },
 }
 
@@ -431,8 +431,6 @@ META_SITE_PROTOCOL = HTTP_PROTOCOL
 META_USE_SITES = True
 
 
-HAYSTACK_ENABLE = False
-HAYSTACK_DISABLE = True
 ALGOLIA = {
     'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID', ''),
     'API_KEY': env.get('ALGOLIA_API_KEY', ''),
@@ -448,3 +446,9 @@ ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'MailchimpPlugin',
 ]
 ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 8_000
+
+
+LINK_ALL_MODELS_ADDITIONAL = [
+    LinkAllModel(app_label='djangocms_blog', model_name='Post'),
+    LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
+]
