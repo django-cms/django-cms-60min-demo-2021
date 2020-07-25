@@ -21,18 +21,25 @@ $header-color: #2c3e50;
 
 $grid-columns: 24;
 
-$color-primary: rgb(14, 163, 189);
+$color-primary: #008ED6;
+$color-secondary: #28a745;
 $danger: #d44539;
 $primary: $color-primary;
 $theme-colors: (
     'primary': $color-primary,
+    'secondary': $color-secondary,
 );
 
-$color-gray-100: rgb(178, 190, 205);
-$color-gray-300: #e4e4e4;
-$color-gray-600: #616161;
-$gray-300: $color-gray-300;
-$gray-600: $color-gray-600;
+
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
 
 
 $enable-rounded: false;

@@ -157,6 +157,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.nav_bar',
         'linkit',
     'backend.plugins.card',
+    'backend.plugins.footer',
 ])
 
 MIDDLEWARE.extend([

@@ -23,7 +23,9 @@ class SectionWithImageBackgroundPlugin(CMSPluginBase):
                 'name',
                 'background_image',
                 'height',
-                'rich_text_editor_background',
+                'background_effect',
+                'background_effect_color',
+                'background_effect_opacity',
             ]
         }),
     )
@@ -31,5 +33,8 @@ class SectionWithImageBackgroundPlugin(CMSPluginBase):
     @classmethod
     def get_child_ckeditor_body_css_class(cls, plugin: CMSPlugin) -> str:
         plugin_model = get_plugin_model(plugin.plugin_type)
-        plugin_instance: SectionWithImageBackgroundPluginModel = plugin_model.objects.get(pk=plugin.pk)
-        return f'background-{plugin_instance.rich_text_editor_background.value}'
+        instance: SectionWithImageBackgroundPluginModel = plugin_model.objects.get(pk=plugin.pk)
+        return (
+            f'section-with-image-background-plugin--effect--{instance.background_effect.value} '
+            f'section-with-image-background-plugin--effect-color--{instance.background_effect_color.value}'
+        )

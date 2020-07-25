@@ -1,9 +1,79 @@
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.pseudo-background {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+
+@mixin gradient($color) {
+    background: linear-gradient(145deg, rgba($color, .8) 0%, rgba(0,0,0,0) 80%);
+}
+
+
 .section-with-image-background-plugin {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
     width: 100%;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: 50% 50% !important;
+    z-index: 0;
+
+    &--effect--color {
+        &:before {
+            @extend .pseudo-background;
+            background-color: rgba($color-primary, .5);
+            z-index: -2;
+        }
+    }
+    &--effect--gradient {
+        &:before {
+            @extend .pseudo-background;
+            @include gradient($color-primary);
+            z-index: -1;
+        }
+    }
+    &--effect--color_with_gradient {
+        &:before {
+            @extend .pseudo-background;
+            background-color: rgba($color-primary, .5);
+            z-index: -2;
+        }
+        &:after {
+            @extend .pseudo-background;
+            @include gradient($color-primary);
+            z-index: -1;
+        }
+    }
+    &--effect-color--primary {
+        &:before {
+            background-color: rgba($color-primary, .5);
+        }
+        &:after {
+            @include gradient($color-primary);
+        }
+    }
+    &--effect-color--secondary {
+        &:before {
+            background-color: rgba($color-secondary, .5);
+        }
+        &:after {
+            @include gradient($color-secondary);
+        }
+    }
+
+    * {
+        z-index: 3;
+    }
 }

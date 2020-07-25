@@ -1,0 +1,17 @@
+.footer-plugin {
+    display: flex;
+    position: relative;
+    background-color: $body-color;
+    color: white;
+    
+    .container {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+body.cke_editable.footer-plugin {
+    @extend .footer-plugin;
+    display: block;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

@@ -1,11 +1,29 @@
-{% load cms_tags menu_tags thumbnail %}
+{% load cms_tags menu_tags thumbnail sekizai_tags %}
 
 
 <section
-    class="section-with-image-background-plugin"
-    style="background: url('{% thumbnail instance.background_image instance.get_size crop=True subject_location=instance.background_image.subject_location %}'); height: {{ instance.height }}px;"
+    data-background-effect-opacity="1"
+    class="
+        section-with-image-background-plugin
+        section-with-image-background-plugin--effect--{{ instance.background_effect.value }}
+        section-with-image-background-plugin--effect-color--{{ instance.background_effect_color.value }}
+    "
+    style="
+        background: url('{% thumbnail instance.background_image instance.get_size crop=True subject_location=instance.background_image.subject_location %}'); height: {{ instance.height }}px;
+    "
 >
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}
     {% endfor %}
+    
+    {% addtoblock 'css' %}
+        <style>
+            .section-with-image-background-plugin::before {
+                opacity: {{ instance.background_effect_opacity }};
+            }
+            .section-with-image-background-plugin::after {
+                opacity: {{ instance.background_effect_opacity }};
+            }
+        </style>
+    {% endaddtoblock %}
 </section>

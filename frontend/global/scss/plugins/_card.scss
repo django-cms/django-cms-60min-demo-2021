@@ -11,6 +11,7 @@
 }
 
 .card-plugin {
+    $padding: 20px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -31,7 +32,8 @@
         height: 100%;
         
         .card-title {
-            padding: 0 20px;
+            padding: 0 $padding;
+            margin-top: $padding;
             margin-bottom: 0;
         }
         .card-title-link {
@@ -44,7 +46,11 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
-            padding: 20px;
+            padding: $padding;
+            
+            *:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 }

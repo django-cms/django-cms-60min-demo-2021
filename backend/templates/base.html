@@ -24,13 +24,10 @@
         <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
         {% render_block 'css' %}
 
-
         <script>
             window.DJANGO = {
                 env: `{{ settings.DIVIO_ENV.value }}`,
                 isDebugMode: {{ settings.DEBUG|lower }},
-                algoliaApplicationId: `{{ settings.ALGOLIA.APPLICATION_ID }}`,
-                algoliaApiKey: `{{ settings.ALGOLIA.API_KEY }}`,
             };
         </script>
 
@@ -81,13 +78,7 @@
 
         {% block content_after %}{% endblock %}
 
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    {% static_placeholder 'footer' %}
-                </div>
-            </div>
-        </footer>
+        {% static_placeholder 'footer' %}
 
         {% render_block 'js' %}
 
