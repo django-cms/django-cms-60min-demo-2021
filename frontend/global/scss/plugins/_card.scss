@@ -17,7 +17,7 @@
     height: 100%;
     background: white;
     box-shadow: 0 1px 5px #0000001f;
-    border-bottom: 2px solid map-get($theme-colors, 'primary');
+    border-bottom: 4px solid map-get($theme-colors, 'primary');
     
     .card-image {
         display: flex;
