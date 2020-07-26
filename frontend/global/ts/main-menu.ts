@@ -3,10 +3,18 @@ require('metismenujs/dist/metismenujs.min.css');
 
 
 export function initMainMenu() {
-    const isMenuPresent = document.getElementById('menu') !== null;
+    const isMenuPresent = document.querySelectorAll('.metismenu-root');
     if (isMenuPresent) {
-        new MetisMenu('#menu', {toggle: false});
+        const navMenuSelector = '.navbar-nav .metismenu-root';
+        if (document.querySelector(navMenuSelector)) {
+            new MetisMenu(navMenuSelector, {toggle: false});
+        }
+        const leftMenuSelector = '.one-column-with-menu-and-sidebar .metismenu-root';
+        if ($(leftMenuSelector)) {
+            new MetisMenu(leftMenuSelector, {toggle: false});
+        }
         activeCurrentMenuNodes();
+        fixLeftMenuOnScroll();
     }
 }
 
@@ -14,6 +22,28 @@ export function initMainMenu() {
 function activeCurrentMenuNodes() {
     activateCurrentMenuNode('.selected');
     activateCurrentMenuNode('.ancestor');
+}
+
+
+function fixLeftMenuOnScroll() {
+    const toolbarHeight = $('.cms-toolbar').height() || 0 as number;
+    const navbarHeight = $('header nav').outerHeight() as number;
+    const floatingTopOffset = toolbarHeight + navbarHeight;
+    const menuLeft = $('.one-column-with-menu-and-sidebar .menu-container');
+    const elementPosition = menuLeft.offset();
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > elementPosition.top - floatingTopOffset) {
+            menuLeft.css('position', 'fixed').css('top', floatingTopOffset);
+        } else {
+            menuLeft.css('position', 'static');
+        }
+    });
+    const menuContainerWidth = menuLeft.outerWidth() as number;
+    menuLeft.css('width', `${menuContainerWidth}px`);
+    $(window).resize(function() {
+        const menuContainerWidth = $('.one-column-with-menu-and-sidebar .menu-container').outerWidth() as number;
+        menuLeft.css('width', `${menuContainerWidth}px`);
+    })
 }
 
 

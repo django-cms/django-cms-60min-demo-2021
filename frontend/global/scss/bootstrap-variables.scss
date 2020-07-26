@@ -12,7 +12,7 @@
 
 
 $layout-docs-padding-top: 36px;
-$navbar-height-fixed: 55px;
+$navbar-height-fixed: 52px;
 $cms-toolbar-height: 46px;
 
 $body-color: #2c3e50;
@@ -20,6 +20,14 @@ $header-color: #2c3e50;
 
 
 $grid-columns: 24;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1540px,
+);
 
 $color-primary: #008ED6;
 $color-secondary: #28a745;
@@ -32,7 +40,7 @@ $theme-colors: (
 
 
 $gray-100: #f8f9fa;
-$gray-200: #e9ecef;
+$gray-200: #f4f6f7;
 $gray-300: #dee2e6;
 $gray-400: #ced4da;
 $gray-500: #adb5bd;
@@ -61,6 +69,10 @@ $input-btn-focus-color: rgba(desaturate($color-primary, 20%), .25);
 
 $link-color: $color-primary;
 $link-hover-color: $color-active;
+
+
+$grid-gutter-width: 30px;
+$grid-gutter-width-half: $grid-gutter-width/2; 
 
 
 @function rem($size) {

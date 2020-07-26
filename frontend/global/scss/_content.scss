@@ -10,11 +10,6 @@ body {
     h1 {
         margin-top: $grid-gutter-width;
     }
-    .content-wrapper {
-        padding-left: $grid-gutter-width;
-        padding-bottom: $grid-gutter-width;
-        padding-right: $grid-gutter-width/2;
-    }
 }
 
 h1, h2, h3, h4, h5, h6 {

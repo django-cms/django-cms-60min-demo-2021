@@ -9,22 +9,28 @@
     
     {% include 'includes/messages.html' with messages=messages %}
 
-    <main class="container-custom container-fluid">
-        <nav class="col-6 menu-column">
-            <div class="menu-container">
-                <ul id="menu">
-                    {% show_menu 0 10 100 100 'includes/menu.html' %}
-                </ul>
-            </div>
-        </nav>
-    
-        <article class="content-wrapper col-lg-12 col-md-24">
-            {% placeholder 'content' %}
-        </article>
-    
-        <aside class="col-6 aside-right">
-            {% placeholder 'right column' %}
-        </aside>
+    <main class="one-column-with-menu-and-sidebar container-custom container-fluid">
+        <div class="row">
+            <nav class="d-none d-lg-flex col-lg-8 col-xl-6 col-xxl-6 menu-column">
+                <div class="menu-container">
+                    <ul class="metismenu-root">
+                        {% show_menu 0 10 100 100 'includes/menu.html' %}
+                    </ul>
+                </div>
+            </nav>
+        
+            <article class="col-md-24 col-lg-16 col-xl-18 col-xxl-12 content-wrapper">
+                {% placeholder 'content' %}
+            </article>
+        
+            <div class="d-md-none d-lg-flex d-xxl-none col-lg-6 spacer"></div>
+
+            <aside class="col-md-24 col-lg-16 col-xl-18 col-xxl-6 aside-right">
+                <div class="aside-right-fixed">
+                    {% placeholder 'right column' %}
+                </div>
+            </aside>
+        </div>
     </main>
 
 {% endblock %}

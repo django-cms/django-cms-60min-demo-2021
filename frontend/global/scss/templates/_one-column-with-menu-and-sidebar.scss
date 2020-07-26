@@ -1,0 +1,31 @@
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.one-column-with-menu-and-sidebar {
+    &.container-custom {
+        .row {
+            justify-content: space-between;
+        }
+        @include media-breakpoint-up(xl) {
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 1rem;
+            @include media-breakpoint-down(xxl) {
+                padding-right: $grid-gutter-width;
+            }
+            @include media-breakpoint-down(md) {
+                padding-right: $grid-gutter-width-half;
+            }
+        }
+    }
+
+    .aside-right-fixed {
+        position: fixed;
+        
+        @include media-breakpoint-down(xxl) {
+            position: relative;
+        }
+    }
+}

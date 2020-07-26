@@ -2,7 +2,7 @@
 
 {% get_solo 'site_config.SiteConfig' as site_config %}
 
-<nav class="navbar navbar-expand-lg navbar-light {% if instance.is_full_width %}fixed-top{% endif %}">
+<nav class="navbar navbar-expand-xl navbar-light {% if instance.is_full_width %}fixed-top{% endif %}">
     <div class="container{% if instance.is_full_width %}-fluid {% endif %}">
         <a class="navbar-brand d-flex" href="/">
             {% include 'nav_bar/includes/icon.svg' %}
@@ -20,19 +20,31 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                {% if instance.is_use_default_menu %}
-                    {% show_menu 0 1 100 100 'nav_bar/includes/menu/menu.html' %}
-                {% else %}
-                    {% for plugin in instance.child_plugin_instances %}
-                        {% render_plugin plugin %}
-                    {% endfor %}
-                {% endif %}
             
+            {% if instance.is_use_multi_level_menu_on_mobile %}
+                <nav class="d-flex d-xl-none navbar-nav menu-column">
+                    <div class="menu-container">
+                        <ul class="metismenu-root">
+                            {% show_menu 0 10 100 100 'includes/menu.html' %}
+                        </ul>
+                    </div>
+                </nav>
+            {% endif %}
+
+            <ul class="navbar-nav">
+                <div class="d-lg-none d-xl-flex">
+                    {% if instance.is_use_default_menu %}
+                        {% show_menu 0 1 100 100 'nav_bar/includes/menu/menu.html' %}
+                    {% else %}
+                        {% for plugin in instance.child_plugin_instances %}
+                            {% render_plugin plugin %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
                 {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
 
                 {% if instance.is_enable_search_bar %}
-                    <div class="vue-search-component-container"
+                    <div class="d-none d-xl-flex vue-search-component-container"
                          algolia-api-key='{{ settings.ALGOLIA.API_KEY }}'
                          algolia-application-id='{{ settings.ALGOLIA.APPLICATION_ID }}'
                          algolia-index='cms_pages'

@@ -18,6 +18,11 @@ class NavBarPluginModel(CMSPlugin):
             "by adding child Menu plugins inside this Navigation bar plugin"
         ),
     )
+    is_use_multi_level_menu_on_mobile = models.BooleanField(
+        default=False,
+        verbose_name="Use multi-level menu on mobile",
+        help_text="The multi-level menu shows around 3-4 levels of children."
+    )
 
     def __str__(self):
         return ''

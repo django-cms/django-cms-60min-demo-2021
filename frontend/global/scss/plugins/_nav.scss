@@ -117,6 +117,23 @@ body.navbar-fixed {
                     font-size: $font-size;
                 }
             }
+            .navbar-collapse {
+
+                &.show, &.collapsing {
+                    .menu-column {
+                        .menu-container {
+                            position: fixed;
+                            margin-left: -15px;
+                            overflow-y: scroll;
+                            background: white;
+                            .metismenu {
+                                width: 100%;
+                                position: absolute;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

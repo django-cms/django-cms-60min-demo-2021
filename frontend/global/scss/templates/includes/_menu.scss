@@ -1,16 +1,6 @@
 @import 'frontend/global/scss/bootstrap-variables';
 
 
-.container-custom {
-    display: flex;
-    padding: 0;
-    justify-content: center;
-
-    .content-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-}
 
 $menu-gutter: ($grid-gutter-width / 2);
 $arrow-size: 10px;
@@ -19,13 +9,14 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
 @mixin active-menu-element($is-with-arrow: true) {
     width: 100%;
     color: $color-primary;
-    background: #eaeaea8c;
+    background: rgba(221, 225, 227, 0.64);
+    background: $gray-200;
 
     &::after {
         content: '';
         display: block;
         position: absolute;
-        height: $layout-docs-padding-top;
+        height: 100%;
         width: 100%;
         left: 0;
         border-left: 4px solid $color-primary;
@@ -38,21 +29,42 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
     }
 }
 
-
 .menu-column {
-    padding: 0;
     $text-padding: 7px;
-    
+    padding-left: 0;
+    position: relative;
+
     .selected a {
         @include active-menu-element($is-with-arrow: false);
     }
 
     .menu-container {
         padding: 0;
+        width: 100%;
         height: 100%;
         overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            background-color: $gray-200;
+        }
+
+        &::-webkit-scrollbar-track-piece {
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $gray-300;
+            &:hover {
+                background-color: $gray-400;
+            }
+        }
         
+        @include media-breakpoint-down(xxl) {
+            position: relative;
+        }
+
         .metismenu {
+            position: absolute;
+            width: 100%;
             padding-top: $layout-docs-padding-top - $menu-gutter;
 
             .mm-active {
@@ -77,8 +89,8 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
                     transform: translateX(-$arrow-x-offset);
                 }
                 a {
-                
                     display: flex;
+                    position: relative;
                     flex-direction: row;
                     justify-content: flex-start;
                     align-items: center;
@@ -86,7 +98,6 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
                     padding-left: $grid-gutter-width + $arrow-size;
                     color: inherit;
                     font-size: 0.95rem;
-                
                 
                     &:hover {
                         text-decoration: none;
