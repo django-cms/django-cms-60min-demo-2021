@@ -35,7 +35,7 @@ function fixLeftMenuOnScroll() {
         if ($(window).scrollTop() > elementPosition.top - floatingTopOffset) {
             menuLeft.css('position', 'fixed').css('top', floatingTopOffset);
         } else {
-            menuLeft.css('position', 'static');
+            menuLeft.css('position', 'relative');
         }
     });
     const menuContainerWidth = menuLeft.outerWidth() as number;
