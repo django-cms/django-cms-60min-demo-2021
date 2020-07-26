@@ -415,6 +415,21 @@ CKEDITOR_SETTINGS = {
         f'{WEBPACK_DEV_URL}/vendor.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}/global.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
     ],
+    'toolbar': 'CUSTOM',
+    'toolbar_CUSTOM': [
+        ['Undo', 'Redo'],
+        ['cmsplugins', '-', 'ShowBlocks', 'Iframe'],
+        ['Format', 'Styles', 'FontSize'],
+        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat', 'Scayt'],
+        ['Maximize', ''],
+        '/',
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
+        ['Blockquote', ],
+        ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+        ['Link', 'Unlink', 'Anchor'],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
+        ['Source']
+    ],
     'config': {
         'allowedContent': True, # allows html tags
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
