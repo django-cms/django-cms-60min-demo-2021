@@ -33,7 +33,7 @@
 
             <ul class="navbar-nav">
                 <div class="d-lg-none d-xl-flex">
-                    {% if instance.is_use_default_menu %}
+                    {% if instance.is_use_default_menu and not instance.is_use_multi_level_menu_on_mobile %}
                         {% show_menu 0 1 100 100 'nav_bar/includes/menu/menu.html' %}
                     {% else %}
                         {% for plugin in instance.child_plugin_instances %}
@@ -41,7 +41,9 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+                {% if not instance.is_use_multi_level_menu_on_mobile %}
                 {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
+                {% endif %}
 
                 {% if instance.is_enable_search_bar %}
                     <div class="d-none d-xl-flex vue-search-component-container"
