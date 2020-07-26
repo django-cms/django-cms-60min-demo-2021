@@ -1,3 +1,5 @@
+from typing import List
+
 from cms.models import CMSPlugin
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -15,6 +17,7 @@ class SectionWithImageBackgroundPlugin(CMSPluginBase):
     name = _("Section with image background")
     render_template = 'section_with_image_background/section_with_image_background.html'
     allow_children = True
+    css_class_name = 'section-with-image-background-plugin'
 
     fieldsets = (
         (None, {
@@ -34,7 +37,9 @@ class SectionWithImageBackgroundPlugin(CMSPluginBase):
     def get_child_ckeditor_body_css_class(cls, plugin: CMSPlugin) -> str:
         plugin_model = get_plugin_model(plugin.plugin_type)
         instance: SectionWithImageBackgroundPluginModel = plugin_model.objects.get(pk=plugin.pk)
-        return (
-            f'section-with-image-background-plugin--effect--{instance.background_effect.value} '
-            f'section-with-image-background-plugin--effect-color--{instance.background_effect_color.value}'
-        )
+        classes: List[str] = []
+        if instance.background_effect:
+            classes.append(f'{cls.css_class_name}--effect--{instance.background_effect.value}')
+            if instance.background_effect_color:
+                classes.append(f'{cls.css_class_name}--effect-color--{instance.background_effect_color.value}')
+        return ' '.join(classes)
