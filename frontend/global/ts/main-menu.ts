@@ -31,7 +31,7 @@ function fixLeftMenuOnScroll() {
     const floatingTopOffset = getFloatingTopOffset();
     const menuLeft = $('.one-column-with-menu-and-sidebar .menu-container');
     const elementPosition = menuLeft.offset();
-    $(window).scroll(function () {
+    $(window).on('scroll', function () {
         if ($(window).scrollTop() > elementPosition.top - floatingTopOffset) {
             menuLeft.css('position', 'fixed').css('top', floatingTopOffset);
         } else {
@@ -40,11 +40,13 @@ function fixLeftMenuOnScroll() {
         }
     });
     const menuContainerWidth = menuLeft.outerWidth() as number;
+    const menuContainer = $('.one-column-with-menu-and-sidebar .menu-column');
     menuLeft.css('width', `${menuContainerWidth}px`);
     $(window).resize(function() {
-        const menuContainerWidth = $('.one-column-with-menu-and-sidebar .menu-container').outerWidth() as number;
+        const gutterWidth = 30;
+        const menuContainerWidth = menuContainer.outerWidth() - gutterWidth/2 as number;
         menuLeft.css('width', `${menuContainerWidth}px`);
-    })
+    });
 }
 
 

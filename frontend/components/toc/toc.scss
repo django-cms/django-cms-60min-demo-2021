@@ -82,10 +82,12 @@ $fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $layout-docs-paddi
         top: 5px !important;
     }
     .djangocms-toc.is-position-fixed {
-        position: relative;
+        position: relative !important;
+        padding-right: $grid-gutter-width-half;
     }
     .djangocms-toc.is-position-fixed-with-toolbar {
         position: relative;
         padding-top: 5px;
+        padding-right: $grid-gutter-width-half;
     }
 }

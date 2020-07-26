@@ -21,11 +21,11 @@
         }
     }
 
-    .aside-right-fixed {
-        position: fixed;
-        
-        @include media-breakpoint-down(xxl) {
-            position: relative;
+    .aside-right {
+        .aside-right-fixed {
+            @include media-breakpoint-down(xxl) {
+                position: relative;
+            }
         }
     }
 }

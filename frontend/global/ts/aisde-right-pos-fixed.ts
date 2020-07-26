@@ -13,12 +13,22 @@ function fixAsideRightOnScroll() {
     const asideRightContainer = $('.aside-right');
     const asideRight = asideRightContainer.find('.aside-right-fixed')
     const asideRightContainerOffset = asideRightContainer.offset().top as number;
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > asideRightContainerOffset - floatingTopOffset) {
+    const layoutXXL = 1540;
+    $(window).on('scroll', function () {
+        const isOffsetReached = $(window).scrollTop() > asideRightContainerOffset - floatingTopOffset;
+        const isLayoutXXL = window.outerWidth > layoutXXL;
+        if (isOffsetReached && isLayoutXXL) {
             asideRight.css('position', 'fixed').css('top', floatingTopOffset);
         } else {
             asideRight.css('position', 'relative');
             asideRight.css('top', 0);
+        }
+    });
+    $(window).on('resize', function() {
+        if (window.outerWidth < layoutXXL) {
+            asideRight.css('display', 'none');
+        } else {
+            asideRight.css('display', 'inherit');
         }
     });
 }
