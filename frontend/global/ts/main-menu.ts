@@ -36,6 +36,7 @@ function fixLeftMenuOnScroll() {
             menuLeft.css('position', 'fixed').css('top', floatingTopOffset);
         } else {
             menuLeft.css('position', 'relative');
+            menuLeft.css('top', 0);
         }
     });
     const menuContainerWidth = menuLeft.outerWidth() as number;
