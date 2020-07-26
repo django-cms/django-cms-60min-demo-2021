@@ -1,3 +1,5 @@
+import {getFloatingTopOffset} from 'global/ts/utils/offset';
+
 const MetisMenu = require('metismenujs');
 require('metismenujs/dist/metismenujs.min.css');
 
@@ -26,9 +28,7 @@ function activeCurrentMenuNodes() {
 
 
 function fixLeftMenuOnScroll() {
-    const toolbarHeight = $('.cms-toolbar').height() || 0 as number;
-    const navbarHeight = $('header nav').outerHeight() as number;
-    const floatingTopOffset = toolbarHeight + navbarHeight;
+    const floatingTopOffset = getFloatingTopOffset();
     const menuLeft = $('.one-column-with-menu-and-sidebar .menu-container');
     const elementPosition = menuLeft.offset();
     $(window).scroll(function () {

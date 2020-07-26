@@ -1,15 +1,15 @@
+import {getFloatingTopOffset} from 'global/ts/utils/offset';
+
 export function initAsideRightPositionFixed() {
-    const isMenuPresent = document.querySelectorAll('.metismenu-root');
-    if (isMenuPresent) {
-        fixLeftMenuOnScroll();
+    const isAsideRightPresent = document.querySelectorAll('.one-column-with-menu-and-sidebar .aside-right');
+    if (isAsideRightPresent) {
+        fixAsideRightOnScroll();
     }
 }
 
 
-function fixLeftMenuOnScroll() {
-    const toolbarHeight = $('.cms-toolbar').height() || 0 as number;
-    const navbarHeight = $('header nav').outerHeight() as number;
-    const floatingTopOffset = toolbarHeight + navbarHeight;
+function fixAsideRightOnScroll() {
+    const floatingTopOffset = getFloatingTopOffset();
     const asideRightContainer = $('.aside-right');
     const asideRight = asideRightContainer.find('.aside-right-fixed')
     const asideRightContainerOffset = asideRightContainer.offset().top as number;
