@@ -13,7 +13,7 @@ function fixAsideRightOnScroll() {
     const asideRightContainer = $('.aside-right');
     const asideRight = asideRightContainer.find('.aside-right-fixed')
     const asideRightContainerOffset = asideRightContainer.offset().top as number;
-    const layoutXXL = 1540;
+    const layoutXXL = 1200;
     $(window).on('scroll', function () {
         const isOffsetReached = $(window).scrollTop() > asideRightContainerOffset - floatingTopOffset;
         const isLayoutXXL = window.outerWidth > layoutXXL;

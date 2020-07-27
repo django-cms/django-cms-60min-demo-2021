@@ -12,12 +12,6 @@
             display: flex;
             flex-direction: column;
             padding-bottom: 1rem;
-            @include media-breakpoint-down(xxl) {
-                padding-right: $grid-gutter-width;
-            }
-            @include media-breakpoint-down(md) {
-                padding-right: $grid-gutter-width-half;
-            }
         }
     }
 
