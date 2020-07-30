@@ -156,7 +156,7 @@ const config = {
 
 if (isDevelopmentMode) {
     config.mode = 'development';
-    config.devtool = 'eval-source-map';
+    config.devtool = 'source-map';
     // those are twice as slow, but work with scss
     // config.devtool = 'source-map';
     config.output.filename = '[name].bundle.js';

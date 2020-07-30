@@ -2,7 +2,7 @@
 
 {% get_solo 'site_config.SiteConfig' as site_config %}
 
-<nav class="navbar navbar-expand-xl navbar-light {% if instance.is_full_width %}fixed-top{% endif %}">
+<nav class="navbar navbar-expand-xl navbar-light {% if instance.is_full_width %}fixed-top{% else %}not-fixed-top{% endif %}">
     <div class="container{% if instance.is_full_width %}-fluid {% endif %}">
         <a class="navbar-brand d-flex" href="/">
             {% include 'nav_bar/includes/icon.svg' %}

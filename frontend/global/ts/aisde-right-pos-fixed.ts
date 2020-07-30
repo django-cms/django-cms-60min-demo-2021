@@ -1,7 +1,8 @@
 import {getFloatingTopOffset} from 'global/ts/utils/offset';
 
+
 export function initAsideRightPositionFixed() {
-    const isAsideRightPresent = document.querySelectorAll('.one-column-with-menu-and-sidebar .aside-right');
+    const isAsideRightPresent = document.querySelector('.aside-right');
     if (isAsideRightPresent) {
         fixAsideRightOnScroll();
     }
@@ -10,8 +11,9 @@ export function initAsideRightPositionFixed() {
 
 function fixAsideRightOnScroll() {
     const floatingTopOffset = getFloatingTopOffset();
+    console.log(floatingTopOffset)
     const asideRightContainer = $('.aside-right');
-    const asideRight = asideRightContainer.find('.aside-right-fixed')
+    const asideRight = asideRightContainer.find('.aside-right-fixed');
     const asideRightContainerOffset = asideRightContainer.offset().top as number;
     const layoutXXL = 1200;
     $(window).on('scroll', function () {

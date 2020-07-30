@@ -2,6 +2,10 @@
 
 
 .one-column-with-menu-and-sidebar {
+    .menu-column {
+        min-height: 600px;
+    }
+
     &.container-custom {
         .row {
             justify-content: space-between;

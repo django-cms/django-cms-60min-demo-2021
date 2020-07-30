@@ -12,11 +12,11 @@ export function initMainMenu() {
             new MetisMenu(navMenuSelector, {toggle: false});
         }
         const leftMenuSelector = '.one-column-with-menu-and-sidebar .metismenu-root';
-        if ($(leftMenuSelector)) {
+        if (document.querySelector(leftMenuSelector)) {
             new MetisMenu(leftMenuSelector, {toggle: false});
+            fixLeftMenuOnScroll();
         }
         activeCurrentMenuNodes();
-        fixLeftMenuOnScroll();
     }
 }
 

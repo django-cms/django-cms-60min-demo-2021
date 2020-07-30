@@ -12,38 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
         contentSelector: contentSelector,
         collapseDepth: 6,
         positionFixedSelector: tocSelector,
-        fixedSidebarOffset: calculateFixedPosOffset(contentSelector),
         orderedList: false,
-        positionFixedClass: posFixedCssCls,
     });
     tocbot.refresh();
-
-    window.addEventListener('scroll', () => {
-        fixWidthOnFixedPos(tocSelector, posFixedCssCls);
-    })
-    window.addEventListener('resize', () => {
-        fixWidthOnFixedPos(tocSelector, posFixedCssCls);
-    })
 })
 
 
-function fixWidthOnFixedPos(tocSelector: string, posFixedCssCls: string) {
-    const tocElem = $(tocSelector);
-    const isPosFixedActive = tocElem.hasClass(posFixedCssCls);
-    if (isPosFixedActive) {
-        const parentWidth = tocElem.parent('aside').width();
-        tocElem.css('max-width', parentWidth + 'px');
-    } else {
-        tocElem.css('max-width', '100%');
-    }
-}
-
-
 function calculateFixedPosOffset(contentSelector: string): number {
-    let fixedPosTopOffset = ($(contentSelector).offset() as any).top;
     const cmsToolbar = document.querySelector('.cms-toolbar');
     const navbarFixed = document.querySelector('.navbar.fixed-top');
-    
+    if (!navbarFixed) {
+        return 0;
+    }
+    let fixedPosTopOffset =  ($(contentSelector).offset() as any).top;
     if (cmsToolbar) {
         fixedPosTopOffset -= cmsToolbar.clientHeight;
         if (navbarFixed) {

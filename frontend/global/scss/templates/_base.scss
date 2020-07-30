@@ -1,0 +1,17 @@
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.main-column {
+    @include media-breakpoint-up(xs) {
+        margin-bottom: $grid-gutter-width;
+    }
+    @include media-breakpoint-up(sm) {
+        margin-bottom: $grid-gutter-width*2;
+    }
+    @include media-breakpoint-up(md) {
+        margin-bottom: $grid-gutter-width*4;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-bottom: $grid-gutter-width*6;
+    }
+}
