@@ -8,7 +8,6 @@
     position: relative;
     padding-top: 5px;
     padding-left: $layout-docs-padding-top;
-    top: 3rem;
     $aside-col-size: 7;
     max-width: (map-get($container-max-widths, 'xl') / $grid-columns) * $aside-col-size;
     font-size: 14px;

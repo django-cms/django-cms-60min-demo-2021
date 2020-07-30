@@ -1,11 +1,11 @@
 import logging
 import os
-from enum import Enum
 from typing import List
 
 import sentry_sdk
 from dotenv import find_dotenv
 from dotenv import load_dotenv
+from enumfields import Enum
 from env_settings import env
 from link_all.dataclasses import LinkAllModel
 
@@ -471,3 +471,16 @@ LINK_ALL_MODELS_ADDITIONAL = [
     LinkAllModel(app_label='djangocms_blog', model_name='Post'),
     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
 ]
+
+
+class HeadingType(Enum):
+    NORMAL = 'normal'
+    H1 = 'h1'
+    H2 = 'h2'
+
+    class Labels:
+        H1 = 'appearance of H1'
+        H2 = 'appearance of H2'
+
+
+DJANGOCMS_BOOTSTRAP4_HEADING_TYPE_ENUM = HeadingType
