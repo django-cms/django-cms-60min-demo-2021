@@ -9,5 +9,5 @@ from backend.plugins.module_name import MODULE_NAME
 class GoogleSlidesPlugin(CMSPluginBase):
     module = MODULE_NAME
     model = GoogleSlidesPluginModel
-    name = "Google slides (presentations)"
+    name = "Google slides"
     render_template = 'google_slides/google_slides.html'
