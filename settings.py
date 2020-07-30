@@ -158,6 +158,7 @@ INSTALLED_APPS.extend([
         'linkit',
     'backend.plugins.card',
     'backend.plugins.footer',
+    'backend.plugins.google_slides',
 ])
 
 MIDDLEWARE.extend([
