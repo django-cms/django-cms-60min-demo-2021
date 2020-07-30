@@ -10,8 +10,6 @@
         .row {
             justify-content: space-between;
         }
-        @include media-breakpoint-up(xl) {
-        }
         .content-wrapper {
             display: flex;
             flex-direction: column;

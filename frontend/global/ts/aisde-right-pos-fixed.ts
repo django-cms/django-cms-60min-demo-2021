@@ -11,7 +11,6 @@ export function initAsideRightPositionFixed() {
 
 function fixAsideRightOnScroll() {
     const floatingTopOffset = getFloatingTopOffset();
-    console.log(floatingTopOffset)
     const asideRightContainer = $('.aside-right');
     const asideRight = asideRightContainer.find('.aside-right-fixed');
     const asideRightContainerOffset = asideRightContainer.offset().top as number;

@@ -50,6 +50,7 @@
         "//": "project packages",
         
         "tocbot": "^4.11.1",
+            "slugify": "^1.4.5",
         "metismenujs": "^1.2.0",
         "algoliasearch": "^4.3.1",
             "instantsearch.js": "^4.7.0",

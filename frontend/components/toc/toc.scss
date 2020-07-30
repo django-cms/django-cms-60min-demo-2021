@@ -3,29 +3,21 @@
 @import 'frontend/global/scss/bootstrap-variables';
 
 
-// must correspond to fixedPosTopCssOffset in main.ts
-$fixed-pos-top-css-offset: 10px;
-
-$fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $layout-docs-padding-top;
-
 
 .djangocms-toc {
     position: relative;
-    top: 0;
+    padding-top: 5px;
     padding-left: $layout-docs-padding-top;
     padding-top: $layout-docs-padding-top;
+    top: 3rem;
+    $aside-col-size: 7;
+    max-width: (map-get($container-max-widths, 'xl') / $grid-columns) * $aside-col-size;
     font-size: 14px;
-    //
-    //&.is-position-fixed {
-    //    position: fixed;
-    //    top: $fixed-pos-top-css-offset;
-    //}
-    //
-    //&.is-position-fixed-with-toolbar {
-    //    top: $fixed-pos-top-css-offset-with-toolbar;
-    //    padding-top: 0;
-    //}
-    //
+
+    &.is-position-fixed {
+        position: relative !important;
+    }
+
     ul {
         list-style: none;
         padding: 0;
@@ -54,7 +46,7 @@ $fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $layout-docs-paddi
         position: absolute;
         width: 2px;
     }
-    
+
     .is-active-link{
         color: $color-primary;
         font-weight: normal;
@@ -65,35 +57,9 @@ $fixed-pos-top-css-offset-with-toolbar: $cms-toolbar-height + $layout-docs-paddi
     }
 
 }
-//.cms-toolbar-expanded .navbar-fixed .djangocms-toc.is-position-fixed-with-toolbar {
-//    top: $fixed-pos-top-css-offset-with-toolbar + $navbar-height-fixed;
-//}
-//.navbar-fixed {
-//    .djangocms-toc.is-position-fixed {
-//        top: $layout-docs-padding-top + $navbar-height-fixed;
-//    }
-//}
-.djangocms-toc {
-    top: 3rem;
-    padding-top: 5px;
-    $aside-col-size: 7;
-    max-width: (map-get($container-max-widths, 'xl')/$grid-columns)*$aside-col-size;
-}
-.djangocms-toc.is-position-fixed {
-    position: relative !important;
 
-}
 .one-column-with-menu-and-sidebar {
     .djangocms-toc {
         top: 5px !important;
     }
-    //.djangocms-toc.is-position-fixed {
-    //    position: relative !important;
-    //    padding-right: $grid-gutter-width-half;
-    //}
-    //.djangocms-toc.is-position-fixed-with-toolbar {
-    //    position: relative;
-    //    padding-top: 5px;
-    //    padding-right: $grid-gutter-width-half;
-    //}
 }
