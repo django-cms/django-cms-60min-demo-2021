@@ -58,7 +58,8 @@
 }
 
 .one-column-with-menu-and-sidebar {
-    .djangocms-toc {
+    .djangocms-toc:first-child {
         top: 5px !important;
+        padding-top: $layout-docs-padding-top;
     }
 }
