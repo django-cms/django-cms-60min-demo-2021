@@ -1,0 +1,12 @@
+/*
+This file is a replacement for default ckeditor contents.css
+ */
+
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.google-sheet-plugin {
+    iframe {
+        border: 1px solid $input-border-color;
+    }
+}

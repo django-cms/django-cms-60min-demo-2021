@@ -159,6 +159,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.card',
     'backend.plugins.footer',
     'backend.plugins.google_slides',
+    'backend.plugins.google_sheet',
 ])
 
 MIDDLEWARE.extend([
