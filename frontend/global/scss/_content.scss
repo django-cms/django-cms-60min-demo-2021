@@ -30,24 +30,29 @@ h1 {
 }
 
 @mixin header-style($tag, $font-size, $margin-top) {
+    $margin-bottom-global: 1rem;
+    
+    $offset: rem(5px);
     #{$tag} {
-        $offset: rem(5px);
         margin-top: -$offset;
-        padding-top: $offset + $margin-top;
+        padding-top: $offset + $margin-top - $margin-bottom-global;
         font-size: $font-size;
+    }
+    #{$tag}:first-child {
+        padding-top: $offset + $margin-top;
     }
     .navbar-fixed {
         #{$tag} {
             $offset: rem($navbar-fixed-height);
             margin-top: -$offset;
-            padding-top: $offset + $margin-top;
+            padding-top: $offset + $margin-top - $margin-bottom-global;
         }
     }
     .cms-toolbar-expanded > .navbar-fixed {
         #{$tag} {
             $offset: rem($cms-toolbar-height + $navbar-fixed-height);
             margin-top: -$offset;
-            padding-top: $offset + $margin-top;
+            padding-top: $offset + $margin-top - $margin-bottom-global;
         }
     }
 }
