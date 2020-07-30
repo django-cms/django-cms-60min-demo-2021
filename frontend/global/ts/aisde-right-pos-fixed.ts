@@ -19,9 +19,10 @@ function fixAsideRightOnScroll() {
         const isOffsetReached = $(window).scrollTop() > asideRightContainerOffset - floatingTopOffset;
         const isLayoutXXL = window.outerWidth > layoutXXL;
         if (isOffsetReached && isLayoutXXL) {
-            asideRight.css('position', 'fixed').css('top', floatingTopOffset);
+            asideRight.addClass('position-fixed');
+            asideRight.css('top', floatingTopOffset);
         } else {
-            asideRight.css('position', 'relative');
+            asideRight.removeClass('position-fixed');
             asideRight.css('top', 0);
         }
     });

@@ -19,8 +19,13 @@
 
     .aside-right {
         .aside-right-fixed {
+            position: relative;
+            
             @include media-breakpoint-down(xxl) {
                 position: relative;
+            }
+            &.position-fixed {
+                position: fixed;
             }
         }
     }

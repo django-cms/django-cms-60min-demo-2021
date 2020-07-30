@@ -5,7 +5,7 @@ require('metismenujs/dist/metismenujs.min.css');
 
 
 export function initMainMenu() {
-    const isMenuPresent = document.querySelectorAll('.metismenu-root');
+    const isMenuPresent = document.querySelectorAll('.metismenu-root').length;
     if (isMenuPresent) {
         const navMenuSelector = '.navbar-nav .metismenu-root';
         if (document.querySelector(navMenuSelector)) {
@@ -31,9 +31,10 @@ function fixLeftMenuOnScroll() {
     const floatingTopOffset = getFloatingTopOffset();
     const menuLeft = $('.one-column-with-menu-and-sidebar .menu-container');
     const elementPosition = menuLeft.offset();
-    $(window).on('scroll', function () {
-        if ($(window).scrollTop() > elementPosition.top - floatingTopOffset) {
-            menuLeft.css('position', 'fixed').css('top', floatingTopOffset);
+    document.addEventListener('scroll', () => {
+        if (window.scrollY > elementPosition.top - floatingTopOffset) {
+            menuLeft.css('position', 'fixed');
+            menuLeft.css('top', floatingTopOffset);
         } else {
             menuLeft.css('position', 'relative');
             menuLeft.css('top', 0);
@@ -52,7 +53,7 @@ function fixLeftMenuOnScroll() {
 
 function activateCurrentMenuNode(selector: string) {
     const activeElems = document.querySelectorAll(selector) as any as Array<HTMLElement>;
-    for (let activeElem of activeElems) {
+    for (const activeElem of activeElems) {
         const selectElemParent = activeElem.parentElement as HTMLElement;
         if (selectElemParent.tagName === 'UL') {
             // show list
