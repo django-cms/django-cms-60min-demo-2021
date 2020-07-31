@@ -60,7 +60,7 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
         self.image = oldinstance.image
         self.thumbnail_config = oldinstance.thumbnail_config
 
-    def get_image_src(self) -> str:
+    def get_image_url(self) -> str:
         if self.thumbnail_config:
             thumbnail_options = {
                 'size': (self.thumbnail_config.width, self.thumbnail_config.height),
@@ -72,6 +72,9 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
             return thumbnailer.get_thumbnail(thumbnail_options).url
         else:
             return self.image.url
+    
+    def get_image_source_url(self) -> str:
+        return self.image.url
     
     def get_image_srcset_data(self) -> List[Tuple[int, Any]]:
         thumbnailer = get_thumbnailer(self.image)

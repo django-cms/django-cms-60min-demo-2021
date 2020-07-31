@@ -12,19 +12,19 @@
     {% if instance.get_link_url %}
         <a href="{{ instance.get_link_url }}" target="_blank">
     {% elif instance.is_full_screen_on_click %}
-        <a href="{{ instance.get_image_src }}" target="_blank">
+        <a href="{{ instance.get_image_source_url }}" target="_blank">
     {% endif %}
         <img
             class="img-fluid"
-            src="{{ instance.get_image_src }}"
+            src="{{ instance.get_image_url }}"
             srcset="
-                {% for width, thumb in instance.get_image_srcset_data %}
+                {% for width, thumb in instance.get_image_urlset_data %}
                     {{ thumb.url }} {{ width }}w,
                 {% endfor %}
-                {{ instance.get_image_src }} {{ instance.image.width }}w
+                {{ instance.get_image_url }} {{ instance.image.width }}w
             "
             sizes="
-                {% for width, thumb in instance.get_image_srcset_data %}
+                {% for width, thumb in instance.get_image_urlset_data %}
                     (max-width: {{ width }}px) {{ width }}px,
                 {% endfor %}
                 {{ instance.image.width }}px
@@ -43,12 +43,9 @@
         <script defer type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
         <script defer type="text/javascript" src="{% static 'js/lg-zoom.min.js' %}"></script>
         <script type="text/javascript">
-            function initGalleryPlugin() {
-                $('#image-plugin-{{ instance.pk }}').lightGallery({
-                    counter: false,
-                });
-            }
-            document.addEventListener('DOMContentLoaded', initGalleryPlugin);
+            document.addEventListener('DOMContentLoaded', function() {
+                $('#image-plugin-{{ instance.pk }}').lightGallery({counter: false});
+            });
         </script>
     {% endaddtoblock %}
 
