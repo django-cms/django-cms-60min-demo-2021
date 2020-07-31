@@ -5,7 +5,7 @@
     id="image-plugin-{{ instance.pk }}"
     class="
         image-plugin {{ instance.get_alignment_class }}
-        {% if instance.vertical_spacing %}image-plugin--spacing-{{ instance.vertical_spacing.value }}{% endif %}}
+        {% if instance.vertical_spacing %}image-plugin--spacing-{{ instance.vertical_spacing.value }}{% endif %}
     "
     {% if instance.is_full_screen_on_click %}data-is-full-screen-on-click="true"{% endif %}
 >
