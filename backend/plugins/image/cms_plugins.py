@@ -9,7 +9,7 @@ from backend.plugins.module_name import MODULE_NAME
 class ImagePlugin(LinkAllPlugin):
     module = MODULE_NAME
     model = ImagePluginModel
-    name = "Picture / Image"
+    name = "Picture / Image (scalable)"
     render_template = 'image/image_plugin.html'
     text_enabled = False
     change_form_template = 'link_all/admin/link_all.html'
