@@ -40,12 +40,13 @@ function fixLeftMenuOnScroll() {
             menuLeft.css('top', 0);
         }
     });
-    const menuContainerWidth = menuLeft.outerWidth() as number;
-    const menuContainer = $('.one-column-with-menu-and-sidebar .menu-column');
+    const menuLeftNative = document.querySelector('.one-column-with-menu-and-sidebar .menu-container');
+    const menuContainerWidth = menuLeftNative.scrollWidth;
+    const menuContainer = document.querySelector('.one-column-with-menu-and-sidebar .menu-column');
     menuLeft.css('width', `${menuContainerWidth}px`);
-    $(window).resize(function() {
+    $(window).on('resize', function() {
         const gutterWidth = 30;
-        const menuContainerWidth = menuContainer.outerWidth() - gutterWidth/2 as number;
+        const menuContainerWidth = menuContainer.scrollWidth - gutterWidth/2 as number;
         menuLeft.css('width', `${menuContainerWidth}px`);
     });
 }
