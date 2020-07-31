@@ -1,0 +1,55 @@
+{% load thumbnail sekizai_tags static %}
+
+
+<div
+    id="image-plugin-{{ instance.pk }}"
+    class="
+        image-plugin {{ instance.get_alignment_class }}
+        {% if instance.vertical_spacing %}image-plugin--spacing-{{ instance.vertical_spacing.value }}{% endif %}}
+    "
+    {% if instance.is_full_screen_on_click %}data-is-full-screen-on-click="true"{% endif %}
+>
+    {% if instance.get_link_url %}
+        <a href="{{ instance.get_link_url }}" target="_blank">
+    {% elif instance.is_full_screen_on_click %}
+        <a href="{{ instance.get_image_src }}" target="_blank">
+    {% endif %}
+        <img
+            class="img-fluid"
+            src="{{ instance.get_image_src }}"
+            srcset="
+                {% for width, thumb in instance.get_image_srcset_data %}
+                    {{ thumb.url }} {{ width }}w,
+                {% endfor %}
+                {{ instance.get_image_src }} {{ instance.image.width }}w
+            "
+            sizes="
+                {% for width, thumb in instance.get_image_srcset_data %}
+                    (max-width: {{ width }}px) {{ width }}px,
+                {% endfor %}
+                {{ instance.image.width }}px
+            "
+        >
+    {% if instance.get_link_url or instance.is_full_screen_on_click %}</a>{% endif %}
+</div>
+
+{% if not instance.get_link_url and instance.is_full_screen_on_click %}
+
+    {% addtoblock "css" %}
+        <link type="text/css" rel="stylesheet" href="{% static 'css/lightgallery.min.css'%}"/>
+    {% endaddtoblock %}
+    
+    {% addtoblock "js" %}
+        <script defer type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
+        <script defer type="text/javascript" src="{% static 'js/lg-zoom.min.js' %}"></script>
+        <script type="text/javascript">
+            function initGalleryPlugin() {
+                $('#image-plugin-{{ instance.pk }}').lightGallery({
+                    counter: false,
+                });
+            }
+            document.addEventListener('DOMContentLoaded', initGalleryPlugin);
+        </script>
+    {% endaddtoblock %}
+
+{% endif %}

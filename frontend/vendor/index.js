@@ -8,6 +8,9 @@ require('bootstrap');
 require('./main.scss');
 
 
+require('lightgallery.js/dist/css/lightgallery.min.css');
+
+
 // djangocms-bootstrap4 icons
 require('@fortawesome/fontawesome-free/scss/fontawesome.scss');
 require('@fortawesome/fontawesome-free/scss/brands.scss');

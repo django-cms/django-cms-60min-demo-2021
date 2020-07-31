@@ -1,0 +1,13 @@
+.image-plugin {
+    &--spacing-extra_small {
+        margin-bottom: 1rem;
+    }
+    &--spacing-small {
+        margin-top: $grid-gutter-width;
+        margin-bottom: $grid-gutter-width;
+    }
+    &--spacing-normal {
+        margin-top: $grid-gutter-width*2;
+        margin-bottom: $grid-gutter-width*2;
+    }
+}

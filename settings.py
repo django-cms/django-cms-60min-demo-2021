@@ -160,6 +160,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.footer',
     'backend.plugins.google_slides',
     'backend.plugins.google_sheet',
+    'backend.plugins.image',
 ])
 
 MIDDLEWARE.extend([
@@ -402,6 +403,8 @@ CMS_PLACEHOLDER_CONF = {
             'CaptchaField',
 
             'ReCaptchaFieldPlugin',
+
+            'Bootstrap4PicturePlugin',
         ],
     },
 }
