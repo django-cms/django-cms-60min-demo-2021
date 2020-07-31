@@ -31,22 +31,24 @@
             "
         >
     {% if instance.get_link_url or instance.is_full_screen_on_click %}</a>{% endif %}
-</div>
 
-{% if not instance.get_link_url and instance.is_full_screen_on_click %}
-
-    {% addtoblock "css" %}
-        <link type="text/css" rel="stylesheet" href="{% static 'css/lightgallery.min.css'%}"/>
-    {% endaddtoblock %}
+    {% if not instance.get_link_url and instance.is_full_screen_on_click %}
     
-    {% addtoblock "js" %}
-        <script defer type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
-        <script defer type="text/javascript" src="{% static 'js/lg-zoom.min.js' %}"></script>
+        {% addtoblock "css" %}
+            <link type="text/css" rel="stylesheet" href="{% static 'css/lightgallery.min.css'%}"/>
+        {% endaddtoblock %}
+        
+        {% addtoblock "js" %}
+            <script defer type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
+            <script defer type="text/javascript" src="{% static 'js/lg-zoom.min.js' %}"></script>
+        {% endaddtoblock %}
+    
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
-                $('#image-plugin-{{ instance.pk }}').lightGallery({counter: false});
+                $('#image-plugin-{{ instance.pk }}').lightGallery({counter: false, controls: false});
             });
         </script>
-    {% endaddtoblock %}
+    
+    {% endif %}
 
-{% endif %}
+</div>

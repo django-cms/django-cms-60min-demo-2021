@@ -1,4 +1,10 @@
+@import 'frontend/global/scss/bootstrap-variables';
+
+
 .image-plugin {
+    &[data-is-full-screen-on-click] a:hover {
+        cursor: zoom-in;
+    }
     &--spacing-extra_small {
         margin-bottom: 1rem;
     }
@@ -7,7 +13,7 @@
         margin-bottom: $grid-gutter-width;
     }
     &--spacing-normal {
-        margin-top: $grid-gutter-width*2;
-        margin-bottom: $grid-gutter-width*2;
+        margin-top: $grid-gutter-width * 2;
+        margin-bottom: $grid-gutter-width * 2;
     }
 }
