@@ -19,6 +19,7 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
         height: 100%;
         width: 100%;
         left: 0;
+        top: 0;
         border-left: 4px solid $color-primary;
     }
     &::before {
@@ -44,22 +45,23 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
         height: 100%;
         overflow-y: scroll;
 
-        &::-webkit-scrollbar {
-            width: 8px;
-            background-color: $gray-200;
-        }
-
-        &::-webkit-scrollbar-track-piece {
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: $gray-300;
-            &:hover {
-                background-color: $gray-400;
-            }
-        }
-        
         @include media-breakpoint-down(xxl) {
             position: relative;
+        }
+        @include media-breakpoint-up(lg) {
+            &::-webkit-scrollbar {
+                width: 8px;
+                background-color: $gray-200;
+            }
+    
+            &::-webkit-scrollbar-track-piece {
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $gray-300;
+                &:hover {
+                    background-color: $gray-400;
+                }
+            }
         }
 
         .metismenu {
