@@ -4,11 +4,19 @@
 - navbar
     - it's global, ie changes to navabr on one page are applied to all pages
     - it's possible to compose a custom menu in the navbar
+    - on mobile the full multi-level menu can be shown
+- added a new image plugin that allows to open the source image on click in a modal, also it has a simplified interface
+- added `Google sheet` and `Google slides` plugins
+- added configurable overlay effects to `Section with background image` plugin
 - added a new link plugin that allows to select create a link of any type - eg blog article, cms page, external url, etc
 - added ability to use html links and iframe to the CMS text editor
 - added deployment safeguards - all pages must be usable in order for the deployment to proceed, otherwise the deployment rolls back back automatically
 - added better styles compatibility with outdated browsers as safari, ie11, etc
-- cms dynamic forms
+- improved the search - now it has a styled modal window with pagination
+- improved the typography styles
+- fixed responsiveness
+- fixed table of contents plugin
+- fixed cms dynamic forms
     - fixed the email variables representation and validation
     - fixed django success message that was shown on an unrelated page, seemingly on random
     - fixed the form submission success message that could have been invisible for the user, now the page scrolls to it after the form submission request
