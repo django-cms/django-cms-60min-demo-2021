@@ -17,5 +17,6 @@
 }
 
 html {
-    background-color: $body-color;
+    background: linear-gradient(0deg, $body-color 70%, white 25%);
+    height: 100%;
 }
