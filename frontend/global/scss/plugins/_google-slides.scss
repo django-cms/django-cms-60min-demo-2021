@@ -1,0 +1,20 @@
+/*
+This file is a replacement for default ckeditor contents.css
+ */
+
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.google-slides-plugin {
+    iframe {
+        @include media-breakpoint-down(xl) {
+            max-height: 600px;
+        }
+        @include media-breakpoint-down(lg) {
+            max-height: 500px;
+        }
+        @include media-breakpoint-down(md) {
+            max-height: 400px;
+        }
+    }
+}
