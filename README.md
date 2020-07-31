@@ -1,5 +1,4 @@
 Currently this project has two WIP instances:
-- Demo instance - https://ea-cms-template.us.aldryn.io/en/
 - Effective Altruism Netherlands - https://effective-altruismnl.us.aldryn.io/en/
 - 1fortheworld.org chapter leader resource - https://chapter-leader-resource.us.aldryn.io/
 
