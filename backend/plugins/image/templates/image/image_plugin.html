@@ -12,7 +12,7 @@
     {% if instance.get_link_url %}
         <a href="{{ instance.get_link_url }}" target="_blank">
     {% elif instance.is_full_screen_on_click %}
-        <a href="{{ instance.get_image_source_url }}" target="_blank">
+        <a href="{{ instance.get_image_source_url }}" data-src="{{ instance.get_image_source_url }}" target="_blank">
     {% endif %}
         <img
             class="img-fluid"
@@ -32,23 +32,27 @@
         >
     {% if instance.get_link_url or instance.is_full_screen_on_click %}</a>{% endif %}
 
-    {% if not instance.get_link_url and instance.is_full_screen_on_click %}
-    
-        {% addtoblock "css" %}
-            <link type="text/css" rel="stylesheet" href="{% static 'css/lightgallery.min.css'%}"/>
-        {% endaddtoblock %}
-        
-        {% addtoblock "js" %}
-            <script defer type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
-            <script defer type="text/javascript" src="{% static 'js/lg-zoom.min.js' %}"></script>
-        {% endaddtoblock %}
-    
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                $('#image-plugin-{{ instance.pk }}').lightGallery({counter: false, controls: false});
-            });
-        </script>
-    
-    {% endif %}
-
 </div>
+
+
+{% if not instance.get_link_url and instance.is_full_screen_on_click %}
+
+    {% addtoblock "css" %}
+        <link type="text/css" rel="stylesheet" href="{% static 'css/lightgallery.min.css'%}"/>
+    {% endaddtoblock %}
+    
+    {% addtoblock "js" %}
+        <script defer type="text/javascript" src="{% static 'js/lightgallery.min.js' %}"></script>
+        <script defer type="text/javascript" src="{% static 'js/lg-zoom.min.js' %}"></script>
+    {% endaddtoblock %}
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLightGalleryLoaded = $('body').lightGallery;
+            if (isLightGalleryLoaded) {
+                $('#image-plugin-{{ instance.pk }}').lightGallery({counter: false, controls: false});
+            }
+        });
+    </script>
+
+{% endif %}

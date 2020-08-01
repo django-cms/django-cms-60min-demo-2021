@@ -2,6 +2,8 @@
 
 
 .image-plugin {
+    display: flex;
+
     &[data-is-full-screen-on-click] a:hover {
         cursor: zoom-in;
     }

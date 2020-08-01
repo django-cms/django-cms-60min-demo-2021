@@ -50,11 +50,11 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
 
     def get_alignment_class(self) -> str:
         if self.alignment == ImageAlignment.CENTER:
-            return 'align-self-center'
+            return 'align-self-center justify-content-center'
         elif self.alignment == ImageAlignment.LEFT:
-            return 'align-self-start'
+            return 'align-self-start justify-content-start'
         elif self.alignment == ImageAlignment.RIGHT:
-            return 'align-self-end'
+            return 'align-self-end justify-content-end'
 
     def copy_relations(self, oldinstance: 'ImagePluginModel'):
         self.image = oldinstance.image
