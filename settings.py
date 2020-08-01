@@ -415,6 +415,28 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
+    'fontSize_sizes': (
+        '0.5rem;'
+        '0.6rem;'
+        '0.7rem;'
+        '0.8rem;'
+        '0.85rem;'
+        '0.9rem;'
+        '1rem;'
+        '1.05rem;'
+        '1.1rem;'
+        '1.15rem;'
+        '1.2rem;'
+        '1.35rem;'
+        '1.4rem;'
+        '1.5rem;'
+        '1.65rem;'
+        '2rem;'
+        '2.2rem;'
+        '2.5rem;'
+        '3rem;'
+        '4rem;'
+    ),
     'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
         f'{WEBPACK_DEV_URL}/vendor.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
