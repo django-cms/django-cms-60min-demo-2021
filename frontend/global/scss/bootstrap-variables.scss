@@ -30,6 +30,13 @@ $grid-breakpoints: (
     xxl: 1540px,
 );
 
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1170px
+);
+
 $color-primary: #008ED6;
 $color-secondary: #28a745;
 $danger: #d44539;

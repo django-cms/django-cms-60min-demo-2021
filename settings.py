@@ -509,3 +509,25 @@ class HeadingType(Enum):
 
 
 DJANGOCMS_BOOTSTRAP4_HEADING_TYPE_ENUM = HeadingType
+
+
+class GridContainerSpacing(Enum):
+    NONE = 'none'
+    SMALL = 'small'
+    NORMAL = 'normal'
+    LARGE = 'large'
+
+
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING = GridContainerSpacing
+
+
+class GridContainerWidthInternal(Enum):
+    FULL_WIDTH = 'full-width'
+    DEFAULT = 'default'
+
+    class Labels:
+        FULL_WIDTH = "Full width"
+        DEFAULT = "Default (1170px)"
+
+
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_WIDTH_INTERNAL = GridContainerWidthInternal
