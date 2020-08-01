@@ -1,10 +1,14 @@
-FROM registry.gitlab.com/what-digital/djangocms-template:latest
+FROM divio/base:4.18-py3.6-slim-stretch
 
 
-COPY . /app/
+RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https fish gcc nano
 
 
-RUN pip install -r requirements.txt
+# yarn
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update --quiet && apt-get install --yes yarn nodejs
 
 
 RUN yarn install --pure-lockfile

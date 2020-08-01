@@ -67,3 +67,4 @@ sentry-sdk
 python-dotenv
 psycopg2-binary
 dataclasses
+pip-tools
