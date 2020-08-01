@@ -454,7 +454,7 @@ CKEDITOR_SETTINGS = {
         ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
         ['Blockquote', ],
         ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
-        ['Link', 'Unlink', 'Anchor'],
+        ['Unlink', 'Anchor'],
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
