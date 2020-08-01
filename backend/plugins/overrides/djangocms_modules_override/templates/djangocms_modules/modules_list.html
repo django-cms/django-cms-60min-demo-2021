@@ -1,0 +1,19 @@
+{% extends "djangocms_modules/modules_list.html" %}
+{% load cms_tags djangocms_modules_tags %}
+
+{% block page_meta_title %}Modules{% endblock %}
+
+
+{% block modules_content %}
+    <div class="cms-modules-page container">
+        <h1 class="cms-modules-page-h1">Modules</h1>
+        {% get_default_language as default_language %}
+        {% for category in categories %}
+            <div class="cms-modules-category">
+                {% with modules_page=True category_name=category.name %}
+                    {% render_placeholder category.modules_placeholder language default_language %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock modules_content %}

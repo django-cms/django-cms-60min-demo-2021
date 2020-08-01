@@ -71,6 +71,7 @@ installed_apps_overrides = [
 
     'backend.blog',
 
+    'backend.plugins.overrides.djangocms_modules_override',
     'djangocms_modules',
 ]
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
