@@ -27,7 +27,14 @@ class Person(TranslatableModel):
 
 
 class PersonPluginModel(CMSPlugin):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    person = models.ForeignKey(
+        Person,
+        on_delete=models.CASCADE,
+        help_text=(
+            "The person record that's attached to this plugin is global, "
+            "ie if you change a name of a person it's going to change on in all attached Person plugins"
+        ),
+    )
 
     def copy_relations(self, old_instance: 'PersonPluginModel'):
         self.person = old_instance.person
