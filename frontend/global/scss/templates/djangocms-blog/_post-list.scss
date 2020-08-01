@@ -29,7 +29,7 @@
                 flex-direction: column;
                 height: 100%;
                 background: white;
-                box-shadow: 0 1px 5px #0000001f;
+                box-shadow: 0 2px 6px 0 #0000001f;
                 border-bottom: 2px solid map-get($theme-colors, 'primary');
 
                 .blog-visual {
@@ -77,7 +77,8 @@
                         }
                 
                         .title {
-                            margin-top: 0;
+                            margin-top: 1rem;
+                            padding-top: 0;
                             font-size: 1.4rem;
                             color: $body-color;
                         }

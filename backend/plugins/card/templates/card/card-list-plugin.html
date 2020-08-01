@@ -5,7 +5,7 @@
     <div class="card-row row">
         {% for plugin in instance.child_plugin_instances %}
             <div class="card-col {{ instance.get_css_col_classes }}">
-            {% render_plugin plugin %}
+                {% render_plugin plugin %}
             </div>
         {% endfor %}
     </div>

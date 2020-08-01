@@ -2,24 +2,18 @@
 
 {% with instance.get_link as link %}
     <section class="card-plugin">
-        <div class="card-image">
-            {% if link %}<a href="{{ link }}">{% endif %}
-                <img src="{% thumbnail instance.image 1110x581 crop=True upscale=True subject_location=instance.image.subject_location %}"
-                     alt="image"
-                >
-            {% if link %}</a>{% endif %}
-        </div>
-        <div class="card-content">
+        {% if link %}<a href="{{ link }}">{% endif %}
+            <img class="card-plugin__image" src="{% thumbnail instance.image 690x361 crop=True upscale=True subject_location=instance.image.subject_location %}">
+        {% if link %}</a>{% endif %}
 
-            {% if link %}<a href="{{ link }}" class="card-title-link">{% endif %}
-                <h2 class="card-title">{{ instance.title }}</h2>
-            {% if link %}</a>{% endif %}
+        {% if link %}<a href="{{ link }}" class="card-plugin__title-link">{% endif %}
+            <h2 class="card-plugin__title">{{ instance.title }}</h2>
+        {% if link %}</a>{% endif %}
 
-            <div class="card-children">
-                {% for plugin in instance.child_plugin_instances %}
-                    {% render_plugin plugin %}
-                {% endfor %}
-            </div>
+        <div class="card-plugin__content">
+            {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
         </div>
     </section>
 {% endwith %}

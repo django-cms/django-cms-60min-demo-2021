@@ -16,41 +16,40 @@
     flex-direction: column;
     height: 100%;
     background: white;
-    box-shadow: 0 1px 5px #0000001f;
-    border-bottom: 4px solid map-get($theme-colors, 'primary');
     
-    .card-image {
+    box-shadow: 0 3px 6px 1px $gray-400;
+    border-bottom: 2px solid map-get($theme-colors, 'primary');
+    @include media-breakpoint-up(md) {
+        box-shadow: 0 3px 6px 0 $gray-300;
+    }
+    @include media-breakpoint-up(xl) {
+        border-bottom: 3px solid map-get($theme-colors, 'primary');
+    }
+
+    .card-plugin__image {
         display: flex;
-        img {
-            width: 100%;
-            height: auto;
+        width: 100%;
+        height: auto;
+    }
+    .card-plugin__title-link {
+        &:hover {
+            text-decoration: none;
         }
     }
-    .card-content {
+    .card-plugin__title {
+        padding: 0 $padding;
+        margin-top: $padding;
+    }
+    .card-plugin__content {
         display: flex;
         flex-direction: column;
+        padding: $padding;
+        padding-top: 0;
         height: 100%;
-        
-        .card-title {
-            padding: 0 $padding;
-            margin-top: $padding;
-            margin-bottom: 0;
-        }
-        .card-title-link {
-            &:hover {
-                text-decoration: none;
-            }
-        }
-        .card-children {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            padding: $padding;
             
-            *:last-child {
-                margin-bottom: 0;
-            }
+        *:last-child {
+            margin-top: auto;
+            margin-bottom: 0;
         }
     }
 }

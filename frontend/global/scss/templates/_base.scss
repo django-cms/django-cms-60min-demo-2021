@@ -9,14 +9,22 @@
         margin-bottom: $grid-gutter-width*2;
     }
     @include media-breakpoint-up(md) {
-        margin-bottom: $grid-gutter-width*4;
+        margin-bottom: $grid-gutter-width*2;
     }
-    @include media-breakpoint-up(xl) {
-        margin-bottom: $grid-gutter-width*6;
+    @media (min-width: 1350px) {
+        margin-bottom: $grid-gutter-width*3;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-bottom: $grid-gutter-width*5;
     }
 }
 
+
 html {
-    background: linear-gradient(0deg, $body-color 70%, white 25%);
+    background: linear-gradient(0deg, $body-color 45%, white 40%);
+
+    @include media-breakpoint-up(xl) {
+        background: linear-gradient(0deg, $body-color 75%, white 20%);
+    }
     height: 100%;
 }

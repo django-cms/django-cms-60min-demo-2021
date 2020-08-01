@@ -8,7 +8,7 @@
 - added a new image plugin that allows to open the source image on click in a modal, also it has a simplified interface
 - added `Google sheet` and `Google slides` plugins
 - added configurable overlay effects to `Section with background image` plugin
-- added a new link plugin that allows to select create a link of any type - eg blog article, cms page, external url, etc
+- added a new link plugin that allows to create a link of any type - eg blog article, cms page, external url, etc
 - added ability to use html links and iframe to the CMS text editor
 - added deployment safeguards - all pages must be usable in order for the deployment to proceed, otherwise the deployment rolls back back automatically
 - added better styles compatibility with outdated browsers as safari, ie11, etc
