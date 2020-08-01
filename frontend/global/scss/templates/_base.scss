@@ -2,6 +2,8 @@
 
 
 .main-column {
+    word-break: break-word;
+    
     @include media-breakpoint-up(xs) {
         margin-bottom: $grid-gutter-width;
     }
