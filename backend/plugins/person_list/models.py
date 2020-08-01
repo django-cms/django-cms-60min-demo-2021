@@ -32,7 +32,7 @@ class PersonPluginModel(CMSPlugin):
         on_delete=models.CASCADE,
         help_text=(
             "The person record that's attached to this plugin is global, "
-            "ie if you change a name of a person it's going to change on in all attached Person plugins"
+            "ie if you change a photo of a person it's going to change on all related Person plugins"
         ),
     )
 
