@@ -4,13 +4,16 @@
 
 <nav class="navbar navbar-expand-xl navbar-light {% if instance.is_full_width %}fixed-top{% else %}not-fixed-top{% endif %}">
     <div class="container{% if instance.is_full_width %}-fluid {% endif %}">
-        <a class="navbar-brand d-flex" href="/">
-            {% include 'nav_bar/includes/icon.svg' %}
-            <div class="site-title">
-                <span class="site-name">{{ site_config.site_name }}</span>
-                <span class="site-subname">{{ site_config.site_subname }}</span>
-            </div>
-        </a>
+        {% render_model_block site_config  %}
+            <a class="navbar-brand d-flex" href="/">
+                {% include 'nav_bar/includes/icon.svg' %}
+                <div class="site-title">
+                    <span class="site-name">{{ site_config.site_name }}</span>
+                    <span class="site-subname">{{ site_config.site_subname }}</span>
+                </div>
+            </a>
+        {% endrender_model_block %}
+
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -26,13 +29,14 @@
                     <div class="menu-container">
                         <ul class="metismenu-root">
                             {% show_menu 0 10 100 100 'includes/menu.html' %}
+                            {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
                         </ul>
                     </div>
                 </nav>
             {% endif %}
 
             <ul class="navbar-nav">
-                <div class="d-none d-xl-flex">
+                <div class="{% if instance.is_use_multi_level_menu_on_mobile %}d-none{% endif %} d-xl-flex">
                     {% if instance.is_use_default_menu %}
                         {% show_menu 0 1 100 100 'nav_bar/includes/menu/menu.html' %}
                     {% else %}
@@ -41,8 +45,9 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+
                 {% if not instance.is_use_multi_level_menu_on_mobile %}
-                {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
+                   {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
                 {% endif %}
 
                 {% if instance.is_enable_search_bar %}
@@ -59,6 +64,7 @@
                         <script data-is-reload-on-page-edit defer src="{% static 'dist/component_search.js' %}"></script>
                     {% endif %}
                 {% endif %}
+
             </ul>
         </div>
     </div>

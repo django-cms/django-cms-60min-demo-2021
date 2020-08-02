@@ -136,6 +136,27 @@ body.navbar-fixed {
             }
         }
     }
+    .navbar-toggler[aria-expanded=true] ~ .navbar-collapse {
+        .menu-column {
+            .menu-container {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin-left: -15px;
+                overflow-y: scroll;
+                background: white;
+                .metismenu {
+                    width: 100%;
+                    position: absolute;
+                    background: white;
+                }
+            }
+        }
+    }
+    .navbar-toggler[aria-expanded=false] ~ .navbar-collapse {
+        display: none;
+    }
 }
 
 .vue-search-component-container {
