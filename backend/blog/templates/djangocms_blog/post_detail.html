@@ -17,10 +17,10 @@
 >
 </section>
 
-<section class="container">
+<section class="container two-columns-main-left">
     <div class="row">
     
-        <article id="post-{{ post.slug }}" class="post-item post-detail col-lg-17 col-md-24">
+        <article id="post-{{ post.slug }}" class="post-item post-detail col-lg-17 col-md-24 main-column">
             <header>
         
                 <h1 class="post-title">{% render_model post "title" %}</h1>
@@ -42,7 +42,7 @@
             {% endif %}
     
             {% page_meta request.current_page as meta %}
-            
+
             <div class="djangocms-socialshare-plugin">
                 <a class="icon" href="https://www.facebook.com/sharer/sharer.php?u={{ meta.url }}" target="_blank">
                     <i class="fab fa-facebook-f"></i>
@@ -64,8 +64,10 @@
             {% endif %}
         </article>
             
-        <aside class="post-detail-aside aside-right col-7">
-            {% static_placeholder 'Blog post sidebar' %}
+        <aside class="col-md-24 col-lg-16 col-xl-7 col-xxl-7 aside-right">
+            <div class="aside-right-fixed">
+                {% static_placeholder 'Blog post sidebar' %}
+            </div>
         </aside>
 
     </div>
