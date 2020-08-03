@@ -2,13 +2,14 @@
 
 
 .card-hero-with-content-plugin {
-    margin-top: $grid-gutter-width;
-    margin-bottom: $grid-gutter-width;
     $breaking-point: 'lg';
     
+    margin-top: $grid-gutter-width;
+    margin-bottom: $grid-gutter-width;
+
     &[data-spacing='normal'] {
-        margin-top: $grid-gutter-width*2.5;
-        margin-bottom: $grid-gutter-width*2.5;
+        margin-top: $grid-gutter-width * 2.5;
+        margin-bottom: $grid-gutter-width * 2.5;
     }
     &[data-spacing='large'] {
         margin-top: 100px;
