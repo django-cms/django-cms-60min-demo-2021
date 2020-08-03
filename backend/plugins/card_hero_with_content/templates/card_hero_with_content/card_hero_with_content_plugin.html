@@ -5,12 +5,16 @@
          data-spacing="{{ instance.vertical_spacing.value }}"
          data-vertical-alignment="{{ instance.vertical_alignment.value }}"
 >
-    <div class="row">
+    <div class="row justify-content-between">
         {% for plugin in instance.child_plugin_instances %}
             {% if plugin.plugin_type == 'CardHeroWrapperPlugin' %}
-                <div class="hero-wrapper-plugin {{ instance.get_hero_col_classes }}">{% render_plugin plugin %}</div>
+                <div class="hero-wrapper-plugin {{ instance.get_hero_col_classes }}">
+                    {% render_plugin plugin %}
+                </div>
             {% elif plugin.plugin_type == 'CardContentWrapperPlugin' %}
-                <div class="content-wrapper-plugin {{ instance.get_content_col_classes }}">{% render_plugin plugin %}</div>
+                <div class="content-wrapper-plugin {{ instance.get_content_col_classes }}">
+                    {% render_plugin plugin %}
+                </div>
             {% endif %}
         {% endfor %}
     </div>

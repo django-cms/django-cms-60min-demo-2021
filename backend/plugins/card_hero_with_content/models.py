@@ -3,14 +3,14 @@ from enumfields import Enum
 from enumfields import EnumField
 
 
-class VerticalSpacing(Enum):
+class CardSpacing(Enum):
     SMALL = 'small'
     NORMAL = 'normal'
     LARGE = 'large'
     
     class Labels:
         SMALL = "Small (30px)"
-        NORMAL = "Normal (60px)"
+        NORMAL = "Normal (75px)"
         LARGE = "Large (100px)"
 
 
@@ -20,34 +20,44 @@ class VerticalAlignment(Enum):
     BOTTOM = 'bottom'
 
 
-class HeroElementSize(Enum):
+class ContentWrapperSize(Enum):
     SMALL = 'small'
     NORMAL = 'normal'
     LARGE = 'large'
 
     class Labels:
-        SMALL = "Small - 41%"
-        NORMAL = "Normal - 50%"
-        LARGE = "Large - 62%"
+        SMALL = "Small ~35%"
+        NORMAL = "Normal ~50%"
+        LARGE = "Large ~60%"
 
 
 class CardHeroWithContent(CMSPlugin):
-    vertical_spacing = EnumField(VerticalSpacing, default=VerticalSpacing.SMALL, max_length=32)
+    spacing = EnumField(CardSpacing, default=CardSpacing.SMALL, max_length=32)
     vertical_alignment = EnumField(VerticalAlignment, default=VerticalAlignment.MIDDLE, max_length=32)
-    hero_element_size = EnumField(HeroElementSize, default=HeroElementSize.NORMAL, max_length=32)
+    content_wrapper_size = EnumField(ContentWrapperSize, default=ContentWrapperSize.NORMAL, max_length=32)
+    
+    _col_size = 24
+    _col_content_large = 14
+    _col_content_normal = 12
+    _col_content_small = 9
+    _col_bp = 'xl'
 
     def get_hero_col_classes(self) -> str:
-        if self.hero_element_size == HeroElementSize.SMALL:
-            return 'col-24 col-md-10'
-        elif self.hero_element_size == HeroElementSize.NORMAL:
-            return 'col-24 col-md-12'
-        elif self.hero_element_size == HeroElementSize.LARGE:
-            return 'col-24 col-md-15'
+        col_size_rel = self._col_size
+        if self.spacing != CardSpacing.SMALL:
+            col_size_rel -= 1
+
+        if self.content_wrapper_size == ContentWrapperSize.SMALL:
+            return f'col-{self._col_size} col-{self._col_bp}-{col_size_rel - self._col_content_small}'
+        elif self.content_wrapper_size == ContentWrapperSize.NORMAL:
+            return f'col-{self._col_size} col-{self._col_bp}-{col_size_rel - self._col_content_normal}'
+        elif self.content_wrapper_size == ContentWrapperSize.LARGE:
+            return f'col-{self._col_size} col-{self._col_bp}-{col_size_rel - self._col_content_large}'
 
     def get_content_col_classes(self) -> str:
-        if self.hero_element_size == HeroElementSize.SMALL:
-            return 'col-24 col-md-14'
-        elif self.hero_element_size == HeroElementSize.NORMAL:
-            return 'col-24 col-md-12'
-        elif self.hero_element_size == HeroElementSize.LARGE:
-            return 'col-24 col-md-9'
+        if self.content_wrapper_size == ContentWrapperSize.SMALL:
+            return f'col-{self._col_size} col-{self._col_bp}-{self._col_content_small}'
+        elif self.content_wrapper_size == ContentWrapperSize.NORMAL:
+            return f'col-{self._col_size} col-{self._col_bp}-{self._col_content_normal}'
+        elif self.content_wrapper_size == ContentWrapperSize.LARGE:
+            return f'col-{self._col_size} col-{self._col_bp}-{self._col_content_large}'
