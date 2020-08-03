@@ -116,6 +116,7 @@ body.cke_editable {
             content: none;
         }
     }
+    @include reset-first-heading-top-spacing;
 }
 
 .cke_menu_panel {
