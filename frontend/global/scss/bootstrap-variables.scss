@@ -10,6 +10,7 @@
 @import '~bootstrap/scss/mixins/deprecate';
 @import '~bootstrap/scss/mixins/grid';
 @import '~bootstrap/scss/functions';
+@import 'utils';
 
 
 $layout-docs-padding-top: 36px;
@@ -81,11 +82,6 @@ $link-hover-color: $color-active;
 
 $grid-gutter-width: 30px;
 $grid-gutter-width-half: $grid-gutter-width/2; 
-
-
-@function rem($size) {
-    @return $size / 16px * 1rem;
-}
 
 
 // override by placing it at the end

@@ -1,0 +1,12 @@
+@function rem($size) {
+    @return $size / 16px * 1rem;
+}
+
+@mixin reset-first-heading-top-spacing() {
+    @for $index from 1 through 6 {
+        h#{$index}:first-child {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    }
+}

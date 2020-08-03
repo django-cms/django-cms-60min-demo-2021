@@ -1,0 +1,6 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles thumbnail %}
+
+
+{% for plugin in instance.child_plugin_instances %}
+    {% render_plugin plugin %}
+{% endfor %}
