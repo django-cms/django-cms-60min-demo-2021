@@ -46,9 +46,9 @@
                     {% endif %}
                 </div>
 
-                {% if not instance.is_use_multi_level_menu_on_mobile %}
-                   {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
-                {% endif %}
+                <div class="d-none d-lg-flex">
+                    {% language_chooser 'nav_bar/includes/menu/lang-switch.html' %}
+                </div>
 
                 {% if instance.is_enable_search_bar %}
                     <div class="d-none d-xl-flex vue-search-component-container"
