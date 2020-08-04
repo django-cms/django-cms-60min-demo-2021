@@ -90,7 +90,7 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
         for width in filter(lambda x: x < image_width, width_breakpoints):
             thumbnail_options = {
                 'crop': crop,
-                'size': (width, width),
+                'size': (width, 0),
             }
             srcset.append((width, thumbnailer.get_thumbnail(thumbnail_options)))
         return srcset
