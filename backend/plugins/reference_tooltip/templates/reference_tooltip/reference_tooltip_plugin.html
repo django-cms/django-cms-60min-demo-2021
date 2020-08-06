@@ -1,0 +1,15 @@
+<span class="reference-tooltip-plugin">
+    <span class="reference-tooltip__container" id="reference-tooltip-plugin-{{ instance.pk }}">[†]</span>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            $('#reference-tooltip-plugin-{{ instance.pk }}').popover({
+                html: true,
+                trigger: 'hover',
+                container: '#reference-tooltip-plugin-{{ instance.pk }}',
+                content: () => {
+                    return `{{ body|safe }}`
+                }
+            });
+        })
+    </script>
+</span>

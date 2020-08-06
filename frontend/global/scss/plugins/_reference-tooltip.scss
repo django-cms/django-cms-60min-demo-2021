@@ -1,0 +1,23 @@
+@import 'frontend/global/scss/bootstrap-variables';
+
+
+.reference-tooltip-plugin {
+    
+    .reference-tooltip__container {
+        font-size: 0.7rem;
+        vertical-align: super;
+        color: $color-primary;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .popover-body {
+            padding: 1rem;
+            *:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
