@@ -10,6 +10,17 @@ p, ul, ol {
     line-height: 1.7;
 }
 
+blockquote {
+    border-left: 3px solid $gray-300 !important;
+    color: $gray-600;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    *:last-child {
+        margin-bottom: 0;
+    }
+}
+
 
 h1, .heading-plugin--h1, h2, .heading-plugin--h2, h3, h4, h5, h6 {
     color: $header-color;

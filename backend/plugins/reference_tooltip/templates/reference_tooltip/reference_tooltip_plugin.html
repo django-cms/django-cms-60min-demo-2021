@@ -4,6 +4,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             $('#reference-tooltip-plugin-{{ instance.pk }}').popover({
                 html: true,
+                sanitize: false,
                 trigger: 'hover',
                 container: '#reference-tooltip-plugin-{{ instance.pk }}',
                 content: () => {
