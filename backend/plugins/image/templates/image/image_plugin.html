@@ -19,13 +19,13 @@
                 class="img-fluid"
                 src="{{ instance.get_image_url }}"
                 srcset="
-                    {% for width, thumb in instance.get_image_urlset_data %}
+                    {% for width, thumb in instance.get_image_srcset_data %}
                         {{ thumb.url }} {{ width }}w,
                     {% endfor %}
                     {{ instance.get_image_url }} {{ instance.image.width }}w
                 "
                 sizes="
-                    {% for width, thumb in instance.get_image_urlset_data %}
+                    {% for width, thumb in instance.get_image_srcset_data %}
                         (max-width: {{ width }}px) {{ width }}px,
                     {% endfor %}
                     {{ instance.image.width }}px
