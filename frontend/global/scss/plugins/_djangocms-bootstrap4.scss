@@ -54,16 +54,12 @@
 //    }
 //}
 
-main.container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-}
 main.one-column-with-menu-and-sidebar {
     padding-left: $grid-gutter-width-half;
     padding-right: $grid-gutter-width-half;
 }
 
-
+header,
 main.container-fluid,
 main.container,
 .main-column.container {

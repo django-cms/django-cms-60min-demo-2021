@@ -18,6 +18,12 @@
     background: linear-gradient(145deg, rgba($color, .8) 0%, rgba(0,0,0,0) 80%);
 }
 
+.header-container-fluid {
+    .section-with-image-background-plugin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
 
 .section-with-image-background-plugin {
     display: flex;
@@ -25,6 +31,8 @@
     justify-content: center;
     position: relative;
     width: 100%;
+    margin-left: -$grid-gutter-width-half;
+    margin-right: -$grid-gutter-width-half;
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: 50% 50% !important;

@@ -1,5 +1,5 @@
 import * as tocbot from 'tocbot';
-const slugify = require('slugify')
+const slugify = require('slugify');
 
 
 document.addEventListener('DOMContentLoaded', () => {

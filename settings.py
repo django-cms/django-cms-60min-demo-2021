@@ -330,10 +330,10 @@ RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 
 CMS_TEMPLATES = [
-    ('full-width.html', 'full width'),
-    ('one-column.html', 'one column'),
-    ('one-column-with-menu-and-sidebar.html', 'one column with menu and sidebar'),
-    ('two-columns-main-left.html', 'content width - two columns'),
+    ('full-width.html', 'main column (full width)'),
+    ('one-column.html', 'main column (limited width)'),
+    ('one-column-with-menu-and-sidebar.html', 'documentation (floating left menu and right sidebar)'),
+    ('two-columns-main-left.html', 'main column and floating right sidebar'),
 ]
 
 

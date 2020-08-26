@@ -61,9 +61,10 @@
         {% cms_toolbar %}
 
         {% block content_before %}{% endblock %}
-        
-        <header>
-            {% static_placeholder 'top bar' %}
+
+        {% static_placeholder 'top bar' %}
+
+        <header class="header-container-fluid">
             {% block header %}
                 {% placeholder 'header' %}
             {% endblock %}
