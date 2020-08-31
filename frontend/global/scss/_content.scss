@@ -47,13 +47,13 @@ h1, .heading-plugin--h1 {
 
 @mixin header-style($tag, $font-size, $margin-top) {
     $margin-bottom-global: 1rem;
-    z-index: 0;
     
     $offset: rem(5px);
     #{$tag}, .heading-plugin--#{$tag} {
         margin-top: -$offset;
         padding-top: $offset + $margin-top - $margin-bottom-global;
         font-size: $font-size;
+        z-index: 0;
     }
     #{$tag}:first-child, .heading-plugin--#{$tag}:first-child {
         padding-top: $offset + $margin-top;
