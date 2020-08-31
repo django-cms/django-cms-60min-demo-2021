@@ -41,8 +41,13 @@ h1, .heading-plugin--h1 {
     }
 }
 
+* {
+    z-index: 1;
+}
+
 @mixin header-style($tag, $font-size, $margin-top) {
     $margin-bottom-global: 1rem;
+    z-index: 0;
     
     $offset: rem(5px);
     #{$tag}, .heading-plugin--#{$tag} {
