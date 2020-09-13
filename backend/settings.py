@@ -26,6 +26,7 @@ DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 if DIVIO_ENV == DivioEnv.LOCAL:
     load_dotenv(find_dotenv('.env-local'))
+    CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
 INSTALLED_ADDONS = [
@@ -100,6 +101,7 @@ INSTALLED_APPS.extend([
     'logentry_admin',
     'hijack_admin',
     'djangocms_helpers',
+    'djangocms_helpers.divio',
     'djangocms_helpers.sentry_500_error_handler',
         'meta',
 
@@ -216,7 +218,7 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
-STATICFILES_STORAGE = 'backend.storage.NonStrictManifestGZippedStaticFilesStorage'
+STATICFILES_STORAGE = 'djangocms_helpers.storage.NonStrictManifestGZippedStaticFilesStorage'
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
 
 
@@ -311,6 +313,7 @@ ADMIN_REORDER = [
             {'model': 'sites.Site', 'label': 'Websites'},
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
+            'admin.LogEntry',
             
             # removed because it doesn't work on cms 3.7.3
             # 'cms.GlobalPagePermission',
@@ -326,7 +329,6 @@ ADMIN_REORDER = [
             {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
-    # 'admin', # this will add logs
 ]
 
 
