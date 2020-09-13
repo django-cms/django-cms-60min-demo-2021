@@ -84,5 +84,5 @@ $grid-gutter-width: 30px;
 $grid-gutter-width-half: $grid-gutter-width/2; 
 
 
-// override by placing it at the end
+// must be placed at the end
 @import '~bootstrap/scss/variables';

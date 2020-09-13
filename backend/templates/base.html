@@ -24,10 +24,10 @@
         {% render_block 'css' %}
 
         <script>
-            window.DJANGO = {
-                env: `{{ settings.DIVIO_ENV.value }}`,
-                isDebugMode: {{ settings.DEBUG|lower }},
-            };
+            document.addEventListener('DOMContentLoaded', function() {
+                window.django.env = '{{ settings.DIVIO_ENV.value }}';
+                window.django.isDebugMode: {{ settings.DEBUG|lower }},
+            })
         </script>
 
         {% if settings.DIVIO_ENV.value == 'local' %}

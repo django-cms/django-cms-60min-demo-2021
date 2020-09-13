@@ -5,24 +5,21 @@ __pycache__/
 *.mo
 
 # compiled frontend files
-node_modules/
+frontend/node_modules/
 frontend/dist
 .sass-cache
 *.css.map
-static_collected/
 
 # dev files
 .idea/
-/.aldryn
-/data
 data.tar.gz
 .secret_key
 .venv
 *.sqlite3
 /*.log
 .DS_Store
-/requirements.urls
-addons-dev/
+/backend/requirements.urls
 
 # django files
-media/
+data/
+backend/static_collected/

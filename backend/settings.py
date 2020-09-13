@@ -1,58 +1,17 @@
-import logging
 import os
+from enum import Enum
 from typing import List
 
-import sentry_sdk
 from dotenv import find_dotenv
 from dotenv import load_dotenv
-from enumfields import Enum
 from env_settings import env
+
 from link_all.dataclasses import LinkAllModel
-
-
-load_dotenv(find_dotenv('.env-local'))
 
 
 ################################################################################
 # divio
 ################################################################################
-
-
-INSTALLED_ADDONS = [
-    # <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
-    'aldryn-addons',
-    'aldryn-django',
-    'aldryn-django-cms',
-    'django-filer',
-    # </INSTALLED_ADDONS>
-    'aldryn-sso',
-]
-
-
-import aldryn_addons.settings
-
-aldryn_addons.settings.load(locals())
-
-
-################################################################################
-# django
-################################################################################
-
-
-INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
-MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
-BASE_DIR: str = locals()['BASE_DIR']
-STATIC_URL: str = locals()['STATIC_URL']
-TEMPLATES: List[dict] = locals()['TEMPLATES']
-DEBUG: bool = locals()['DEBUG']
-MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
-SITE_ID: int = locals()['SITE_ID']
-
-
-DATE_FORMAT = 'F j, Y'
-
-USE_TZ = True
-TIME_ZONE = 'Europe/Zurich'
 
 
 class DivioEnv(Enum):
@@ -63,6 +22,52 @@ class DivioEnv(Enum):
 
 DIVIO_ENV_ENUM = DivioEnv
 DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
+
+
+if DIVIO_ENV == DivioEnv.LOCAL:
+    load_dotenv(find_dotenv('.env-local'))
+
+
+INSTALLED_ADDONS = [
+    'aldryn-addons',
+    'aldryn-django',
+    'aldryn-django-cms',
+    'django-filer',
+    'aldryn-sso',
+]
+
+
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(BACKEND_DIR)
+os.environ['BASE_DIR'] = BASE_DIR
+os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
+
+
+import aldryn_addons.settings
+
+aldryn_addons.settings.load(locals())
+
+
+INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
+MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
+BASE_DIR: str = locals()['BASE_DIR']
+STATIC_URL: str = locals()['STATIC_URL']
+TEMPLATES: List[dict] = locals()['TEMPLATES']
+DEBUG: bool = locals()['DEBUG']
+MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
+SITE_ID: int = locals()['SITE_ID']
+DOMAIN: str = locals().get('DOMAIN', 'localhost')
+SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
+
+
+################################################################################
+# django
+################################################################################
+
+
+DATE_FORMAT = 'F j, Y'
+USE_TZ = True
+TIME_ZONE = 'Europe/Zurich'
 
 
 installed_apps_overrides = [
@@ -147,6 +152,7 @@ INSTALLED_APPS.extend([
 
     # project
 
+    'backend.aldryn',
     'backend.site_config',
     'backend.plugins.mailchimp',
     'backend.plugins.toc',
@@ -174,23 +180,20 @@ MIDDLEWARE.extend([
     'djangocms_redirect.middleware.RedirectMiddleware',
 ])
 
-# removes frustrating validations, eg `too similar to your email`
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-]
-
 AUTH_USER_MODEL = 'backend_auth.User'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/'),
 ]
+STATIC_ROOT = os.path.join(BACKEND_DIR, 'static_collected/')
+LOCALE_PATHS = [
+    os.path.join(BACKEND_DIR, 'locale'),
+]
+ROOT_URLCONF = 'backend.urls'
 
 default_template_engine: dict = TEMPLATES[0]
 default_template_engine['DIRS'].extend([
-    os.path.join(BASE_DIR, 'backend/templates/'),
-])
-default_template_engine['OPTIONS']['context_processors'].extend([
-    'django_settings_export.settings_export',
+    os.path.join(BACKEND_DIR, 'templates/'),
 ])
 
 if DIVIO_ENV == DivioEnv.LOCAL:
@@ -199,7 +202,7 @@ else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 
-DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', 'Project Name <info@example.com>')
+DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
 
 
 if DIVIO_ENV == DivioEnv.LOCAL:
@@ -211,6 +214,10 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 
 
 HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
+
+
+STATICFILES_STORAGE = 'backend.storage.NonStrictManifestGZippedStaticFilesStorage'
+STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
 
 
 ################################################################################
@@ -235,17 +242,23 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False  # otherwise admins can't access the login view
 LOGIN_REDIRECT_URL = '/'
 CONFIRM_EMAIL_ON_GET = True
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},  # removes frustrating validations, eg `too similar to your email`
+]
+
 
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
 
 WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
 
-# the default doesn't support names hashing
-STATICFILES_STORAGE = 'aldryn_django.storage.ManifestGZippedStaticFilesStorage'
-# the default is 5m
-STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365
 
+default_template_engine['OPTIONS']['context_processors'].extend([
+    'django_settings_export.settings_export',
+])
+SENTRY_DSN = locals().get('SENTRY_DSN', '')
 SETTINGS_EXPORT = [
+    'DOMAIN',
+    'SITE_NAME',
     'WEBPACK_DEV_URL',
     'DIVIO_ENV',
     'DIVIO_ENV_ENUM',
@@ -254,9 +267,6 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'ALGOLIA',
 ]
-
-
-SENTRY_DSN = env.get('SENTRY_DSN', None)
 
 
 HIJACK_REGISTER_ADMIN = False
@@ -302,7 +312,7 @@ ADMIN_REORDER = [
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
             
-            # removed because it doesn't work on cms 3.7.1
+            # removed because it doesn't work on cms 3.7.3
             # 'cms.GlobalPagePermission',
             # 'cms.PageUserGroup',
             # 'cms.PageUser',
@@ -316,12 +326,17 @@ ADMIN_REORDER = [
             {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
+    # 'admin', # this will add logs
 ]
 
 
 RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
 RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
 RECAPTCHA_SCORE_THRESHOLD = 0.85
+
+
+SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'guest-view'
+SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 
 
 ################################################################################
@@ -358,7 +373,6 @@ LANGUAGES = [
     ('en', "English"),
     ('nl', "Netherlands"),
 ]
-
 CMS_LANGUAGES = {
     SITE_ID: [
         {
@@ -377,7 +391,6 @@ CMS_LANGUAGES = {
         'hide_untranslated': False,
     }
 }
-
 PARLER_LANGUAGES = CMS_LANGUAGES
 
 
@@ -468,10 +481,10 @@ CKEDITOR_SETTINGS = {
     'pasteFromWordRemoveFontStyles': True,
     'forcePasteAsPlainText': False,
 }
-# djangocms-text-ckeditor uses html5lib to sanitize HTML and deletes iframes
 TEXT_ADDITIONAL_TAGS = [
-    'iframe',
+    'iframe',  # djangocms-text-ckeditor uses html5lib to sanitize HTML and deletes iframes
 ]
+
 
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL
@@ -482,8 +495,7 @@ ALGOLIA = {
     'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID', ''),
     'API_KEY': env.get('ALGOLIA_API_KEY', ''),
 }
-# not used but haystack demands it on its search index collection import
-HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}
+HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}  # not used but haystack demands it on its search index collection import
 ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'SectionWithImageBackgroundPlugin',
     'TocPlugin',

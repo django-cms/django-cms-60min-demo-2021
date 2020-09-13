@@ -12,10 +12,10 @@ const isDevelopmentMode = process.env.NODE_ENV !== 'production';
 const config = {
     mode: 'production',
     entry: {
-        global: './frontend/global/index.js',
-        vendor: './frontend/vendor/index.js',
-        component_toc: './frontend/components/toc/index.js',
-        component_search: './frontend/components/search/index.js',
+        global: './global/index.js',
+        vendor: './vendor/index.js',
+        component_toc: './components/toc/index.js',
+        component_search: './components/search/index.js',
     },
     output: {
         filename: '[name].js',
@@ -109,7 +109,7 @@ const config = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js',],
         modules: [
-            path.resolve('frontend'),
+            path.resolve('.'),
             'node_modules'
         ],
         alias: {
@@ -117,7 +117,7 @@ const config = {
         }
     },
     devServer: {
-        contentBase: path.resolve(__dirname, `frontend`),
+        contentBase: path.resolve(__dirname),
         headers: {'Access-Control-Allow-Origin': '*'},
         host: '0.0.0.0',
         port: 8090,

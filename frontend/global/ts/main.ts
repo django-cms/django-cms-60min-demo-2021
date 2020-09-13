@@ -1,10 +1,10 @@
 import {initAsideRightPositionFixed} from 'global/ts/aisde-right-pos-fixed';
 import {initMainMenu} from 'global/ts/main-menu';
-import {initOnPageEditReloadScript} from 'global/ts/on-page-edit-reload';
+import {initReloadScriptsOnContentRefresh} from 'global/ts/reload-scripts-on-content-refresh';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    initOnPageEditReloadScript();
+    initReloadScriptsOnContentRefresh();
     initMainMenu();
     initAsideRightPositionFixed();
 }, {once: true});
