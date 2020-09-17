@@ -1,5 +1,21 @@
+{% spaceless %}
+
 <li class="menu-item-plugin nav-item child">
-    <a class="nav-link" href="{{ instance.link.href }}" target="{{ instance.link.target }}">
-        {{ instance.link.label }}
-    </a>
+    <a class="
+            menu-item-plugin
+            nav-link
+            {% if instance.link_is_button %}
+                btn
+                {% if instance.link_is_button_outlined %}
+                    btn-outline-{{ instance.link_button_color.value }}
+                {% else %}
+                    btn-{{ instance.link_button_color.value }}
+                {% endif %}
+                {% if instance.link_is_button_full_width %}btn-block{% endif %}
+            {% endif %}
+        "
+        href="{{ instance.get_link_url }}{{ instance.get_anchor }}"
+    >{{ instance.get_link_label }}</a>
 </li>
+
+{% endspaceless %}

@@ -1,6 +1,7 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
+from link_all.cms_plugins import LinkButtonPlugin
 
 from backend.plugins.module_name import MODULE_NAME
 from backend.plugins.nav_bar.models import MenuItemModel
@@ -20,7 +21,7 @@ class NavBarPlugin(CMSPluginBase):
 
 
 @plugin_pool.register_plugin
-class MenuItemPlugin(CMSPluginBase):
+class MenuItemPlugin(LinkButtonPlugin):
     module = MODULE_NAME
     name = "Menu Item"
     model = MenuItemModel

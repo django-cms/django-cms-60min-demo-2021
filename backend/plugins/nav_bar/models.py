@@ -1,5 +1,6 @@
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
+from link_all.models import LinkAllBootstrapButtonMixin
 from link_all.models import LinkAllMixin
 from linkit.model_fields import LinkField
 
@@ -29,5 +30,5 @@ class NavBarPluginModel(CMSPlugin):
         return ''
 
 
-class MenuItemModel(CMSPlugin, LinkAllMixin):
+class MenuItemModel(CMSPlugin, LinkAllMixin, LinkAllBootstrapButtonMixin):
     pass

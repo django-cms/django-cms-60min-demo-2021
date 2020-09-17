@@ -132,7 +132,7 @@ jedi==0.17.2              # via ipython
 jsons==0.8.9              # via djangocms-link-all
 lxml==4.5.2               # via aldryn-search, djangocms-blog, premailer
 markuppy==1.14            # via tablib
-oauthlib==3.1.0         r  # via requests-oauthlib
+oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.1              # via tablib
 openpyxl==3.0.5           # via tablib
 orderedmultidict==1.0.1   # via furl
