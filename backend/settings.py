@@ -163,7 +163,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.section_with_image_background',
     'backend.plugins.person_list',
     'backend.plugins.nav_bar',
-        'linkit',
     'backend.plugins.card',
     'backend.plugins.footer',
     'backend.plugins.google_slides',

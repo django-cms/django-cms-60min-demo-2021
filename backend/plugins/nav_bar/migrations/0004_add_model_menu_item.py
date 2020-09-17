@@ -2,7 +2,6 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import linkit.model_fields
 
 
 class Migration(migrations.Migration):
@@ -17,7 +16,7 @@ class Migration(migrations.Migration):
             name='MenuItemModel',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='nav_bar_menuitemmodel', serialize=False, to='cms.CMSPlugin')),
-                ('link', linkit.model_fields.LinkField(allow_label=True, allow_no_follow=True, allow_target=True, name='link', types=['djangocms_blog', 'page', 'file', 'input'])),
+                ('link', models.CharField(default='')),
             ],
             options={
                 'abstract': False,
