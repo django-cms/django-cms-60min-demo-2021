@@ -1,5 +1,6 @@
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
+from link_all.models import LinkAllMixin
 from linkit.model_fields import LinkField
 
 
@@ -28,8 +29,5 @@ class NavBarPluginModel(CMSPlugin):
         return ''
 
 
-class MenuItemModel(CMSPlugin):
-    link = LinkField(allow_target=True, allow_no_follow=True, types=['djangocms_blog', 'page', 'file', 'input'])
-    
-    def __str__(self) -> str:
-        return self.link.label
+class MenuItemModel(CMSPlugin, LinkAllMixin):
+    pass

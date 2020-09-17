@@ -154,7 +154,6 @@ INSTALLED_APPS.extend([
 
     # project
 
-    'backend.aldryn',
     'backend.site_config',
     'backend.plugins.mailchimp',
     'backend.plugins.toc',
