@@ -25,9 +25,16 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                window.django.env = '{{ settings.DIVIO_ENV.value }}';
-                window.django.isDebugMode: {{ settings.DEBUG|lower }},
-            })
+                if (window.django) {
+                    window.django.env = '{{ settings.DIVIO_ENV.value }}';
+                    window.django.isDebugMode = {{ settings.DEBUG|lower }};
+                } else {
+                    window.django = {
+                        env: '{{ settings.DIVIO_ENV.value }}',
+                        isDebugMode: {{ settings.DEBUG|lower }},
+                    }
+                }
+            });
         </script>
 
         {% if settings.DIVIO_ENV.value == 'local' %}
