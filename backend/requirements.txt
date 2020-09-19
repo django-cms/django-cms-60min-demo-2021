@@ -4,7 +4,7 @@
 #
 #    pip-compile --no-index --output-file /workspace/requirements.txt /workspace/requirements.in
 #
-https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.0/ef24ec0c-c20d-44f4-8f37-8a3188d90f85/aldryn-addons-2.0.0.tar.gz#egg=aldryn-addons==2.0.0
+https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.1/75074b5c-4ff7-448b-acf9-412d78472b6b/aldryn-addons-2.0.1.tar.gz#egg=aldryn-addons==2.0.1
 aldryn-apphooks-config==0.6.0
 aldryn-boilerplates==0.8.0  # via aldryn-common
 aldryn-client==2.3.5
