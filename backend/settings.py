@@ -425,6 +425,9 @@ CMS_PLACEHOLDER_CONF = {
             
             # deprecated
             'Bootstrap4PicturePlugin',
+            'Bootstrap4LinkPlugin',
+            'Bootstrap4SpacingPlugin',
+            'LinkAllPlugin',
         ],
     },
 }
