@@ -8,12 +8,14 @@ plugin_pool.unregister_plugin(Bootstrap4LinkPlugin)
 @plugin_pool.register_plugin
 class Bootstrap4LinkPlugin(Bootstrap4LinkPlugin):
     name = "Link/Button [deprecated - don't use]"
+    text_enabled = False
 
 
 plugin_pool.unregister_plugin(Bootstrap4PicturePlugin)
 @plugin_pool.register_plugin
 class Bootstrap4PicturePlugin(Bootstrap4PicturePlugin):
     name = "Picture/Image [deprecated - don't use]"
+    
 
 
 plugin_pool.unregister_plugin(Bootstrap4SpacingPlugin)

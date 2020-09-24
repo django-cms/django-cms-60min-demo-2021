@@ -14,7 +14,7 @@ class SpacerPluginBase(CMSPluginBase):
     render_template = 'bs4_spacer/spacer-plugin.html'
     allow_children = True
     # allows the plugin to be inserted inside a TextPlugin (ckeditor)
-    text_enabled = True
+    text_enabled = False
 
     fieldsets = [
         (None, {
