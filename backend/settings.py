@@ -375,7 +375,7 @@ if DEBUG:
 
 LANGUAGES = [
     ('en', "English"),
-    ('nl', "Dutch"),
+    ('de', "German"),
 ]
 CMS_LANGUAGES = {
     SITE_ID: [
@@ -384,12 +384,12 @@ CMS_LANGUAGES = {
             'name': 'English',
         },
         {
-            'code': 'nl',
-            'name': 'Dutch',
+            'code': 'de',
+            'name': 'German',
         },
     ],
     'default': {
-        'fallbacks': ['en', 'nl'],
+        'fallbacks': ['en', 'de'],
         'redirect_on_fallback': True,
         'public': True,
         'hide_untranslated': False,
