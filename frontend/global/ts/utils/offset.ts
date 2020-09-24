@@ -6,7 +6,7 @@ export function getFloatingTopOffset(): number {
     }
 
     let navbarFixedHeight = 0;
-    const navbarFixed = document.querySelector('header nav.fixed-top');
+    const navbarFixed = document.querySelector('.navbar.fixed-top');
     if (navbarFixed) {
         navbarFixedHeight = 56;
     }

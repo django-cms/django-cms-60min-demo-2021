@@ -63,7 +63,6 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
                 }
             }
         }
-
         .metismenu {
             position: absolute;
             width: 100%;
@@ -80,7 +79,6 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
             list-style: none;
 
             li {
-            
                 .arrow {
                     content: '';
                     background: no-repeat url(~global/img/arrow.svg);
