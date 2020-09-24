@@ -53,7 +53,7 @@ h1, .heading-plugin--h1 {
         margin-top: -$offset;
         padding-top: $offset + $margin-top - $margin-bottom-global;
         font-size: $font-size;
-        z-index: 0;
+        z-index: 0 !important;
     }
     #{$tag}:first-child, .heading-plugin--#{$tag}:first-child {
         padding-top: $offset + $margin-top;
