@@ -1,5 +1,6 @@
-Currently this project has two live instances:
+Currently this project has 3 live instances:
 - 1fortheworld.org chapter's resource - http://chapters.1fortheworld.org/
+- it's the official demo for [DjangoCMS project](https://github.com/divio/django-cms/) - https://control.divio.com/demo/get-new/
 - Effective Altruism Netherlands - https://effectiefaltruisme.nl/en/
 
 
