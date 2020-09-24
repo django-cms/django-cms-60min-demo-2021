@@ -104,6 +104,12 @@ INSTALLED_APPS.extend([
     'djangocms_helpers.divio',
     'djangocms_helpers.sentry_500_error_handler',
         'meta',
+    
+    # django cms deprecated
+
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_picture',
 
     # django cms
 
@@ -367,7 +373,7 @@ if DEBUG:
 
 LANGUAGES = [
     ('en', "English"),
-    ('de', "German"),
+    ('nl', "Dutch"),
 ]
 CMS_LANGUAGES = {
     SITE_ID: [
@@ -376,12 +382,12 @@ CMS_LANGUAGES = {
             'name': 'English',
         },
         {
-            'code': 'de',
-            'name': 'German',
+            'code': 'nl',
+            'name': 'Dutch',
         },
     ],
     'default': {
-        'fallbacks': ['en', 'de'],
+        'fallbacks': ['en', 'nl'],
         'redirect_on_fallback': True,
         'public': True,
         'hide_untranslated': False,
@@ -414,6 +420,9 @@ CMS_PLACEHOLDER_CONF = {
             'SubmitButton',
             'CaptchaField',
             'ReCaptchaFieldPlugin',
+            
+            # deprecated
+            'Bootstrap4PicturePlugin',
         ],
     },
 }
