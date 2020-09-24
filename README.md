@@ -1,6 +1,6 @@
-Currently this project has two WIP instances:
-- Effective Altruism Netherlands - https://effective-altruismnl.us.aldryn.io/en/
-- 1fortheworld.org chapter leader resource - https://chapter-leader-resource.us.aldryn.io/
+Currently this project has two live instances:
+- Effective Altruism Netherlands - https://effectiefaltruisme.nl/en/
+- 1fortheworld.org chapter resource - http://chapters.1fortheworld.org/
 
 
 Development Setup
