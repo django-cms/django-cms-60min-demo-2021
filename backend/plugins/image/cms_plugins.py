@@ -9,7 +9,7 @@ from backend.plugins.module_name import MODULE_NAME
 class ImagePlugin(LinkAllPlugin):
     module = MODULE_NAME
     model = ImagePluginModel
-    name = "Picture / Image (scalable)"
+    name = "Picture / Image"
     render_template = 'image/image_plugin.html'
     text_enabled = False
     change_form_template = 'link_all/admin/link_all.html'
@@ -26,11 +26,13 @@ class ImagePlugin(LinkAllPlugin):
         ("Link", {
             'classes': ['collapse'],
             'fields': [
-                'link_all_field',
-                'link_label',
+                'link',
                 'link_type',
+                'link_content_type',
                 'link_instance_pk',
                 'link_url',
+                'link_label',
+                'link_is_open_in_new_tab',
             ],
         }),
     ]
