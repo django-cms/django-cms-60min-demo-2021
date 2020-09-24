@@ -504,6 +504,7 @@ LINK_ALL_MODELS_ADDITIONAL = [
     LinkAllModel(app_label='djangocms_blog', model_name='Post'),
     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
 ]
+LINK_ALL_ENABLE_BUTTON_PLUGIN = True
 
 
 class HeadingType(Enum):
