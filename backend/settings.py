@@ -82,6 +82,7 @@ installed_apps_overrides = [
 ]
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
+
 INSTALLED_APPS.extend([
     # django
 
@@ -111,6 +112,7 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_picture',
     'backend.plugins.bs4_spacer',
+    'backend.plugins.deprecated',
 
     # django cms
 
@@ -174,7 +176,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.card_hero_with_content',
     'backend.plugins.reference_tooltip',
 ])
-
 MIDDLEWARE.extend([
     # django
     'admin_reorder.middleware.ModelAdminReorder',

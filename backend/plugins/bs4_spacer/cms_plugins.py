@@ -9,7 +9,7 @@ from .models import VerticalSpacerPlugin
 @plugin_pool.register_plugin
 class SpacerPluginBase(CMSPluginBase):
     model = VerticalSpacerPlugin
-    name = _("Vertical Spacing")
+    name = _("Vertical Spacing [deprecated - don't use]")
     module = MODULE_NAME
     render_template = 'bs4_spacer/spacer-plugin.html'
     allow_children = True
