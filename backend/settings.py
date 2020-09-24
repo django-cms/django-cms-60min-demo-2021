@@ -110,6 +110,7 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_link',
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_picture',
+    'backend.plugins.bs4_spacer',
 
     # django cms
 
