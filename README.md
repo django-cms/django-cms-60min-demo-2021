@@ -1,5 +1,5 @@
 Currently this project has two live instances:
-- 1fortheworld.org chapter resource - http://chapters.1fortheworld.org/
+- 1fortheworld.org chapter's resource - http://chapters.1fortheworld.org/
 - Effective Altruism Netherlands - https://effectiefaltruisme.nl/en/
 
 
