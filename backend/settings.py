@@ -116,10 +116,8 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_content',
     'djangocms_bootstrap4.contrib.bootstrap4_grid',
     'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
     'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
     'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',  # place djangocms_picture
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
@@ -134,7 +132,6 @@ INSTALLED_APPS.extend([
     'djangocms_googlemap',
     'djangocms_video',
     'djangocms_history',
-    'djangocms_picture',
     'djangocms_file',
     'djangocms_snippet',
     'djangocms_socialshare',
@@ -158,7 +155,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.mailchimp',
     'backend.plugins.toc',
     'backend.plugins.bs4_hiding',
-    'backend.plugins.bs4_spacer',
     'backend.plugins.horizontal_line',
     'backend.plugins.section_with_image_background',
     'backend.plugins.person_list',
@@ -345,10 +341,10 @@ SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 
 
 CMS_TEMPLATES = [
-    ('full-width.html', 'main column (full width)'),
-    ('one-column.html', 'main column (limited width)'),
+    ('full-width.html', 'one column (full width)'),
+    ('one-column.html', 'one column (limited width)'),
     ('one-column-with-menu-and-sidebar.html', 'documentation (floating left menu and right sidebar)'),
-    ('two-columns-main-left.html', 'main column and floating right sidebar'),
+    ('two-columns-main-left.html', 'left main column and floating right sidebar'),
 ]
 
 
@@ -371,7 +367,7 @@ if DEBUG:
 
 LANGUAGES = [
     ('en', "English"),
-    ('nl', "Netherlands"),
+    ('de', "German"),
 ]
 CMS_LANGUAGES = {
     SITE_ID: [
@@ -380,12 +376,12 @@ CMS_LANGUAGES = {
             'name': 'English',
         },
         {
-            'code': 'nl',
-            'name': 'Dutch',
+            'code': 'de',
+            'name': 'German',
         },
     ],
     'default': {
-        'fallbacks': ['en', 'nl'],
+        'fallbacks': ['en', 'de'],
         'redirect_on_fallback': True,
         'public': True,
         'hide_untranslated': False,
@@ -417,10 +413,7 @@ CMS_PLACEHOLDER_CONF = {
             'TextField',
             'SubmitButton',
             'CaptchaField',
-
             'ReCaptchaFieldPlugin',
-
-            'Bootstrap4PicturePlugin',
         ],
     },
 }
@@ -527,10 +520,14 @@ DJANGOCMS_BOOTSTRAP4_HEADING_TYPE_ENUM = HeadingType
 
 
 class GridContainerSpacing(Enum):
+    NONE_OLD = 'spacing-none'
     NONE = 'none'
     SMALL = 'small'
     NORMAL = 'normal'
     LARGE = 'large'
+    
+    class Labels:
+        NONE_OLD = 'Default'
 
 
 DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING = GridContainerSpacing
