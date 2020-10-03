@@ -14,10 +14,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='menuitemmodel',
-            name='link',
-        ),
         migrations.AddField(
             model_name='menuitemmodel',
             name='link_button_color',
