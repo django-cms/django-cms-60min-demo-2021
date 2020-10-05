@@ -16,7 +16,6 @@ class Migration(migrations.Migration):
             name='MenuItemModel',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='nav_bar_menuitemmodel', serialize=False, to='cms.CMSPlugin')),
-                ('link', models.CharField(default='')),
             ],
             options={
                 'abstract': False,

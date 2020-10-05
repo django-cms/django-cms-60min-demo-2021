@@ -14,17 +14,17 @@ from link_all.dataclasses import LinkAllModel
 ################################################################################
 
 
-class DivioEnv(Enum):
+class DjangoEnv(Enum):
     LOCAL = 'local'
     TEST = 'test'
     LIVE = 'live'
 
 
-DIVIO_ENV_ENUM = DivioEnv
-DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
+DJANGO_ENV_ENUM = DjangoEnv
+DJANGO_ENV = DjangoEnv(env.get('STAGE', 'local'))
 
 
-if DIVIO_ENV == DivioEnv.LOCAL:
+if DJANGO_ENV == DjangoEnv.LOCAL:
     load_dotenv(find_dotenv('.env-local'))
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
@@ -40,7 +40,11 @@ INSTALLED_ADDONS = [
 
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(BACKEND_DIR)
+ADDONS_DIR = os.path.join(BACKEND_DIR, 'addons')
+ADDONS_DEV_DIR = os.path.join(BACKEND_DIR, 'addons-dev')
 os.environ['BASE_DIR'] = BASE_DIR
+os.environ['ADDONS_DIR'] = ADDONS_DIR
+os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
 
@@ -120,7 +124,6 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
     'djangocms_bootstrap4.contrib.bootstrap4_badge',
     'djangocms_bootstrap4.contrib.bootstrap4_card',
-    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
     'djangocms_bootstrap4.contrib.bootstrap4_collapse',
     'djangocms_bootstrap4.contrib.bootstrap4_content',
     'djangocms_bootstrap4.contrib.bootstrap4_grid',
@@ -137,7 +140,6 @@ INSTALLED_APPS.extend([
         'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
-    'djangocms_link',
     'djangocms_googlemap',
     'djangocms_video',
     'djangocms_history',
@@ -200,7 +202,7 @@ default_template_engine['DIRS'].extend([
     os.path.join(BACKEND_DIR, 'templates/'),
 ])
 
-if DIVIO_ENV == DivioEnv.LOCAL:
+if DJANGO_ENV == DjangoEnv.LOCAL:
     email_backend_default = 'django.core.mail.backends.console.EmailBackend'
 else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
@@ -209,7 +211,7 @@ EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
 
 
-if DIVIO_ENV == DivioEnv.LOCAL:
+if DJANGO_ENV == DjangoEnv.LOCAL:
     ssl_redirect_default = False
 else:
     ssl_redirect_default = True
@@ -217,7 +219,7 @@ else:
 SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
 
 
-HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
+HTTP_PROTOCOL = 'http' if DJANGO_ENV == DjangoEnv.LOCAL else 'https'
 
 
 STATICFILES_STORAGE = 'djangocms_helpers.storage.NonStrictManifestGZippedStaticFilesStorage'
@@ -264,8 +266,8 @@ SETTINGS_EXPORT = [
     'DOMAIN',
     'SITE_NAME',
     'WEBPACK_DEV_URL',
-    'DIVIO_ENV',
-    'DIVIO_ENV_ENUM',
+    'DJANGO_ENV',
+    'DJANGO_ENV_ENUM',
     'SENTRY_DSN',
     'GTM_CONTAINER_ID',
     'DEBUG',
@@ -366,6 +368,8 @@ if DEBUG:
     CMS_PLUGIN_CACHE = False
     MENU_CACHE_DURATION = 0
     CMS_CONTENT_CACHE_DURATION = 0
+else:
+    CMS_CONTENT_CACHE_DURATION = 60 * 60 * 5
 
 
 ################################################################################
@@ -462,8 +466,8 @@ CKEDITOR_SETTINGS = {
     ),
     'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
-        f'{WEBPACK_DEV_URL}/vendor.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
-        f'{WEBPACK_DEV_URL}/global.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
+        f'{WEBPACK_DEV_URL}/vendor.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
+        f'{WEBPACK_DEV_URL}/global.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
     ],
     'toolbar': 'CUSTOM',
     'toolbar_CUSTOM': [
@@ -501,6 +505,7 @@ META_USE_SITES = True
 ALGOLIA = {
     'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID', ''),
     'API_KEY': env.get('ALGOLIA_API_KEY', ''),
+    'API_KEY_READ_ONLY': env.get('ALGOLIA_API_KEY_READ_ONLY', ''),
 }
 HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}  # not used but haystack demands it on its search index collection import
 ALDRYN_SEARCH_EXCLUDED_PLUGINS = [

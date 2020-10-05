@@ -1,3 +1,22 @@
+2020.10
+-------------------------------------------------------------------------------
+
+- fix the content caching which was set to 5m by default - set it to 5h
+
+#### Breaking Changes
+- upgrade to python 3.7 by basing the docker image on divio/base:0.7-py3.7-slim-stretch
+- upgrade to DjangoCMS 3.8 and Django 3.0
+
+
+2020.09
+-------------------------------------------------------------------------------
+
+#### Breaking Changes
+- rename DivioEnv to DjangoEnv, as long as the related variables in settings.py
+- dropped bootstrap4 link plugin in favor of djangocms-link-all
+- move addons/ and addons-dev/ directories into backend/
+
+
 2020.08
 -------------------------------------------------------------------------------
 
