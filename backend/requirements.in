@@ -1,8 +1,8 @@
 # <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.1/75074b5c-4ff7-448b-acf9-412d78472b6b/aldryn-addons-2.0.1.tar.gz#egg=aldryn-addons==2.0.1
-https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.16.1/b460938a-f357-49a3-9aef-9dfb40946551/aldryn-django-2.2.16.1.tar.gz#egg=aldryn-django==2.2.16.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django/3.0.10.1/1d7a72d3-ccc1-44b6-8457-42b831c497dc/aldryn-django-3.0.10.1.tar.gz#egg=aldryn-django==3.0.10.1
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/2.0.0/e6eccefa-e8f5-492d-8e71-79fc99f30201/aldryn-sso-2.0.0.tar.gz#egg=aldryn-sso==2.0.0
-https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.4.1/290eec9d-c49f-435e-8003-a476f81b7acf/aldryn-django-cms-3.7.4.1.tar.gz#egg=aldryn-django-cms==3.7.4.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.8.0.1/386e63fb-b135-4f0e-8e1d-ef2945004091/aldryn-django-cms-3.8.0.1.tar.gz#egg=aldryn-django-cms==3.8.0.1
 https://control.divio.com/api/v1/apps/serve/django-filer/2.0.0/afe0eaf3-e139-4524-8130-ddec083423d4/django-filer-2.0.0.tar.gz#egg=django-filer==2.0.0
 # </INSTALLED_ADDONS>
 
@@ -21,7 +21,7 @@ https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#e
 https://github.com/divio/djangocms-bootstrap4/archive/f58105d1f892fba4be0dff37a2b78791dc42bd81.zip#egg=djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-https://github.com/divio/aldryn-forms/archive/6.1.0-alpha.zip#egg=aldryn-forms==6.1.0-alpha
+https://github.com/divio/aldryn-forms/archive/6.2.0.rc4.zip#egg=aldryn-forms==6.2.0.rc4
     djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin
 djangocms-light-gallery
@@ -29,28 +29,27 @@ aldryn-translation-tools
 aldryn-apphooks-config
 djangocms-socialshare
 djangocms-algolia
-djangocms-redirect
 djangocms-helpers
-djangocms-page-meta
 djangocms-link-all
+https://github.com/maestrofjp/djangocms-redirect/archive/f3075345905e6c629a813d7f1878eede2f0892f5.zip#egg=djangocms-redirect # because the upstream isn't compatible with django 3 yet
+https://github.com/maestrofjp/djangocms-page-meta/archive/f74ba1670407c2bb648d422fe9139853bcd3c7c5.zip#egg=djangocms-page-meta # because the upstream isn't compatible with django 3 yet
+
 
 # django
 
-aldryn-sso
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
 django-sortedm2m # M2M drag and drop sorting for admin, don't use django-admin-sortable2 for M2M
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
-django-env-settings >= 0.13.0 # settings utils, see gitlab.com/what-digital/django-env-settings
+django-env-settings # settings utils, should be replaced with another package since this one was created for our ansible script, see gitlab.com/what-digital/django-env-settings
 django-import-export
 django-absolute # adds absolute site URL vars to context
 djangorestframework
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 django-extensions # many django things that we don't really need, mainly for shell-plus
-    ipython < 7.17 # for shell-plus, version 7.17 doesn't support python 3.6
-        traitlets < 5 # 5th version doesn't support python 3.6
+    ipython # for shell-plus
 django-allauth # user forms, social auth, allows to authenticate with email
     django-username-email # an addition to allauth for email instead of username
 django-hijack-admin # allows to login as any existing user
@@ -66,5 +65,3 @@ django-adminutils # a set of shortcuts for admin.py composition
 pytz # a db of timezones
 sentry-sdk
 python-dotenv
-psycopg2-binary
-dataclasses
