@@ -115,6 +115,7 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_link',
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_picture',
+    'djangocms_link',
     'backend.plugins.bs4_spacer',
     'backend.plugins.deprecated',
 
