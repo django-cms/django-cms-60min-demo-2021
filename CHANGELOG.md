@@ -1,18 +1,21 @@
 2020.10
 -------------------------------------------------------------------------------
 
-- fix the content caching which was set to 5m by default - set it to 5h
+- fixed the content caching which was set to 5m by default - set it to 4h, and set menus and permissions cache to 1h
+- fixed the default django caching which was disabled completely - set it to 4h
+- switched to django-environ instead of the custom env packages
 
 #### Breaking Changes
-- upgrade to python 3.7 by basing the docker image on divio/base:0.7-py3.7-slim-stretch
-- upgrade to DjangoCMS 3.8 and Django 3.0
+- upgraded to python 3.7 by basing the docker image on divio/base:0.7-py3.7-slim-stretch
+- upgraded to DjangoCMS 3.8 and Django 3.0
+- changed the stage anonymous access url from `https://{base}/?guest-view=true` to `https://{base}/?anonymous-access=true`
 
 
 2020.09
 -------------------------------------------------------------------------------
 
 #### Breaking Changes
-- rename DivioEnv to DjangoEnv, as long as the related variables in settings.py
+- renamed DivioEnv to DjangoEnv, as well as the related variables in settings.py
 - dropped bootstrap4 link plugin in favor of djangocms-link-all
 - move addons/ and addons-dev/ directories into backend/
 
