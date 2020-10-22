@@ -108,15 +108,6 @@ INSTALLED_APPS.extend([
     'djangocms_helpers.divio',
     'djangocms_helpers.sentry_500_error_handler',
         'meta',
-    
-    # django cms deprecated
-
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',
-    'djangocms_picture',
-    'djangocms_link',
-    'backend.plugins.bs4_spacer',
-    'backend.plugins.deprecated',
 
     # django cms
 
@@ -442,13 +433,7 @@ CMS_PLACEHOLDER_CONF = {
             'TextField',
             'SubmitButton',
             'CaptchaField',
-            'ReCaptchaFieldPlugin',
-            
-            # deprecated
-            'Bootstrap4PicturePlugin',
-            'Bootstrap4LinkPlugin',
-            'Bootstrap4SpacingPlugin',
-            'LinkAllPlugin',
+            'ReCaptchaFieldPlugin',            
         ],
     },
 }
