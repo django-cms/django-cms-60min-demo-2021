@@ -31,6 +31,8 @@ function fixLeftMenuOnScroll() {
     const floatingTopOffset = getFloatingTopOffset();
     const menuLeft = $('.one-column-with-menu-and-sidebar .menu-container');
     const elementPosition = menuLeft.offset();
+    const menuLeftNative = document.querySelector('.one-column-with-menu-and-sidebar .menu-container');
+    const menuContainerWidth = menuLeftNative.scrollWidth;
     document.addEventListener('scroll', () => {
         if (window.scrollY > elementPosition.top - floatingTopOffset) {
             menuLeft.css('position', 'fixed');
@@ -40,8 +42,6 @@ function fixLeftMenuOnScroll() {
             menuLeft.css('top', 0);
         }
     });
-    const menuLeftNative = document.querySelector('.one-column-with-menu-and-sidebar .menu-container');
-    const menuContainerWidth = menuLeftNative.scrollWidth;
     const menuContainer = document.querySelector('.one-column-with-menu-and-sidebar .menu-column');
     menuLeft.css('width', `${menuContainerWidth}px`);
     $(window).on('resize', function() {
