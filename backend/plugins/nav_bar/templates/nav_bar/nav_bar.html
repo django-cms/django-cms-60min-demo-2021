@@ -58,7 +58,7 @@
                     >
                         <div class="vue-search-component"></div>
                     </div>
-                    {% if settings.DIVIO_ENV.value == 'local' %}
+                    {% if settings.DJANGO_ENV.value == 'local' %}
                         <script data-is-reload-on-page-edit defer src="{{ settings.WEBPACK_DEV_URL }}/component_search.bundle.js"></script>
                     {% else %}
                         <script data-is-reload-on-page-edit defer src="{% static 'dist/component_search.js' %}"></script>
