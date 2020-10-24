@@ -531,6 +531,7 @@ ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'TocPlugin',
     'NavBarPlugin',
     'VerticalSpacerPlugin',
+    'SpacerPluginBase',
     'Bootstrap4HidePlugin',
     'MailchimpPlugin',
 ]
