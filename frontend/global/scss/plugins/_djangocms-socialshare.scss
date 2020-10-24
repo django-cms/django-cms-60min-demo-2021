@@ -17,6 +17,9 @@
         display: block;
         margin-right: 8px;
         color: inherit;
+        &:hover {
+            text-decoration: none;
+        }
     
         .fab, .fas {
             display: flex;

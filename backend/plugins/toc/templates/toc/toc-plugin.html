@@ -6,7 +6,7 @@
 </nav>
 
 {% addtoblock 'js' %}
-    {% if settings.DIVIO_ENV.value == 'local' %}
+    {% if settings.DJANGO_ENV.value == 'local' %}
         <script defer src="{{ settings.WEBPACK_DEV_URL }}/component_toc.bundle.js" data-is-reload-on-page-edit="true"></script>
         <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/component_toc.css">
     {% else %}

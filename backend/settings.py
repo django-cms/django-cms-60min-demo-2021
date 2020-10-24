@@ -516,10 +516,11 @@ ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'TocPlugin',
     'NavBarPlugin',
     'VerticalSpacerPlugin',
+    'SpacerPluginBase',
     'Bootstrap4HidePlugin',
     'MailchimpPlugin',
 ]
-ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 8_000
+ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 95_000
 
 
 LINK_ALL_MODELS_ADDITIONAL = [
