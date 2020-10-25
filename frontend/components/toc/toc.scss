@@ -8,6 +8,7 @@
     position: relative;
     padding-top: 5px;
     padding-left: $layout-docs-padding-top;
+    //height: 100vh;
     $aside-col-size: 7;
     max-width: (map-get($container-max-widths, 'xl') / $grid-columns) * $aside-col-size;
     font-size: 14px;
@@ -67,7 +68,17 @@
 }
 .two-columns-main-left {
     .djangocms-toc {
-        top: 5px;
         top: 3rem;
     }
 }
+//.one-column-with-menu-and-sidebar {
+//    .djangocms-toc {
+//    }
+//    .djangocms-toc:first-child {
+//        padding-top: $layout-docs-padding-top;
+//    }
+//}
+//.two-columns-main-left {
+//    .djangocms-toc {
+//    }
+//}
