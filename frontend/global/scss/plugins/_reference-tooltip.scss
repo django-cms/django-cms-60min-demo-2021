@@ -16,7 +16,7 @@
         .popover-body {
             padding: 1rem;
             max-height: 50vh;
-            overflow-y: scroll;
+            overflow-y: auto;
             font-size: 0.75rem;
 
             *:last-child {
