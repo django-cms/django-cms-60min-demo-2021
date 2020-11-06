@@ -13,9 +13,7 @@ backend/static_collected/
 backend/.env
 backend/requirements.urls
 .venv
-.aldryn
 
 # dev files
 .idea/
 .DS_Store
-.divio/config.json
