@@ -343,7 +343,7 @@ ADMIN_REORDER = [
 ]
 
 
-RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')  # those are djangocms-template v3 keys that allow localhost testing
 RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
 RECAPTCHA_SCORE_THRESHOLD = 0.85
 
@@ -420,6 +420,7 @@ PARLER_LANGUAGES = CMS_LANGUAGES
 
 
 MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
+MIGRATION_COMMANDS.append('python manage.py clear_cache')
 
 
 CMS_PLACEHOLDER_CONF = {
