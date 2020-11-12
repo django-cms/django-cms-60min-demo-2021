@@ -78,22 +78,18 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
     
     def get_image_srcset_data(self) -> List[Tuple[int, Any]]:
         thumbnailer = get_thumbnailer(self.image)
-        if self.thumbnail_config:
-            crop = self.thumbnail_config.crop
-            image_width = self.thumbnail_config.width
-        else:
-            crop = False
-            image_width = self.image.width
-
-        width_breakpoints = [576, 768, 992]
+        width_breakpoints = [576, 768, 1200]
         srcset: List[Tuple[int, Any]] = []
-        for width in filter(lambda x: x < image_width, width_breakpoints):
+        for width in filter(lambda x: x < self.get_image_width(), width_breakpoints):
             thumbnail_options = {
-                'crop': crop,
+                'crop': self.thumbnail_config.crop if self.thumbnail_config else False,
                 'size': (width, 0),
             }
             srcset.append((width, thumbnailer.get_thumbnail(thumbnail_options)))
         return srcset
+
+    def get_image_width(self) -> int:
+        return self.thumbnail_config.width if self.thumbnail_config else self.image.width
 
     def __str__(self) -> str:
         if self.image and self.image.label:

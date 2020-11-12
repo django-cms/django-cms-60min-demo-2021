@@ -22,13 +22,14 @@
                     {% for width, thumb in instance.get_image_srcset_data %}
                         {{ thumb.url }} {{ width }}w,
                     {% endfor %}
-                    {{ instance.get_image_url }} {{ instance.image.width }}w
+                    {{ instance.get_image_url }} {{ instance.get_image_width }}w
                 "
                 sizes="
-                    {% for width, thumb in instance.get_image_srcset_data %}
-                        (max-width: {{ width }}px) {{ width }}px,
-                    {% endfor %}
-                    {{ instance.image.width }}px
+                    (max-width: 576px) 576px,
+                    (max-width: 768px) 768px,
+                    (max-width: 992px) 992px,
+                    (max-width: 1540px) 1540px,
+                    (max-width: 1920px) 1920px,
                 "
             >
         {% if instance.get_link_url or instance.is_full_screen_on_click %}</a>{% endif %}
