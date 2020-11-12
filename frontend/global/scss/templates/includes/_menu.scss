@@ -42,11 +42,13 @@ $arrow-x-offset: $arrow-size + $menu-gutter;
     .menu-container {
         padding: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh;
+        top: $navbar-fixed-height;
         overflow-y: scroll;
+        position: sticky;
 
         @include media-breakpoint-down(xxl) {
-            position: relative;
+            position: sticky;
         }
         @include media-breakpoint-up(lg) {
             &::-webkit-scrollbar {

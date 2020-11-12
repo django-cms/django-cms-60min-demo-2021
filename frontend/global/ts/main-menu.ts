@@ -1,5 +1,3 @@
-import {getFloatingTopOffset} from 'global/ts/utils/offset';
-
 const MetisMenu = require('metismenujs');
 require('metismenujs/dist/metismenujs.min.css');
 
@@ -14,7 +12,6 @@ export function initMainMenu() {
         const leftMenuSelector = '.one-column-with-menu-and-sidebar .metismenu-root';
         if (document.querySelector(leftMenuSelector)) {
             new MetisMenu(leftMenuSelector, {toggle: false});
-            fixLeftMenuOnScroll();
         }
         activeCurrentMenuNodes();
     }
@@ -24,31 +21,6 @@ export function initMainMenu() {
 function activeCurrentMenuNodes() {
     activateCurrentMenuNode('.selected');
     activateCurrentMenuNode('.ancestor');
-}
-
-
-function fixLeftMenuOnScroll() {
-    const floatingTopOffset = getFloatingTopOffset();
-    const menuLeft = $('.one-column-with-menu-and-sidebar .menu-container');
-    const elementPosition = menuLeft.offset();
-    const menuLeftNative = document.querySelector('.one-column-with-menu-and-sidebar .menu-container');
-    const menuContainerWidth = menuLeftNative.scrollWidth;
-    document.addEventListener('scroll', () => {
-        if (window.scrollY > elementPosition.top - floatingTopOffset) {
-            menuLeft.css('position', 'fixed');
-            menuLeft.css('top', floatingTopOffset);
-        } else {
-            menuLeft.css('position', 'relative');
-            menuLeft.css('top', 0);
-        }
-    });
-    const menuContainer = document.querySelector('.one-column-with-menu-and-sidebar .menu-column');
-    menuLeft.css('width', `${menuContainerWidth}px`);
-    $(window).on('resize', function() {
-        const gutterWidth = 30;
-        const menuContainerWidth = menuContainer.scrollWidth - gutterWidth/2 as number;
-        menuLeft.css('width', `${menuContainerWidth}px`);
-    });
 }
 
 

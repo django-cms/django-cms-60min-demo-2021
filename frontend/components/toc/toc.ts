@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         positionFixedSelector: tocSelector,
         orderedList: false,
         hasInnerContainers: true,
+        scrollSmooth: true,
     });
 })
 

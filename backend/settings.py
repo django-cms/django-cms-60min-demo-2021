@@ -108,6 +108,15 @@ INSTALLED_APPS.extend([
     'djangocms_helpers.divio',
     'djangocms_helpers.sentry_500_error_handler',
         'meta',
+    
+    # django cms deprecated
+
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_picture',
+    'djangocms_link',
+    'backend.plugins.bs4_spacer',
+    'backend.plugins.deprecated',
 
     # django cms
 
@@ -334,7 +343,7 @@ ADMIN_REORDER = [
 ]
 
 
-RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')  # those are djangocms-template v3 keys that allow localhost testing
 RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
 RECAPTCHA_SCORE_THRESHOLD = 0.85
 
@@ -411,6 +420,7 @@ PARLER_LANGUAGES = CMS_LANGUAGES
 
 
 MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
+MIGRATION_COMMANDS.append('python manage.py clear_cache')
 
 
 CMS_PLACEHOLDER_CONF = {
@@ -433,7 +443,13 @@ CMS_PLACEHOLDER_CONF = {
             'TextField',
             'SubmitButton',
             'CaptchaField',
-            'ReCaptchaFieldPlugin',            
+            'ReCaptchaFieldPlugin',
+            
+            # deprecated
+            'Bootstrap4PicturePlugin',
+            'Bootstrap4LinkPlugin',
+            'Bootstrap4SpacingPlugin',
+            'LinkAllPlugin',
         ],
     },
 }
