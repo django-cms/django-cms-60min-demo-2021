@@ -4,20 +4,17 @@
 <div class="mailchimp-plugin"
      id="mc_embed_signup"
      data-is-enable-border="{{ instance.is_enable_border|lower }}"
-     {{ instance.get_html_style_attr }}
 >
     <form action="https://localhost.{{ instance.server_location_code }}.list-manage.com/subscribe/post?u={{ instance.organization_id }}&amp;id={{ instance.list_id }}"
           method="post" id="mc-embedded-subscribe-form"
           name="mc-embedded-subscribe-form" class="validate" target="_blank"
           novalidate
-          {{ instance.get_html_style_attr }}
     >
         <div class="form-group" id="mc_embed_signup_scroll">
             <input type="email" value="" name="EMAIL"
                    class="form-control"
                    id="mce-EMAIL"
                    placeholder="Email"
-                   {{ instance.get_html_style_attr }}
             >
             <div style="position: absolute; left: -5000px;" aria-hidden="true">
                 <input type="text"
@@ -30,7 +27,7 @@
                    style="font-size: {{ instance.font_size }}rem;"
             >
         </div>
-        <div class="mailchimp-response" id="mce-responses" {{ instance.get_html_style_attr }}>
+        <div class="mailchimp-response" id="mce-responses">
             <div class="response response-error" id="mce-error-response"
                  style="display:none"
             ></div>
