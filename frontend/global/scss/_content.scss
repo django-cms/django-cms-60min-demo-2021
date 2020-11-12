@@ -89,6 +89,11 @@ h1, .heading-plugin--h1 {
 }
 h2 {
     @include media-breakpoint-down(xl) {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
+    }
+}
+h3 {
+    @include media-breakpoint-down(xl) {
+        font-size: 1.25rem;
     }
 }
