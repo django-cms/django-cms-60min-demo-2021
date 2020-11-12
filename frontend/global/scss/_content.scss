@@ -3,7 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 body {
-  font-family: 'Roboto', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
+    @include media-breakpoint-down(xl) {
+        font-size: 15px;
+    }
 }
 
 p, ul, ol {
@@ -21,25 +24,6 @@ blockquote {
     }
 }
 
-
-h1, .heading-plugin--h1, h2, .heading-plugin--h2, h3, h4, h5, h6 {
-    color: $header-color;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-h1, .heading-plugin--h1 {
-    display: block;
-    margin-bottom: 1.5rem;
-
-    &:after {
-        content: '';
-        display: block;
-        width: 100px;
-        margin-top: 1rem;
-        border-bottom: 3px solid $color-primary;
-    }
-}
 
 .main-column * {
     z-index: 1;
@@ -80,3 +64,31 @@ h1, .heading-plugin--h1 {
 @include header-style($tag: h4, $font-size: 1.15rem, $margin-top: 1.8rem);
 @include header-style($tag: h5, $font-size: 1.15rem, $margin-top: 1.1rem);
 @include header-style($tag: h6, $font-size: 1.15rem, $margin-top: 1.1rem);
+
+
+h1, .heading-plugin--h1, h2, .heading-plugin--h2, h3, h4, h5, h6 {
+    color: $header-color;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+h1, .heading-plugin--h1 {
+    display: block;
+    margin-bottom: 1.5rem;
+    
+    &:after {
+        content: '';
+        display: block;
+        width: 100px;
+        margin-top: 1rem;
+        border-bottom: 3px solid $color-primary;
+    }
+    @include media-breakpoint-down(xl) {
+        font-size: 1.6rem;
+    }
+}
+h2 {
+    @include media-breakpoint-down(xl) {
+        font-size: 1.5rem;
+    }
+}
