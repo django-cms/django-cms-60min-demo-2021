@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 
 <html lang="{{ lang_code }}">
-    <head>
+    <heaad>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -61,9 +61,12 @@
         {% render_block 'head_frontend_files' %}
 
         {% block head %}{% endblock %}
-    </head>
+
+{#        {% gtm_head settings.GTM_CONTAINER_ID %}#}
+    </heaad>
 
     <body id="page-top" class="lang-{{ lang_code }} {% render_block 'body_classes' %}">
+{#        {% gtm_body settings.GTM_CONTAINER_ID %}#}
 
         {% cms_toolbar %}
 
