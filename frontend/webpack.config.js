@@ -47,19 +47,17 @@ const config = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            sourceMap: true,
-                            hmr: isDevelopmentMode,
-                        }
                     },
                     {loader: 'css-loader', options: {sourceMap: true}},
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [
-                                require('autoprefixer'),
-                            ],
-                        }
+                            postcssOptions: {
+                                plugins: [
+                                    ['autoprefixer'],
+                                ],
+                            },
+                        },
                     },
                     {loader: 'sass-loader', options: {sourceMap: true}},
                 ]
@@ -125,40 +123,19 @@ const config = {
         }
     },
     devServer: {
-        contentBase: path.resolve(__dirname),
-        headers: {'Access-Control-Allow-Origin': '*'},
+        static: {
+            directory: path.resolve(__dirname),
+        },
         host: '0.0.0.0',
         port: 8090,
-        hot: true,
-        inline: true,
+        client: {
+            port: 8090,
+        }
     },
     plugins: [
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
-    optimization: {
-        // the default config from webpack docs, most of it might be useless
-        splitChunks: {
-            chunks: 'async',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true,
-                },
-            },
-        },
-    },
 };
 
 
@@ -168,7 +145,7 @@ if (isDevelopmentMode) {
     // those are twice as slow, but work with scss
     // config.devtool = 'source-map';
     config.output.filename = '[name].bundle.js';
-    config.output.publicPath = 'http://localhost:8090/assets/';
+    config.output.publicPath = 'http://localhost:8090/';
 }
 
 const isDockerMode = process.env.NODE_ENV === 'docker';

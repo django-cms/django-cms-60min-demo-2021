@@ -1,7 +1,21 @@
+2020.12
+-------------------------------------------------------------------------------
+
+- dropped aldryn-django static serving, uwsgi, middleware
+- added heroku support & guidelines
+- improved the deployment speed - from 12m to 6.5m
+- added .flake8 and isort configurations
+- upgraded webpack-dev-server to 4.0.0-beta, which adds webpack 5 support
+
+
 2020.11
 -------------------------------------------------------------------------------
 
-- upgraded to django-cms 3.8 stable
+- upgraded to python 3.9, django-cms 3.8, django 3.1.3, nodejs 14, webpack 5, typescript 4
+- upgraded to djangocms-blog 1.2
+- dropped aldryn-translation-tools
+- dropped divio wheels support
+
 
 2020.10
 -------------------------------------------------------------------------------
