@@ -5,8 +5,13 @@ COPY backend/requirements.txt /app/backend/requirements.txt
 RUN pip install --no-deps --no-cache-dir -r /app/backend/requirements.txt
 
 
-COPY frontend/ /app/frontend/
 WORKDIR /app/frontend/
+RUN apt-get update --quiet && apt-get install --yes autoconf
+COPY frontend/package.json .
+COPY frontend/yarn.lock .
+RUN yarn install --pure-lockfile
+
+COPY frontend/ /app/frontend/
 RUN yarn install --pure-lockfile
 RUN yarn run build
 
