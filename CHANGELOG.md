@@ -1,3 +1,23 @@
+2021.01
+-------------------------------------------------------------------------------
+
+- added a patch for djangocms-link-all that gracefully protects linked pages from deletion
+- fixed the disabled HTTPS (it was using .env file to override the server envs)
+- fixed webpack CORS issues for fonts and assets
+- fixed cache by disabling it for local dev
+- disabled django 3.1 sidebar completely
+
+### How to upgrade
+
+##### djangocms-bootstrap4
+- update/remove `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_FIELDSETS` if you used it
+- rename `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING` to `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL`, consider adding `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL`
+- review the bootstrap4 container plugin interface to confirm that the new fields look as you expect them to
+- if you used bootstrap4 container plugin `width_external` field - add migrations that drop it, it is no longer useful
+
+##### djangocms-link-all
+- add `settings.LINK_ALL_PLUGINS` variable in accordance with `link_all.settings.LINK_ALL_PLUGINS` format, otherwise you won't have `cms.Page` protection
+
 2020.12
 -------------------------------------------------------------------------------
 
@@ -15,7 +35,6 @@
 - upgraded to djangocms-blog 1.2
 - dropped aldryn-translation-tools
 - dropped divio wheels support
-
 
 2020.10
 -------------------------------------------------------------------------------
