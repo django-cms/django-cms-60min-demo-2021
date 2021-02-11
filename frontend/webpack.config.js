@@ -84,6 +84,7 @@ const config = {
                                 mozjpeg: {progressive: true},
                                 gifsicle: {interlaced: true},
                                 optipng: {optimizationLevel: 7},
+                                webp: {quality: 80},
                             }
                         }
                     }
