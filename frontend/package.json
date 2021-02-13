@@ -50,14 +50,14 @@
         
         "//": "project packages",
         
-        "tocbot": "^4.11.1",
-            "slugify": "^1.4.5",
-        "metismenujs": "^1.2.0",
-        "algoliasearch": "^4.3.1",
-            "instantsearch.js": "^4.7.0",
-            "vue-instantsearch": "^3.1.0",
-            "vue-server-renderer": "^2.6.11",
-        "lightgallery.js": "^1.2.0"
+        "tocbot": "^4.0.0",
+            "slugify": "^1.0.0",
+        "metismenujs": "^1.0.0",
+        "algoliasearch": "^4.0.0",
+            "instantsearch.js": "^4.0.0",
+            "vue-instantsearch": "^3.0.0",
+            "vue-server-renderer": "^2.0.0",
+        "lightgallery.js": "^1.0.0"
     },
     "scripts": {
         "start": "webpack serve",
