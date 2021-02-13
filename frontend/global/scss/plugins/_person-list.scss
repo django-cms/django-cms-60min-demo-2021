@@ -4,30 +4,30 @@
     margin-bottom: 30px;
     
     .person-list-title {
-        text-align: center;
         margin-bottom: 25px;
+        text-align: center;
         
     }
     .person-children {
         display: flex;
-        justify-content: center;
         flex-wrap: wrap;
+        justify-content: center;
         
         .person-plugin {
-            text-align: center;
             max-width: 200px;
             margin: 0 25px;
             margin-top: 10px;
             margin-bottom: 30px;
+            text-align: center;
             
             .person-photo {
                 border-radius: 50% !important;
             }
             
             .person-name {
-                font-size: 17px;
-                margin-bottom: 10px;
                 margin-top: 20px;
+                margin-bottom: 10px;
+                font-size: 17px;
                 font-weight: bold;
             }
         }

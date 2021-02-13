@@ -207,7 +207,7 @@ main.container-fluid {
                 position: relative;
             }
         }
-    
+        
         &--background-gray {
             @include spacing-internal();
             &:before {
@@ -242,12 +242,11 @@ main.container-fluid {
 }
 
 
-
 .col {
     display: flex;
     flex-direction: column;
 }
 main.one-column-with-menu-and-sidebar {
-    padding-left: $grid-gutter-width-half;
     padding-right: $grid-gutter-width-half;
+    padding-left: $grid-gutter-width-half;
 }

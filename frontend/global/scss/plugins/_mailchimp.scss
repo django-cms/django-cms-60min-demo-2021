@@ -9,12 +9,12 @@
             border: none;
         }
     }
-
+    
     .form-group {
         display: flex;
         
         .form-control {
-
+            
             &:-webkit-autofill {
                 -webkit-box-shadow: 0 0 0 1000px white inset !important;
             }

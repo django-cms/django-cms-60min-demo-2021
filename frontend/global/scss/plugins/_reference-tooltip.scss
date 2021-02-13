@@ -4,21 +4,21 @@
 .reference-tooltip-plugin {
     
     .reference-tooltip__container {
+        color: $color-primary;
         font-size: 0.7rem;
         vertical-align: super;
-        color: $color-primary;
-
+        
         &:hover {
             text-decoration: underline;
             cursor: pointer;
         }
-
+        
         .popover-body {
-            padding: 1rem;
             max-height: 50vh;
+            padding: 1rem;
             overflow-y: auto;
             font-size: 0.75rem;
-
+            
             *:last-child {
                 margin-bottom: 0;
             }
