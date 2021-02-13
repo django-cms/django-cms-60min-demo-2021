@@ -155,8 +155,6 @@ INSTALLED_APPS.extend([
     'djangocms_redirect',
     'light_gallery',
     'link_all',
-    'djangocms_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
 
     # project
 
