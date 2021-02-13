@@ -11,7 +11,6 @@ data/
 data.tar.gz
 backend/static_collected/
 backend/.env
-backend/requirements.urls
 .venv
 
 # dev files
