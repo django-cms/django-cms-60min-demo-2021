@@ -72,8 +72,8 @@ const config = {
                             query: {
                                 hash: 'sha512',
                                 digest: 'hex',
-                                name: '[name].[ext]'
-                            }
+                                name: '[name].[ext]',
+                            },
                         }
                     },
                     {
