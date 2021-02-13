@@ -155,6 +155,8 @@ INSTALLED_APPS.extend([
     'djangocms_redirect',
     'light_gallery',
     'link_all',
+    'djangocms_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
 
     # project
 
@@ -162,6 +164,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.mailchimp',
     'backend.plugins.toc',
     'backend.plugins.bs4_hiding',
+    'backend.plugins.bs4_spacer',
     'backend.plugins.horizontal_line',
     'backend.plugins.section_with_image_background',
     'backend.plugins.person_list',
@@ -246,12 +249,14 @@ STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
 WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
 
 
-DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN', 'file:///data/media/?url=%2Fmedia%2F')
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
-DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join('/data/media/')
+if env.str('DEFAULT_STORAGE_DSN', ''):
+    DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN')
+    DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
+else:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data/media/')
 
 
 # allauth
