@@ -14,7 +14,7 @@
         display: flex;
         
         .form-control {
-            border: 0;
+            height: auto;
             
             &:-webkit-autofill {
                 -webkit-box-shadow: 0 0 0 1000px white inset !important;
