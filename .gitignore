@@ -16,3 +16,4 @@ backend/.env
 # dev files
 .idea/
 .DS_Store
+.divio/config.json
