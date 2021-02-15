@@ -1,10 +1,10 @@
 import os
-from enum import Enum
 from typing import List
 
 import dj_database_url
 import environ
 from django_storage_url import dsn_configured_storage_class
+from enumfields import Enum
 from link_all.dataclasses import LinkAllModel
 
 
