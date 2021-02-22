@@ -16,4 +16,4 @@ RUN yarn run build
 
 
 WORKDIR /app/
-RUN python manage.py collectstatic --noinput --ignore=node_modules
+RUN DJANGO_MODE=build python manage.py collectstatic --noinput --ignore=node_modules
