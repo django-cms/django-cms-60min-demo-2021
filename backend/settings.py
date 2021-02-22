@@ -352,6 +352,9 @@ SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
 SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 
 
+ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
+
+
 ################################################################################
 # django-cms
 ################################################################################
