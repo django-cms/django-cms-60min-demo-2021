@@ -4,7 +4,7 @@ FROM registry.gitlab.com/what-digital/djangocms-template:2.0.0.0
 COPY . /app/
 
 
-RUN pip install -r backend/requirements.txt
+RUN pip install --no-deps --no-cache-dir -r /app/backend/requirements.txt
 
 
 WORKDIR /app/
@@ -16,5 +16,4 @@ RUN yarn run build
 
 
 WORKDIR /app/
-RUN DJANGO_MODE=build python manage.py collectstatic --noinput
-RUN DJANGO_MODE=build python manage.py compilemessages
+RUN python manage.py collectstatic --noinput --ignore=node_modules
