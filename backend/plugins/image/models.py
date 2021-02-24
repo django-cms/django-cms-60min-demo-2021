@@ -47,6 +47,7 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
         default=ImageVerticalSpacing.EXTRA_SMALL,
         max_length=32, blank=True, null=True,
     )
+    link_is_optional = True
 
     def get_alignment_class(self) -> str:
         if self.alignment == ImageAlignment.CENTER:
