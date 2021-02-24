@@ -141,8 +141,6 @@ INSTALLED_APPS.extend([
     'djangocms_file',
     'djangocms_snippet',
     'djangocms_socialshare',
-    'djangocms_algolia',
-        'algoliasearch_django',
     'djangocms_page_meta',
         'meta',
     'aldryn_forms_bs4_templates',
@@ -175,6 +173,13 @@ INSTALLED_APPS.extend([
     'backend.plugins.card_hero_with_content',
     'backend.plugins.reference_tooltip',
 ])
+
+
+if env.bool('IS_ENABLE_ALGOLIA', default=True):
+    INSTALLED_APPS.extend([
+        'djangocms_algolia',
+        'algoliasearch_django',
+    ])
 
 
 MIDDLEWARE = [
