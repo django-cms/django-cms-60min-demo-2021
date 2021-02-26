@@ -48,6 +48,9 @@ os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
 
+ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
+
+
 import aldryn_addons.settings
 
 aldryn_addons.settings.load(locals())
