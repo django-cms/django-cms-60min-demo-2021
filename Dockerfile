@@ -19,7 +19,7 @@ COPY . /app/
 
 ENV STAGE='build_docker'
 RUN python manage.py collectstatic --noinput --ignore=node_modules
-RUN python manage.py compilemessages --ignore=node_modules
+# RUN python manage.py compilemessages --ignore=node_modules
 
 
 ENV PORT=80
