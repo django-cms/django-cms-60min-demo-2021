@@ -8,7 +8,11 @@
     <div class="container{% if instance.is_full_width %}-fluid {% endif %}">
         {% render_model_block site_config  %}
             <a class="navbar-brand d-flex" href="/">
-                {% include 'nav_bar/includes/icon.svg' %}
+                {% if site_config.logo %}
+                    <img src="{{ site_config.logo }}" alt="logo">
+                {% else %}
+                    {% include 'nav_bar/includes/icon.svg' %}
+                {% endif %}
                 <div class="site-title">
                     <span class="site-name">{{ site_config.site_name }}</span>
                     <span class="site-subname">{{ site_config.site_subname }}</span>
