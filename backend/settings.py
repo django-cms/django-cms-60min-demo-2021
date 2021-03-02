@@ -586,7 +586,8 @@ class GridContainerSpacing(Enum):
         NONE_OLD = 'Default'
 
 
-DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING = GridContainerSpacing
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_INTERNAL = GridContainerSpacing
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL = GridContainerSpacing
 
 
 class GridContainerWidthInternal(Enum):
