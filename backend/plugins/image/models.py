@@ -23,7 +23,7 @@ class ImageVerticalSpacing(Enum):
     EXTRA_SMALL = 'extra_small'
     SMALL = 'small'
     NORMAL = 'normal'
-    
+
     class Labels:
         EXTRA_SMALL = "Extra small (16px)"
         SMALL = "Small (30px)"
@@ -38,14 +38,20 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
         verbose_name=_("Thumbnail config"),
         blank=True,
         null=True,
-        help_text=_("When set the image is going to be cropped / scaled up to the provided dimensions."),
+        help_text=_(
+            "When set the image is going to be cropped / scaled up to the provided dimensions."
+        ),
         on_delete=models.PROTECT,
     )
-    is_full_screen_on_click = models.BooleanField(default=True, verbose_name="Open full screen modal on click")
+    is_full_screen_on_click = models.BooleanField(
+        default=True, verbose_name="Open full screen modal on click"
+    )
     vertical_spacing = EnumField(
         ImageVerticalSpacing,
         default=ImageVerticalSpacing.EXTRA_SMALL,
-        max_length=32, blank=True, null=True,
+        max_length=32,
+        blank=True,
+        null=True,
     )
     link_is_optional = True
 
@@ -73,10 +79,10 @@ class ImagePluginModel(CMSPlugin, LinkAllMixin):
             return thumbnailer.get_thumbnail(thumbnail_options).url
         else:
             return self.image.url
-    
+
     def get_image_source_url(self) -> str:
         return self.image.url
-    
+
     def get_image_srcset_data(self) -> List[Tuple[int, Any]]:
         thumbnailer = get_thumbnailer(self.image)
         width_breakpoints = [576, 768, 1200]

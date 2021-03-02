@@ -7,7 +7,9 @@ from cms.utils.plugins import get_plugin_model
 from django.utils.translation import ugettext_lazy as _
 
 from backend.plugins.module_name import MODULE_NAME
-from backend.plugins.section_with_image_background.models import SectionWithImageBackgroundPluginModel
+from backend.plugins.section_with_image_background.models import (
+    SectionWithImageBackgroundPluginModel,
+)
 
 
 @plugin_pool.register_plugin
@@ -20,17 +22,20 @@ class SectionWithImageBackgroundPlugin(CMSPluginBase):
     css_class_name = 'section-with-image-background-plugin'
 
     fieldsets = (
-        (None, {
-            'description': "You can add plugins inside this plugin, eg a text or heading plugin.",
-            'fields': [
-                'name',
-                'background_image',
-                'height',
-                'background_effect',
-                'background_effect_color',
-                'background_effect_opacity',
-            ]
-        }),
+        (
+            None,
+            {
+                'description': "You can add plugins inside this plugin, eg a text or heading plugin.",
+                'fields': [
+                    'name',
+                    'background_image',
+                    'height',
+                    'background_effect',
+                    'background_effect_color',
+                    'background_effect_opacity',
+                ],
+            },
+        ),
     )
 
     @classmethod
@@ -41,5 +46,7 @@ class SectionWithImageBackgroundPlugin(CMSPluginBase):
         if instance.background_effect:
             classes.append(f'{cls.css_class_name}--effect--{instance.background_effect.value}')
             if instance.background_effect_color:
-                classes.append(f'{cls.css_class_name}--effect-color--{instance.background_effect_color.value}')
+                classes.append(
+                    f'{cls.css_class_name}--effect-color--{instance.background_effect_color.value}'
+                )
         return ' '.join(classes)

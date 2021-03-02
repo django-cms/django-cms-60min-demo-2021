@@ -5,6 +5,8 @@ from djangocms_bootstrap4.contrib.bootstrap4_utilities.cms_plugins import Bootst
 
 
 plugin_pool.unregister_plugin(Bootstrap4LinkPlugin)
+
+
 @plugin_pool.register_plugin
 class Bootstrap4LinkPlugin(Bootstrap4LinkPlugin):
     name = "Link/Button [deprecated - don't use]"
@@ -12,13 +14,16 @@ class Bootstrap4LinkPlugin(Bootstrap4LinkPlugin):
 
 
 plugin_pool.unregister_plugin(Bootstrap4PicturePlugin)
+
+
 @plugin_pool.register_plugin
 class Bootstrap4PicturePlugin(Bootstrap4PicturePlugin):
     name = "Picture/Image [deprecated - don't use]"
-    
 
 
 plugin_pool.unregister_plugin(Bootstrap4SpacingPlugin)
+
+
 @plugin_pool.register_plugin
 class Bootstrap4SpacingPlugin(Bootstrap4SpacingPlugin):
     name = "Spacing [deprecated - don't use]"
