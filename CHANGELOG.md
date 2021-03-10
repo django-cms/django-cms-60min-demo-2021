@@ -1,6 +1,15 @@
+2021.01
+-------------------------------------------------------------------------------
+
+- fixed frontend sentry loading, now it captures the first scripts execution exceptions
+- fixed the issue with frontend components being incorrectly reloaded after a content change, which caused browser memory overload
+
 2021.02
 -------------------------------------------------------------------------------
 
+- recompiled requirements.txt
+- bumped aldryn-django to 3.1.7.0
+- fixed djangocms-link-all double anchor `#` bug
 - fixed frontend building by installing linux package `autoconf`
 - upgraded backend & frontend dependencies to incorporate the latest security patches
 - optimized dockerfile cache and compilemessages timing

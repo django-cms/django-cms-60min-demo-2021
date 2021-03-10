@@ -22,10 +22,16 @@
             {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
         {% endblock meta %}
 
-        <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
+        {% if site_config.favicon %}
+            <link rel="shortcut icon" href="{{ site_config.favicon }}" type="image/x-icon"/>
+        {% else %}
+            <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
+        {% endif %}
+
         {% render_block 'css' %}
 
         <script>
+            const DJANGO_ENV = '{{ settings.DJANGO_ENV.value }}';
             document.addEventListener('DOMContentLoaded', function() {
                 if (window.django) {
                     window.django.env = '{{ settings.DJANGO_ENV.value }}';

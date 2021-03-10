@@ -14,25 +14,31 @@ class ImagePlugin(LinkAllPlugin):
     text_enabled = False
     change_form_template = 'link_all/admin/link_all.html'
     fieldsets = [
-        (None, {
-            'fields': [
-                'image',
-                'alignment',
-                'thumbnail_config',
-                'is_full_screen_on_click',
-                'vertical_spacing',
-            ],
-        }),
-        ("Link", {
-            'classes': ['collapse'],
-            'fields': [
-                'link',
-                'link_type',
-                'link_content_type',
-                'link_instance_pk',
-                'link_url',
-                'link_label',
-                'link_is_open_in_new_tab',
-            ],
-        }),
+        (
+            None,
+            {
+                'fields': [
+                    'image',
+                    'alignment',
+                    'thumbnail_config',
+                    'is_full_screen_on_click',
+                    'vertical_spacing',
+                ],
+            },
+        ),
+        (
+            "Link",
+            {
+                'classes': ['collapse'],
+                'fields': [
+                    'link',
+                    'link_type',
+                    'link_content_type',
+                    'link_instance_pk',
+                    'link_url',
+                    'link_label',
+                    'link_is_open_in_new_tab',
+                ],
+            },
+        ),
     ]

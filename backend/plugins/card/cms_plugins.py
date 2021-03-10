@@ -15,15 +15,18 @@ class CardPlugin(CMSPluginBase):
     render_template = 'card/card-plugin.html'
     allow_children = True
     fieldsets = (
-        (None, {
-            'description': "You can add child plugins - content of this card - in the structure mode after saving the card list plugin.",
-            'fields': [
-                'image',
-                'title',
-                'internal_link',
-                'external_link',
-            ]
-        }),
+        (
+            None,
+            {
+                'description': "You can add child plugins - content of this card - in the structure mode after saving the card list plugin.",
+                'fields': [
+                    'image',
+                    'title',
+                    'internal_link',
+                    'external_link',
+                ],
+            },
+        ),
     )
 
 
@@ -38,10 +41,13 @@ class CardListPlugin(CMSPluginBase):
         'CardPlugin',
     ]
     fieldsets = (
-        (None, {
-            'description': "You can add child plugins - content of this card - in the structure mode after saving the card list plugin.",
-            'fields': [
-                'cards_per_row',
-            ]
-        }),
+        (
+            None,
+            {
+                'description': "You can add child plugins - content of this card - in the structure mode after saving the card list plugin.",
+                'fields': [
+                    'cards_per_row',
+                ],
+            },
+        ),
     )

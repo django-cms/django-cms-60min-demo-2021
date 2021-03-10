@@ -141,8 +141,6 @@ INSTALLED_APPS.extend([
     'djangocms_file',
     'djangocms_snippet',
     'djangocms_socialshare',
-    'djangocms_algolia',
-        'algoliasearch_django',
     'djangocms_page_meta',
         'meta',
     'aldryn_forms_bs4_templates',
@@ -175,6 +173,13 @@ INSTALLED_APPS.extend([
     'backend.plugins.card_hero_with_content',
     'backend.plugins.reference_tooltip',
 ])
+
+
+if env.bool('IS_ENABLE_ALGOLIA', default=True):
+    INSTALLED_APPS.extend([
+        'djangocms_algolia',
+        'algoliasearch_django',
+    ])
 
 
 MIDDLEWARE = [
@@ -277,6 +282,7 @@ CONFIRM_EMAIL_ON_GET = True
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},  # removes frustrating validations, eg `too similar to your email`
 ]
+ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
 
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
@@ -580,7 +586,8 @@ class GridContainerSpacing(Enum):
         NONE_OLD = 'Default'
 
 
-DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING = GridContainerSpacing
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_INTERNAL = GridContainerSpacing
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL = GridContainerSpacing
 
 
 class GridContainerWidthInternal(Enum):

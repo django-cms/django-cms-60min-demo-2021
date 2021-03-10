@@ -40,8 +40,9 @@ class CardPluginModel(CMSPlugin):
     title = models.CharField(max_length=1024, blank=True)
     internal_link = PageField(
         on_delete=models.PROTECT,
-        blank=True, null=True,
-        help_text="You can configure either an internal or external link (below) for that card."
+        blank=True,
+        null=True,
+        help_text="You can configure either an internal or external link (below) for that card.",
     )
     external_link = models.URLField(blank=True)
     type = EnumField(CardType, default=CardType.VERTICAL, max_length=32)
