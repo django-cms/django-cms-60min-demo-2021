@@ -26,14 +26,15 @@ class SectionWithImageBackgroundPluginModel(CMSPlugin):
     name = models.CharField(max_length=512, help_text="For displaying in the plugin tree")
     background_image = FilerImageField(
         on_delete=models.PROTECT,
-        help_text="Minimal width is 1920px, default minimal height is 350px, but can be configured below."
+        help_text="Minimal width is 1920px, default minimal height is 350px, but can be configured below.",
     )
     height = models.IntegerField(default=350, help_text="In pixels")
-    
+
     background_effect = EnumField(
         BackgroundEffect,
         default=None,
-        blank=True, null=True,
+        blank=True,
+        null=True,
         help_text="Can be applied on top of the image",
         max_length=32,
     )
@@ -41,9 +42,12 @@ class SectionWithImageBackgroundPluginModel(CMSPlugin):
         BackgroundEffectColor,
         default=BackgroundEffectColor.PRIMARY,
         max_length=32,
-        blank=True, null=True,
+        blank=True,
+        null=True,
     )
-    background_effect_opacity = models.CharField(max_length=32, default='50%', help_text="eg 50%", blank=True)
+    background_effect_opacity = models.CharField(
+        max_length=32, default='50%', help_text="eg 50%", blank=True
+    )
 
     def get_size(self) -> str:
         return f'2560x{self.height}'

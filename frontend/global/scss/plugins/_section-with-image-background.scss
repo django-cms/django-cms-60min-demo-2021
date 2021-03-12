@@ -5,44 +5,44 @@
     content: '';
     display: block;
     position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
 }
 
 
 @mixin gradient($color) {
-    background: linear-gradient(145deg, rgba($color, .8) 0%, rgba(0,0,0,0) 80%);
+    background: linear-gradient(145deg, rgba($color, .8) 0%, rgba(0, 0, 0, 0) 80%);
 }
 
 .header-container-fluid {
     .section-with-image-background-plugin {
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
     }
 }
 
 .section-with-image-background-plugin {
     display: flex;
+    position: relative;
+    z-index: 0;
     flex-direction: column;
     justify-content: center;
-    position: relative;
     width: 100%;
-    margin-left: -$grid-gutter-width-half;
     margin-right: -$grid-gutter-width-half;
+    margin-left: -$grid-gutter-width-half;
     background-repeat: no-repeat !important;
-    background-size: cover !important;
     background-position: 50% 50% !important;
-    z-index: 0;
-
+    background-size: cover !important;
+    
     &--effect--color {
         &:before {
             @extend .pseudo-background;
-            background-color: rgba($color-primary, .5);
             z-index: -2;
+            background-color: rgba($color-primary, .5);
         }
     }
     &--effect--gradient {
@@ -55,8 +55,8 @@
     &--effect--color_with_gradient {
         &:before {
             @extend .pseudo-background;
-            background-color: rgba($color-primary, .5);
             z-index: -2;
+            background-color: rgba($color-primary, .5);
         }
         &:after {
             @extend .pseudo-background;
@@ -80,7 +80,7 @@
             @include gradient($color-secondary);
         }
     }
-
+    
     * {
         z-index: 3;
     }

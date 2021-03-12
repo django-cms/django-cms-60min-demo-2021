@@ -7,7 +7,7 @@ class CardSpacing(Enum):
     SMALL = 'small'
     NORMAL = 'normal'
     LARGE = 'large'
-    
+
     class Labels:
         SMALL = "Small (30px)"
         NORMAL = "Normal (75px)"
@@ -33,9 +33,13 @@ class ContentWrapperSize(Enum):
 
 class CardHeroWithContent(CMSPlugin):
     spacing = EnumField(CardSpacing, default=CardSpacing.SMALL, max_length=32)
-    vertical_alignment = EnumField(VerticalAlignment, default=VerticalAlignment.MIDDLE, max_length=32)
-    content_wrapper_size = EnumField(ContentWrapperSize, default=ContentWrapperSize.NORMAL, max_length=32)
-    
+    vertical_alignment = EnumField(
+        VerticalAlignment, default=VerticalAlignment.MIDDLE, max_length=32
+    )
+    content_wrapper_size = EnumField(
+        ContentWrapperSize, default=ContentWrapperSize.NORMAL, max_length=32
+    )
+
     _col_size = 24
     _col_content_large = 14
     _col_content_normal = 12

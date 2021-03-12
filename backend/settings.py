@@ -1,8 +1,10 @@
 import os
-from enum import Enum
 from typing import List
 
+import dj_database_url
 import environ
+from django_storage_url import dsn_configured_storage_class
+from enumfields import Enum
 from link_all.dataclasses import LinkAllModel
 
 
@@ -12,13 +14,13 @@ from link_all.dataclasses import LinkAllModel
 
 
 env = environ.Env()
-environ.Env.read_env()
 
 
 class DjangoEnv(Enum):
     LOCAL = 'local'
     TEST = 'test'
     LIVE = 'live'
+    BUILD_DOCKER = 'build_docker'
 
 
 DJANGO_ENV_ENUM = DjangoEnv
@@ -26,6 +28,7 @@ DJANGO_ENV = DjangoEnv(env.str('STAGE', 'local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
+    environ.Env.read_env()
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
@@ -57,7 +60,6 @@ aldryn_addons.settings.load(locals())
 
 
 INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
-MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
@@ -71,6 +73,9 @@ SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
 ################################################################################
 # django
 ################################################################################
+
+
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 DATE_FORMAT = 'F j, Y'
@@ -108,18 +113,8 @@ INSTALLED_APPS.extend([
     'logentry_admin',
     'hijack_admin',
     'djangocms_helpers',
-    'djangocms_helpers.divio',
+    'djangocms_helpers.divio',  # fixes a bug in divio aldryn commands
     'djangocms_helpers.sentry_500_error_handler',
-        'meta',
-    
-    # django cms deprecated
-
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',
-    'djangocms_picture',
-    'djangocms_link',
-    'backend.plugins.bs4_spacer',
-    'backend.plugins.deprecated',
 
     # django cms
 
@@ -149,9 +144,8 @@ INSTALLED_APPS.extend([
     'djangocms_file',
     'djangocms_snippet',
     'djangocms_socialshare',
-    'djangocms_algolia',
-        'algoliasearch_django',
     'djangocms_page_meta',
+        'meta',
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
         'aldryn_forms_recaptcha_plugin',
@@ -169,6 +163,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.mailchimp',
     'backend.plugins.toc',
     'backend.plugins.bs4_hiding',
+    'backend.plugins.bs4_spacer',
     'backend.plugins.horizontal_line',
     'backend.plugins.section_with_image_background',
     'backend.plugins.person_list',
@@ -182,29 +177,54 @@ INSTALLED_APPS.extend([
     'backend.plugins.reference_tooltip',
 ])
 
-middleware_top = [
-    'django.middleware.cache.UpdateCacheMiddleware',
-]
-MIDDLEWARE = middleware_top + MIDDLEWARE
-MIDDLEWARE.extend([
-    # django
-    'admin_reorder.middleware.ModelAdminReorder',
 
-    # django cms optional
+if env.bool('IS_ENABLE_ALGOLIA', default=True):
+    INSTALLED_APPS.extend([
+        'djangocms_algolia',
+        'algoliasearch_django',
+    ])
+
+
+MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'cms.middleware.utils.ApphookReloadMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'aldryn_sites.middleware.SiteMiddleware',  # matters only on divio.com
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
     'djangocms_redirect.middleware.RedirectMiddleware',
-    
+    'link_all.middleware.RedirectExceptionMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-])
+]
+
+
+if DJANGO_ENV == DjangoEnv.BUILD_DOCKER:
+    DATABASE_URL = 'sqlite://:memory:'
+else:
+    DATABASE_URL = env.str('DATABASE_URL', 'sqlite://:memory:')
+
+DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+
 
 AUTH_USER_MODEL = 'backend_auth.User'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/'),
-]
-STATIC_ROOT = os.path.join(BACKEND_DIR, 'static_collected/')
 LOCALE_PATHS = [
     os.path.join(BACKEND_DIR, 'locale'),
 ]
+
 ROOT_URLCONF = 'backend.urls'
 
 default_template_engine: dict = TEMPLATES[0]
@@ -221,24 +241,28 @@ EMAIL_BACKEND = env.str('EMAIL_BACKEND', default=email_backend_default)
 DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
 
 
-if DJANGO_ENV == DjangoEnv.LOCAL:
-    ssl_redirect_default = False
-else:
-    ssl_redirect_default = True
-
-SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+HTTP_PROTOCOL = env.str('HTTP_PROTOCOL', 'https')
 
 
-HTTP_PROTOCOL = 'http' if DJANGO_ENV == DjangoEnv.LOCAL else 'https'
-
-
-STATICFILES_STORAGE = 'djangocms_helpers.storage.NonStrictManifestGZippedStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/'),
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BACKEND_DIR, 'static_collected/')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
+WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
 
 
-################################################################################
-# django optional
-################################################################################
+DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
+if env.str('DEFAULT_STORAGE_DSN', ''):
+    DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN')
+    DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
+else:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data/media/')
 
 
 # allauth
@@ -261,17 +285,18 @@ CONFIRM_EMAIL_ON_GET = True
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},  # removes frustrating validations, eg `too similar to your email`
 ]
+ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
 
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
 
-WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
+WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://0.0.0.0:8090')
 
 
 default_template_engine['OPTIONS']['context_processors'].extend([
     'django_settings_export.settings_export',
 ])
-SENTRY_DSN = locals().get('SENTRY_DSN', 'https://79fc9abeff8747c5851b6607e98da375@o361790.ingest.sentry.io/5197901')
+SENTRY_DSN = env.str('SENTRY_DSN', '')
 SETTINGS_EXPORT = [
     'DOMAIN',
     'SITE_NAME',
@@ -328,7 +353,7 @@ ADMIN_REORDER = [
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
             'admin.LogEntry',
-            
+
             # removed because it doesn't work on cms 3.7.3
             # 'cms.GlobalPagePermission',
             # 'cms.PageUserGroup',
@@ -355,7 +380,26 @@ SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
 SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 
 
-ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
+if DEBUG:
+    CACHE_MIDDLEWARE_SECONDS = 0
+    # there's a bug with caching - https://github.com/what-digital/divio/issues/9
+    CMS_PLACEHOLDER_CACHE = False
+    CMS_PLUGIN_CACHE = False
+    CMS_CACHE_DURATIONS = {
+        'content': 0,
+        'menus': 0,
+        'permissions': 0,
+    }
+    CMS_PAGE_CACHE = False
+else:
+    one_hour = 60 * 60
+    four_hours = one_hour * 4
+    CACHE_MIDDLEWARE_SECONDS = four_hours
+    CMS_CACHE_DURATIONS = {
+        'menus': one_hour,
+        'permissions': one_hour,
+        'content': four_hours,
+    }
 
 
 ################################################################################
@@ -373,31 +417,6 @@ CMS_TEMPLATES = [
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CMS_PERMISSION = True
-
-if DEBUG:
-    # there's a bug with caching - https://github.com/what-digital/divio/issues/9
-    CMS_PAGE_CACHE = False
-    CMS_PLACEHOLDER_CACHE = False
-    CMS_PLUGIN_CACHE = False
-    CMS_CACHE_DURATIONS = {
-        'content': 0,
-        'menus': 0,
-        'permissions': 0,
-    }
-else:
-    one_hour = 60 * 60
-    four_hours = one_hour * 4
-    CMS_CACHE_DURATIONS = {
-        'menus': one_hour,
-        'permissions': one_hour,
-        'content': four_hours,
-    }
-    CACHE_MIDDLEWARE_SECONDS = four_hours
-
-
-################################################################################
-# django-cms optional
-################################################################################
 
 
 LANGUAGES = [
@@ -450,12 +469,6 @@ CMS_PLACEHOLDER_CONF = {
             'SubmitButton',
             'CaptchaField',
             'ReCaptchaFieldPlugin',
-            
-            # deprecated
-            'Bootstrap4PicturePlugin',
-            'Bootstrap4LinkPlugin',
-            'Bootstrap4SpacingPlugin',
-            'LinkAllPlugin',
         ],
     },
 }
@@ -576,7 +589,8 @@ class GridContainerSpacing(Enum):
         NONE_OLD = 'Default'
 
 
-DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING = GridContainerSpacing
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_INTERNAL = GridContainerSpacing
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL = GridContainerSpacing
 
 
 class GridContainerWidthInternal(Enum):

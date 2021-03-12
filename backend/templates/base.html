@@ -18,12 +18,20 @@
             {% block page_meta_title %}{% page_attribute 'page_title' %}{% endblock %} - {{ site_config.site_name }} {{ site_config.site_subname }}
         </title>
     
-        {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+        {% block meta %}
+            {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+        {% endblock meta %}
 
-        <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
+        {% if site_config.favicon %}
+            <link rel="shortcut icon" href="{{ site_config.favicon }}" type="image/x-icon"/>
+        {% else %}
+            <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
+        {% endif %}
+
         {% render_block 'css' %}
 
         <script>
+            const DJANGO_ENV = '{{ settings.DJANGO_ENV.value }}';
             document.addEventListener('DOMContentLoaded', function() {
                 if (window.django) {
                     window.django.env = '{{ settings.DJANGO_ENV.value }}';
@@ -61,9 +69,12 @@
         {% render_block 'head_frontend_files' %}
 
         {% block head %}{% endblock %}
+
+{#        {% gtm_head settings.GTM_CONTAINER_ID %}#}
     </head>
 
     <body id="page-top" class="lang-{{ lang_code }} {% render_block 'body_classes' %}">
+{#        {% gtm_body settings.GTM_CONTAINER_ID %}#}
 
         {% cms_toolbar %}
 

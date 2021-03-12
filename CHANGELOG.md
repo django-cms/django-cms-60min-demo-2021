@@ -1,3 +1,60 @@
+2021.01
+-------------------------------------------------------------------------------
+
+- fixed frontend sentry loading, now it captures the first scripts execution exceptions
+- fixed the issue with frontend components being incorrectly reloaded after a content change, which caused browser memory overload
+
+2021.02
+-------------------------------------------------------------------------------
+
+- recompiled requirements.txt
+- bumped aldryn-django to 3.1.7.0
+- fixed djangocms-link-all double anchor `#` bug
+- fixed frontend building by installing linux package `autoconf`
+- upgraded backend & frontend dependencies to incorporate the latest security patches
+- optimized dockerfile cache and compilemessages timing
+- improved the docker versioning schema
+- converted images to webp during webpack build
+- added code formatters: prettier for JS and intellij .editorconfig for HTML & SCSS
+
+2021.01
+-------------------------------------------------------------------------------
+
+- added a patch for djangocms-link-all that gracefully protects linked pages from deletion
+- fixed the disabled HTTPS (it was using .env file to override the server envs)
+- fixed webpack CORS issues for fonts and assets
+- fixed cache by disabling it for local dev
+- disabled django 3.1 sidebar completely
+
+### How to upgrade
+
+##### djangocms-bootstrap4
+- update/remove `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_FIELDSETS` if you used it
+- rename `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING` to `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL`, consider adding `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL`
+- review the bootstrap4 container plugin interface to confirm that the new fields look as you expect them to
+- if you used bootstrap4 container plugin `width_external` field - add migrations that drop it, it is no longer useful
+
+##### djangocms-link-all
+- add `settings.LINK_ALL_PLUGINS` variable in accordance with `link_all.settings.LINK_ALL_PLUGINS` format, otherwise you won't have `cms.Page` protection
+
+2020.12
+-------------------------------------------------------------------------------
+
+- dropped aldryn-django static serving, uwsgi, middleware
+- added heroku support & guidelines
+- improved the deployment speed - from 12m to 6.5m
+- added .flake8 and isort configurations
+- upgraded webpack-dev-server to 4.0.0-beta, which adds webpack 5 support
+
+
+2020.11
+-------------------------------------------------------------------------------
+
+- upgraded to python 3.9, django-cms 3.8, django 3.1.3, nodejs 14, webpack 5, typescript 4
+- upgraded to djangocms-blog 1.2
+- dropped aldryn-translation-tools
+- dropped divio wheels support
+
 2020.10
 -------------------------------------------------------------------------------
 

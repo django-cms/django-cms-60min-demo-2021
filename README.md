@@ -6,7 +6,6 @@ Currently this project has 3 live instances:
 
 Development Setup
 -------------------------------------------------------------------------------
-Built on Python 3.7, Django 3.0, DjangoCMS 3.8, Webpack 4, TypeScript 3.
 
 See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md)
 
@@ -19,3 +18,15 @@ Codebase Source
 This project is built upon [djangocms-template](https://gitlab.com/what-digital/djangocms-template).
 
 The fixes & features from that project are being regularly merged into this repository.
+
+
+## Tech Stack
+
+- Debian 10
+- Python 3.9
+- Django 3.1
+- DjangoCMS 3.8
+- Node 14
+- Webpack 5
+- TypeScript 4
+- Bootstrap 4

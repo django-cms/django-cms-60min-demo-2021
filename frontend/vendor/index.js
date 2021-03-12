@@ -1,8 +1,13 @@
 import * as Sentry from '@sentry/browser';
 
 
-window.$ = window.jQuery = require('jquery');
+Sentry.init({
+    dsn: '',
+    environment: DJANGO_ENV,
+});
 
+
+window.$ = window.jQuery = require('jquery');
 
 require('bootstrap');
 require('./main.scss');
@@ -16,11 +21,3 @@ require('@fortawesome/fontawesome-free/scss/fontawesome.scss');
 require('@fortawesome/fontawesome-free/scss/brands.scss');
 require('@fortawesome/fontawesome-free/scss/solid.scss');
 require('@fortawesome/fontawesome-free/scss/regular.scss');
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    Sentry.init({
-        dsn: '',
-        environment: window.django.env,
-    });
-});

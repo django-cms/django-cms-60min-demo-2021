@@ -3,30 +3,30 @@
     "version": "1.0.0",
     "private": true,
     "engines": {
-        "node": "^10.15"
+        "node": "^14.0"
     },
     "dependencies": {
 
         "//": "core pakcages",
         
-        "webpack": "^4.0.0",
-            "webpack-dev-server": "^3.0.0",
-            "webpack-cli": "^3.0.0",  "//": "required for cli commands, eg dev server",
-            "@types/webpack": "^4.0.0",
+        "webpack": "^5.0.0",
+            "webpack-dev-server": "^4.0.0-beta.0",
+            "webpack-cli": "^4.0.0",  "//": "required for cli commands, eg dev server",
 
         "file-loader": "^6.0.0",
-        "image-webpack-loader": "^6.0.0",
-        "svg-url-loader": "^6.0.0",
+        "image-webpack-loader": "^7.0.0",
+            "imagemin-gifsicle": "^7.0.0", "//": "only used on macos to run dev server",
+        "svg-url-loader": "^7.0.0",
 
-        "mini-css-extract-plugin": "~0.9.0",
-            "node-sass": "^4.12.0",
+        "mini-css-extract-plugin": "^1.0.0",
+            "node-sass": "^5.0.0",
             "precss": "^4.0.0",
-        "sass-loader": "^9.0.0",  "//": "processes css files after mini-css",
-        "css-loader": "^3.0.0",  "//": "handels `@import` and `url()`",
-        "style-loader": "^1.0.0",
+        "sass-loader": "^11.0.0",  "//": "processes css files after mini-css",
+        "css-loader": "^5.0.0",  "//": "handels `@import` and `url()`",
+        "style-loader": "^2.0.0",
 
         "ts-loader": "^8.0.0",
-        "typescript": "^3.0.0",
+        "typescript": "^4.0.0",
 
         "vue": "^2.6.11",
             "vue-loader": "^15.9.2",
@@ -43,24 +43,25 @@
         "bootstrap": "^4.0.0",
             "popper.js": "^1.0.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
             "@types/bootstrap": "^4.0.0",
-        "autoprefixer": "^9.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically",
-            "postcss-loader": "^3.0.0",
-        "@sentry/browser": "^5.0.0",
+        "autoprefixer": "^10.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically",
+            "postcss-loader": "^5.0.0",
+            "postcss": "^8.0.0",
+        "@sentry/browser": "^6.0.0",
         "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
         
         "//": "project packages",
         
-        "tocbot": "^4.11.1",
-            "slugify": "^1.4.5",
-        "metismenujs": "^1.2.0",
-        "algoliasearch": "^4.3.1",
-            "instantsearch.js": "^4.7.0",
-            "vue-instantsearch": "^3.1.0",
-            "vue-server-renderer": "^2.6.11",
-        "lightgallery.js": "^1.2.0"
+        "tocbot": "^4.0.0",
+            "slugify": "^1.0.0",
+        "metismenujs": "^1.0.0",
+        "algoliasearch": "^4.0.0",
+            "instantsearch.js": "^4.0.0",
+            "vue-instantsearch": "^3.0.0",
+            "vue-server-renderer": "^2.0.0",
+        "lightgallery.js": "^1.0.0"
     },
     "scripts": {
-        "start": "node_modules/.bin/webpack-dev-server --config webpack.config.js",
+        "start": "webpack serve",
         "webpack-dev-server": "yarn start",
         "webpack-dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config webpack.config.js",
         "build": "NODE_ENV=production webpack --config webpack.config.js"

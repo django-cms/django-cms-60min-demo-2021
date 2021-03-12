@@ -9,7 +9,9 @@ class MailchimpPluginModel(CMSPlugin):
     list_id = models.CharField(max_length=1024, help_text="eg d652eb1a9c")
 
     font_size = models.FloatField(default=1, help_text="In rem")
-    width = models.CharField(max_length=512, default='100%', help_text="In css format, eg 350px or 100%")
+    width = models.CharField(
+        max_length=512, default='100%', help_text="In css format, eg 350px or 100%"
+    )
     is_enable_border = models.BooleanField(default=True, verbose_name="Show input border")
 
     def get_html_style_attr(self) -> str:

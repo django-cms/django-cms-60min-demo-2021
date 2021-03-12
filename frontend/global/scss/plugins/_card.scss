@@ -3,7 +3,7 @@
 .card-list-plugin {
     .card-row {
         justify-content: center;
-
+        
         .card-col {
             margin-bottom: $grid-gutter-width;
         }
@@ -15,17 +15,16 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: white;
-    
-    box-shadow: 0 3px 6px 1px $gray-400;
     border-bottom: 2px solid map-get($theme-colors, 'primary');
+    background: white;
+    box-shadow: 0 3px 6px 1px $gray-400;
     @include media-breakpoint-up(md) {
         box-shadow: 0 3px 6px 0 $gray-300;
     }
     @include media-breakpoint-up(xl) {
         border-bottom: 3px solid map-get($theme-colors, 'primary');
     }
-
+    
     .card-plugin__image {
         display: flex;
         width: 100%;
@@ -37,16 +36,16 @@
         }
     }
     .card-plugin__title {
-        padding: 0 $padding;
         margin-top: $padding;
+        padding: 0 $padding;
     }
     .card-plugin__content {
         display: flex;
         flex-direction: column;
+        height: 100%;
         padding: $padding;
         padding-top: 0;
-        height: 100%;
-            
+        
         *:last-child {
             margin-top: auto;
             margin-bottom: 0;

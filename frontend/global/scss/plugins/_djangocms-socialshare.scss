@@ -15,24 +15,24 @@
     
     .icon {
         display: block;
-        margin-right: 8px;
+        margin-right: 17px;
         color: inherit;
         &:hover {
             text-decoration: none;
         }
-    
+        
         .fab, .fas {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             $size: 35px;
             width: $size;
             height: $size;
-            font-size: 17px;
             color: white;
+            font-size: 17px;
             text-align: center;
         }
-    
+        
         .fa-facebook-f {
             @include icon(#4267B2);
         }

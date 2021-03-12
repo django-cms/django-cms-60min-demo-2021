@@ -6,7 +6,7 @@
     
     margin-top: $grid-gutter-width;
     margin-bottom: $grid-gutter-width;
-
+    
     &[data-spacing='normal'] {
         margin-top: $grid-gutter-width * 2.5;
         margin-bottom: $grid-gutter-width * 2.5;
@@ -15,21 +15,21 @@
         margin-top: 100px;
         margin-bottom: 100px;
     }
-
+    
     .hero-wrapper-plugin {
         display: flex;
         @include media-breakpoint-down($breaking-point) {
-            order: 25;
             justify-content: center;
+            order: 25;
         }
     }
     
     .content-wrapper-plugin {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: flex-start;
-            
+        justify-content: center;
+        
         @include reset-first-heading-top-spacing;
         
         @include media-breakpoint-down($breaking-point) {

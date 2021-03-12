@@ -13,8 +13,8 @@ const EaAisPagination = require('components/search/components/ea-ais-pagination.
     }
 })
 export default class SearchComponent extends Vue {
-    @Prop(String) algoliaApiKey: string;
-    @Prop(String) algoliaApplicationId: string;
+    @Prop(String) algoliaApiKey: string = '';
+    @Prop(String) algoliaApplicationId: string = '';
     @Prop(String) algoliaIndex: string;
 
     @Provide() isSearchPopupVisible: boolean = false;
