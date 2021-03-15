@@ -9,7 +9,7 @@
         {% render_model_block site_config  %}
             <a class="navbar-brand d-flex" href="/">
                 {% if site_config.logo %}
-                    <img src="{{ site_config.logo }}" alt="logo">
+                    <img class="navbar-logo" src="{{ site_config.logo.url }}" alt="logo">
                 {% else %}
                     {% include 'nav_bar/includes/icon.svg' %}
                 {% endif %}
