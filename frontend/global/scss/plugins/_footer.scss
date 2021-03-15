@@ -8,6 +8,11 @@
         margin-top: 2rem;
         margin-bottom: 2rem;
     }
+    .mailchimp-plugin {
+        .form-group .form-control {
+            border: none;
+        }
+    }
 }
 body.cke_editable.footer-plugin {
     @extend .footer-plugin;
