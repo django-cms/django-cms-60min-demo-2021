@@ -81,7 +81,17 @@ $link-hover-color: $color-active;
 
 
 $grid-gutter-width: 30px;
-$grid-gutter-width-half: $grid-gutter-width/2; 
+$grid-gutter-width-half: $grid-gutter-width/2;
+
+
+$plugin-spacing-vertical-internal: (
+    'none': 0,
+    'small': 0.5,
+    'normal': 1,
+    'large': 2,
+    'extra_large': 4,
+);
+$plugin-spacing-vertical-external: $plugin-spacing-vertical-internal;
 
 
 // must be placed at the end
