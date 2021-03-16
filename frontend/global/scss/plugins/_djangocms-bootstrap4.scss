@@ -49,194 +49,55 @@
 }
 
 
-main.container-fluid {
+@mixin plugin-spacing-vertical-external-styles($size) {
+    margin-top: $grid-gutter-width * $size;
+    margin-bottom: $grid-gutter-width * $size;
+}
+@each $name, $size in $plugin-spacing-vertical-external {
+    %plugin-spacing-vertical-external-#{$name} {
+        @include plugin-spacing-vertical-external-styles($size);
+    }
+}
+
+@mixin plugin-spacing-vertical-internal-styles($size) {
+    padding-top: $grid-gutter-width * $size;
+    padding-bottom: $grid-gutter-width * $size;
+}
+@each $name, $size in $plugin-spacing-vertical-internal {
+    %plugin-spacing-vertical-internal-#{$name} {
+        @include plugin-spacing-vertical-internal-styles($size);
+    }
+}
+
     
-    .container-plugin {
-        $spacing-small-xl: 75px;
-        $spacing-small-lg: 60px;
-        $spacing-normal-xl: 100px;
-        $spacing-normal-lg: 70px;
-        $spacing-large-xl: 135px;
-        $spacing-large-lg: 80px;
-        $spacing-extra-large-xl: 200px;
+.container-plugin {
+    > .container-internal {
+        margin: 0 auto;
+    }
+    & {
+        padding-right: 0;
+        padding-left: 0;
         
-        @mixin padding-vertical($spacing) {
-            padding-top: $spacing;
-            padding-bottom: $spacing;
+        &:first-child {
             margin-top: 0;
+        }
+        &:last-child {
             margin-bottom: 0;
         }
-        @mixin margin-vertical($spacing) {
-            margin-top: $spacing;
-            margin-bottom: $spacing;
+    }
+    &[data-width="full-width"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    @each $name, $size in $plugin-spacing-vertical-external {
+        &[data-spacing-vertical-external="#{$name}"] {
+            @extend %plugin-spacing-vertical-external-#{$name};
         }
-        @mixin btn-on-black-background {
-            border-color: white;
-            color: white;
-            &:hover {
-                border-color: #9caaaf;
-                color: #9caaaf;
-            }
-        }
-        
-        @mixin spacing($type, $xl, $lg: $xl, $sm: $lg) {
-            @if $type == 'internal' {
-                @include padding-vertical($xl);
-                
-                @include media-breakpoint-down(lg) {
-                    @include padding-vertical($lg);
-                }
-                @include media-breakpoint-down(sm) {
-                    @include padding-vertical($sm);
-                }
-            } @else {
-                @include margin-vertical($xl);
-                
-                @include media-breakpoint-down(lg) {
-                    @include margin-vertical($lg);
-                }
-                @include media-breakpoint-down(sm) {
-                    @include margin-vertical($sm);
-                }
-            }
-        }
-        
-        @mixin spacing-internal {
-            &.container-plugin--spacing-small {
-                @include spacing(
-                    $type: 'internal',
-                    $xl: $spacing-small-xl,
-                    $lg: $spacing-small-lg,
-                );
-            }
-            &.container-plugin--spacing-normal {
-                @include spacing(
-                    $type: 'internal',
-                    $xl: $spacing-normal-xl,
-                    $lg: $spacing-normal-lg,
-                );
-            }
-            &.container-plugin--spacing-large {
-                @include spacing(
-                    $type: 'internal',
-                    $xl: $spacing-large-xl,
-                    $lg: $spacing-large-lg,
-                );
-            }
-            &.container-plugin--spacing-extra-large {
-                @include spacing(
-                    $type: 'internal',
-                    $xl: $spacing-extra-large-xl,
-                    $lg: $spacing-large-lg,
-                );
-            }
-        }
-        
-        
-        // width internal
-        
-        %container-base {
-            width: 100%;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-        &[data-width-internal='dynamic'] .container-internal {
-            @include make-container();
-            @include make-container-max-widths();
-        }
-        &[data-width-internal='narrow'] .container-internal {
-            @extend %container-base;
-            max-width: 800px;
-        }
-        &[data-width-internal='medium-narrow'] .container-internal {
-            @extend %container-base;
-            max-width: 400px;
-        }
-        &[data-width-internal='extra-narrow'] .container-internal {
-            @extend %container-base;
-            max-width: 200px;
-        }
-        
-        
-        // spacing
-        
-        &--spacing-small {
-            @include margin-vertical($spacing-small-xl);
-        }
-        &--spacing-normal {
-            @include spacing(
-                $type: 'external',
-                $xl: $spacing-normal-xl,
-                $lg: $spacing-normal-lg,
-            );
-        }
-        &--spacing-large {
-            @include spacing(
-                $type: 'external',
-                $xl: $spacing-large-xl,
-                $lg: $spacing-large-lg,
-            );
-        }
-        &--spacing-extra-large {
-            @include spacing(
-                $type: 'external',
-                $xl: $spacing-extra-large-xl,
-                $lg: $spacing-large-lg,
-            );
-        }
-        
-        
-        // background
-        
-        &--background-dark-blue,
-        &--background-gray {
-            position: relative;
-            
-            &:before {
-                content: '';
-                display: block;
-                position: absolute;
-                top: 0;
-                right: -$grid-gutter-width / 2;
-                bottom: 0;
-                left: -$grid-gutter-width / 2;
-            }
-            > * {
-                position: relative;
-            }
-        }
-        
-        &--background-gray {
-            @include spacing-internal();
-            &:before {
-                background-color: $card-cap-bg;
-            }
-            .form-control {
-                border-radius: $btn-border-radius;
-                border-color: #f2f4f5;
-            }
-        }
-        &--background-dark-blue {
-            color: white;
-            
-            &:before {
-                background-color: theme-color('primary');
-            }
-            .btn-outline-primary {
-                @include btn-on-black-background();
-            }
-            .btn-primary {
-                @include btn-on-black-background();
-                &:hover {
-                    border-color: white;
-                    background-color: white;
-                    color: black;
-                }
-            }
-            
-            @include spacing-internal();
+    }
+    @each $name, $size in $plugin-spacing-vertical-internal {
+        &[data-spacing-vertical-internal="#{$name}"] {
+            @extend %plugin-spacing-vertical-internal-#{$name};
         }
     }
 }

@@ -577,14 +577,16 @@ DJANGOCMS_BOOTSTRAP4_HEADING_TYPE_ENUM = HeadingType
 
 
 class GridContainerSpacing(Enum):
-    NONE_OLD = 'spacing-none'
     NONE = 'none'
     SMALL = 'small'
     NORMAL = 'normal'
-    LARGE = 'large'
+    EXTRA_LARGE = 'extra_large'
     
     class Labels:
-        NONE_OLD = 'Default'
+        SMALL = "small (15px)"
+        NORMAL = "normal (30px)"
+        LARGE = "large (60px)"
+        EXTRA_LARGE = "extra large (120px)"
 
 
 DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_INTERNAL = GridContainerSpacing

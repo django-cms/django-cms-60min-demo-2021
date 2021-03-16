@@ -4,11 +4,7 @@ import {initReloadScriptsOnContentRefresh} from 'global/ts/reload-scripts-on-con
 import * as Sentry from '@sentry/browser';
 
 
-try {
-    document.removeEventListener('DOMContentLoaded', initScripts);
-} catch (error) {
-    // todo try catch might be redundant
-}
+document.removeEventListener('DOMContentLoaded', initScripts);
 document.addEventListener('DOMContentLoaded', initScripts, {once: true});
 
 
