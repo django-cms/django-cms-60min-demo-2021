@@ -15,9 +15,7 @@ See the general [setup instructions](https://gitlab.com/what-digital/djangocms-t
 Codebase Source
 -------------------------------------------------------------------------------
 
-This project is built upon [djangocms-template](https://gitlab.com/what-digital/djangocms-template).
-
-The fixes & features from that project are being regularly merged into this repository.
+This project is built upon https://gitlab.com/effective-altruism/ea-cms-template/ (with friendly permission from EA).
 
 
 ## Tech Stack
