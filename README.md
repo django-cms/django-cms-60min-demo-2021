@@ -7,9 +7,15 @@ Currently this project has 3 live instances:
 Development Setup
 -------------------------------------------------------------------------------
 
-See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md)
+See the general [setup instructions](https://github.com/django-cms/djangocms-template/blob/master/docs/local-setup-instructions.md)
 
-[Project intro & guidelines](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/README.md)
+[Project intro & guidelines](https://github.com/django-cms/djangocms-template/blob/master/docs/README.md)
+
+You can download and import the demo data [here](https://drive.google.com/drive/folders/1Q3ZyK4uvCAWR-qWa3Nk1zL3a7RyQgEJM?usp=sharing). In order to import the data:
+- extract data.zip into the root directory of the project
+- docker-compose up
+- import demo-2021-07-09 into the `db` database
+
 
 
 Codebase Source
