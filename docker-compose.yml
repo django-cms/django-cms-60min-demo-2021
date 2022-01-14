@@ -11,7 +11,7 @@ services:
         links:
             - 'db:postgres'
         ports:
-            - '8000:80'
+            - '${HTTP_PORT:-8000}:80'
         volumes:
             - '.:/app:rw'
             - './data:/data:rw'
@@ -23,7 +23,7 @@ services:
             context: '.'
             dockerfile: frontend.Dockerfile
         ports:
-            - '8090:8090'
+            - '${FE_PORT:-8090}:8090'
         volumes:
             - '.:/app:rw'
             - node_modules:/app/frontend/node_modules
@@ -32,7 +32,7 @@ services:
     db:
         image: postgres:9.6-alpine
         ports:
-            - '5432:5432'
+            - '${DB_PORT:-5432}:5432'
         environment:
             POSTGRES_DB: 'db'
             POSTGRES_HOST_AUTH_METHOD: trust
